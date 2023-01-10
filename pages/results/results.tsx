@@ -1,3 +1,5 @@
+import ResultHeader from "../../components/resultheader"
+
 export default function Results() {
-return <h1>Results</h1>
+return <ResultHeader/>
 }
