@@ -1,3 +1,8 @@
+import ResultHeader from "../../components/resultheader"
+
+
+
 export default function Bar(){
-    return <h1>Bar</h1>
+    return (<ResultHeader/>
+    )
 }
