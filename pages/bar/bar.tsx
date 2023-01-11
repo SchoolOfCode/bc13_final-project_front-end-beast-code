@@ -1,3 +1,5 @@
+import BarPageInfo from "../../components/Barpage"
+
 export default function Bar(){
-    return <h1>Bar</h1>
+    return <BarPageInfo/>
 }
