@@ -2,12 +2,12 @@ import Image from "next/image"
 
 export default function ResultCard() {
     return <div> 
-        <Image
+        {/* <Image
             src="https://www.thisisansrc.com"
             alt="put an alt here"
             data-testid="image"
             layout="fill"
-        />
+        /> */}
         <h3 data-testid="title">Bar name</h3>
         <div className="icons-container" data-testid="container">
             <ul data-testid="unordered-list">
