@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import LandingHeader from '../components/LandingHeader'
-import Hero from '../components/Hero';
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LandingHeader/>
-      <Hero/>
     </>
   );
 }
