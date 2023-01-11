@@ -1,4 +1,7 @@
 import Head from 'next/head'
+<<<<<<< HEAD
+=======
+>>>>>>> main
 import LandingHeader from '../components/LandingHeader'
 
 export default function Home() {
