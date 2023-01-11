@@ -58,6 +58,12 @@
     margin-bottom: 22px;
     padding-left: 12px;
     font-size: 18px;
+    border: 3px solid transparent;
+}
+
+.contact_us_container>input:focus {
+    outline: none;
+    border: 3px solid #AF8541;
 }
 
 .contact_us_container>textarea {
@@ -67,12 +73,18 @@
     padding-left: 12px;
     padding-top: 12px;
     font-size: 18px;
+    border: 3px solid transparent;
+    resize: none;
+}
+
+.contact_us_container>textarea:focus {
+    outline: none;
+    border: 3px solid #AF8541;
 }
 
 .contact_us_container>button{
     width: 170.12px;
     height: 45.77px;
-    margin-top:22px;
     background-color: #AF8541;
     font-size: 24px;
     font-family: 'Montserrat', sans-serif;
