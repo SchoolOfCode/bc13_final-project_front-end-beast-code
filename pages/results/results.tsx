@@ -1,5 +1,5 @@
-import ResultHeader from "../../components/resultheader"
+import ResultsHeader from "../../components/ResultsHeader"
 
 export default function Results() {
-return <ResultHeader/>
+return <ResultsHeader/>
 }
