@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import LandingHeader from '../components/landingheader'
+import LandingHeader from '../components/LandingHeader'
 
 export default function Home() {
   return (
