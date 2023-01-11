@@ -1,5 +1,6 @@
 import ResultsHeader from "../components/ResultsHeader";
 import ResultCard from "../components/ResultCard";
+import FilterPanel from "../components/FilterPanel";
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 
@@ -27,4 +28,13 @@ describe("<ResultCard />", () => {
       expect(screen.getByTestId("text")).toBeInTheDocument();
       expect(screen.getByTestId("icon")).toBeInTheDocument();
     });
+});
+
+describe("<FilterPanel />", () => {
+  it("renders the advanced filter panel on results page", () => {
+    render(<FilterPanel />);
+    // check if all components are rendered
+    expect(screen.getByTestId("reset-button")).toBeInTheDocument();
+    expect(screen.getByTestId("done-button")).toBeInTheDocument();
+  });
 });
