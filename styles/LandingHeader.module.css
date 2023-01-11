@@ -1,7 +1,7 @@
 .Navbar{
     width:100%;
     background-color: transparent;
-    height: 70px;
+    height: 90px;
     display: flex;
     align-items: center;
     padding-left: 45px; 
@@ -21,6 +21,9 @@
 .logo{
     font-size: 32px;
     color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    width:165px;
 }
 
 .about_login{
@@ -33,9 +36,9 @@
     position: relative;
     margin: 0px;
     padding: 0px;
-    height: 100%;
-    width: 100%;
-    margin-bottom: -15px;
+    height: 100vh;
+    width: 100vw;
+    /* margin-bottom: -15px; */
 }
 
 .about_us>h3 {
@@ -65,7 +68,6 @@
 .login>h3 {
     display: inline-block;
     position: relative;
-    color: var(--gold);
 }
 
 .login>h3::after {
@@ -86,75 +88,9 @@
     transform-origin: bottom left;
 }
 
-.main_container{
-    /* background-color: blue; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute; 
-    top: 37%;
-    left:25%;
-    right:25%;
-    bottom:37%;
-    /* position: absolute; */
-}
-
-.search_container{
-    display: flex;
-    margin-top: 120px;
-}
-
-.search_container>input{
-    width: 441px;
-    height: 40px;
-    background: #FFFFFF;
-    border-radius: 4px 0px 0px 4px;
-    padding-left: 14px;
-    font-size: 18px;
-    outline: none;
-}
-.search_container>button{
-    width: 99px;
-    height: 40px;
-    background: #AF8541;
-    border-radius: 0px 4px 4px 0px;
-}
-
-.main_container>h1{
-letter-spacing: 0.07rem;
-}
-
-
-
-.main_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 4;
-}
-
-.search_container {
-    display: flex;
-    z-index: 3;
-}
-
-.search_container>input {
-    width: 441px;
-    height: 40px;
-    background: #FFFFFF;
-    border-radius: 4px 0px 0px 4px;
-    padding-left: 14px;
-    font-size: 18px;
-    outline: none;
-}
-
-.search_container>button {
-    width: 99px;
-    height: 40px;
-    background: #AF8541;
-    border-radius: 0px 4px 4px 0px;
-}
-
-.main_container>h1 {
-    letter-spacing: 0.07rem;
+.HeroImage {
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    position: fixed;
 }
