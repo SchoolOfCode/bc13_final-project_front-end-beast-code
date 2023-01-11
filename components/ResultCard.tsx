@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function ResultCard() {
     return <div> 
-        <Image
+       <Image
             src="https://www.thisisansrc.com"
             alt="put an alt here"
             data-testid="image"

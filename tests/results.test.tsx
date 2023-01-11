@@ -2,6 +2,7 @@ import ResultsHeader from "../components/ResultsHeader";
 import ResultCard from "../components/ResultCard";
 import FilterPanel from "../components/FilterPanel";
 import "@testing-library/jest-dom";
+import SearchSection from "../components/SearchSection";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("<ResultsHeader />", () => {
@@ -28,6 +29,15 @@ describe("<ResultCard />", () => {
       expect(screen.getByTestId("text")).toBeInTheDocument();
       expect(screen.getByTestId("icon")).toBeInTheDocument();
     });
+});
+
+describe("<SearchSection />", () => {
+  it("renders the advanced filter panel on results page", () => {
+    render(<SearchSection />);
+    // check if all components are rendered
+    expect(screen.getByTestId("search-icon")).toBeInTheDocument();
+    expect(screen.getByTestId("input")).toBeInTheDocument();
+  });
 });
 
 describe("<FilterPanel />", () => {

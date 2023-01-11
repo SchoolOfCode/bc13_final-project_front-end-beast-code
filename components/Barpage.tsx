@@ -5,7 +5,7 @@ export default function BarPageInfo () {
 
     return (
         <div>
-            <Image data-testid="bar-page-image" src="https://www.imagesaresocool.com" alt="really cool image" layout="fill"/>
+           <Image data-testid="bar-page-image" src="https://www.imagesaresocool.com" alt="really cool image" layout="fill"/>
                 <div>
                     <h2 data-testid="name-of-bar">Name of bar</h2>
                 </div>
