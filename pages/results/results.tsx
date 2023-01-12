@@ -1,11 +1,12 @@
+import BarCards from "../../components/BarCards"
 import ResultsHeader from "../../components/ResultsHeader"
-import SearchSection from "../../components/SearchSection"
-import ResultCard from "../../components/ResultCard"
+import ResultsSearchSection from "../../components/ResultsSearchSection"
 
 export default function Results() {
-return <>
+    return <>
     <ResultsHeader/>
-    <SearchSection/>
-    <ResultCard/>
-</>
+    <ResultsSearchSection/>
+    <BarCards/>
+    <button>Load More...</button>
+    </>
 }
