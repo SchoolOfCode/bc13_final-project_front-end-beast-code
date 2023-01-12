@@ -1,6 +1,16 @@
+import { useState } from "react"
+
 export default function FilterDropdown(){
-    return <div>
-        <ul data-testid="unordered-list">
+
+    const [toggle, setToggle] = useState(false)
+
+    function setDropdown(){
+        setToggle(!toggle);
+    }
+
+    return <div className="dropdown">
+        <p onClick={setDropdown}>Category</p>
+        {toggle ? <ul data-testid="unordered-list">
             <li data-testid="list-item">
                 <p data-testid="option-text">Option 1</p>
                 <input type="checkbox" data-testid="checkbox"></input>
@@ -17,6 +27,6 @@ export default function FilterDropdown(){
                 <p>Option 4</p>
                 <input type="checkbox"></input>
             </li>
-        </ul>
+        </ul> : null}
     </div>
 }
