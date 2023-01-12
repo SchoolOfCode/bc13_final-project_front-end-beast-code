@@ -17,7 +17,6 @@ type singleBarType = {
 }
 
 
-
 export default function Map(){
   const [barDetails, setBarDetails] = useState<singleBarType[]>([])   
   
@@ -44,12 +43,12 @@ export default function Map(){
 
 
     return (
-        <MapContainer id="map" center={[53.48, -2.24]} zoom={13} scrollWheelZoom={false} style={{height: "600px", width: "90%"}}>
+        <MapContainer id="map" data-testId="map-container" center={[53.48, -2.24]} zoom={13} scrollWheelZoom={false} style={{height: "600px", width: "90%"}}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {barDetails.map((element) => <Marker key={element.postcode} position={element.coordinates}>
+          {barDetails.map((element) => <Marker key={element.postcode} data-testId="marker" position={element.coordinates}>
             <Popup>
               <h3>{element.name}</h3>
               <p>{element.address}</p>
