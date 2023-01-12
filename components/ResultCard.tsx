@@ -11,7 +11,7 @@ export type ResultCardProps = {
 export default function ResultCard(props: ResultCardProps){
     
     return <div> 
-{/* <Image
+        {/* <Image
             src="https://www.thisisansrc.com"
             alt="put an alt here"
             data-testid="image"

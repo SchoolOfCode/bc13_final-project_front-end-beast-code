@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "../styles/filterdropdown.module.css"
 
 export default function FilterDropdown(){
 
@@ -8,25 +9,26 @@ export default function FilterDropdown(){
         setToggle(!toggle);
     }
 
-    return <div className="dropdown">
-        <p onClick={setDropdown}>Category</p>
-        {toggle ? <ul data-testid="unordered-list">
-            <li data-testid="list-item">
-                <p data-testid="option-text">Option 1</p>
-                <input type="checkbox" data-testid="checkbox"></input>
-            </li>
-            <li>
-                <p>Option 2</p>
-                <input type="checkbox"></input>
-            </li>
-            <li>
-                <p>Option 3</p>
-                <input type="checkbox"></input>
-            </li>
-            <li>
-                <p>Option 4</p>
-                <input type="checkbox"></input>
-            </li>
+    type optionProps = {
+        optionText: string
+    }
+
+    function Option({optionText} : optionProps){
+        return <>
+        <li data-testid="list-item" className={styles.li}>
+            <p data-testid="option-text">{optionText}</p>
+            <input type="checkbox" data-testid="checkbox"></input>
+        </li> 
+        </>
+    }
+
+    return <div className={styles.dropdown_container}>
+        <p onClick={setDropdown} className={styles.p}>Category</p>
+        {toggle ? <ul data-testid="unordered-list" className={styles.ul}>
+                <Option optionText="Option 1"/>
+                <Option optionText="Option 2"/>
+                <Option optionText="Option 3"/>
+                <Option optionText="Option 4"/>
         </ul> : null}
     </div>
 }

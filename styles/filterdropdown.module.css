@@ -1,0 +1,22 @@
+.dropdown_container {
+    background-color: var(--lightgreen);
+    border-radius: 2px;
+}
+
+.p {
+    padding: 10px;
+}
+
+.ul {
+    background-color: var(--lightgrey);
+    list-style: none;
+    border-radius: 2px;
+}
+
+.li {
+     display: flex;
+     width: 100%;
+     align-items: center;
+     justify-content: space-between;
+     padding: 10px;
+}
