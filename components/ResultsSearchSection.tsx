@@ -1,20 +1,8 @@
 import React from 'react'
 import FilterDropdown from './FilterDropdown'
-import FilterPanel from "./FilterPanel"
-import { useState } from 'react'
+import FilterPanel from './FilterPanel'
 
 export default function ResultsSearchSection() {
-
-  const [toggle, setToggle] = useState(false)
-
-  function showFilterPanel() {
-    console.log("HIIIIIIII")
-    setToggle(true)
-  }
-
-  function hideFilterPanel(){
-    setToggle(false)
-  }
 
   return (
     <div>
@@ -25,13 +13,11 @@ export default function ResultsSearchSection() {
         <input type="checkbox" className="map_view_toggle"/>
         <label htmlFor='map_view_toggle'>Map view toggle</label>
         <>
-        {/* Filter dropdown that should expand / close when clicked */}
         <FilterDropdown/>
-        {/* Filter panel should show when "filters" button is clicked */}
-        {toggle ? <FilterPanel hideFilterPanel={hideFilterPanel}/> : null}
+        {/* Filter panel slides in when "filters" button is clicked */}
+        <FilterPanel/>
         </>
         <button data-testid="reset-button">Reset</button>
-        <button data-testid="filters-button" onClick={showFilterPanel}>Filters</button>
     </div>
   )
 }
