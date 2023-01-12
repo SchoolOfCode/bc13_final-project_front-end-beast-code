@@ -1,7 +1,7 @@
 .Navbar{
     width:100%;
     background-color: transparent;
-    height: 90px;
+    height: 60px;
     display: flex;
     align-items: center;
     padding-left: 45px; 
@@ -19,11 +19,11 @@
 }
 
 .logo{
-    font-size: 32px;
+    font-size: 26px;
     color: var(--white);
     display: flex;
     justify-content: space-between;
-    width:165px;
+    width:140px;
 }
 
 .about_login{

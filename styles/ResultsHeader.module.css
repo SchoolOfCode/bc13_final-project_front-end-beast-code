@@ -1,13 +1,12 @@
 .Navbar{
     width: 100%;
     background-color: var(--gold);
-    height: 90px;
+    height: 60px;
     display: flex;
     align-items: center;
     padding-left: 45px; 
     padding-right: 45px;
     justify-content: space-between;
-    z-index: 3;
 }
 
 .about_login>div>h3>a{
@@ -18,78 +17,47 @@
 }
 
 .logo{
-    font-size: 32px;
+    font-size: 26px;
     color: var(--white);
     display: flex;
     justify-content: space-between;
-    width:165px;
-    padding-right: 20px
+    width:140px;
+}
+
+.align_input_left{
+    width: 70%;
 }
 
 .search_container {
     display: flex;
-    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
     color: white;
     border-bottom: 2px solid white;
-    width: 350px;
-    /* margin-right: 700px; */
-    padding: 10px
-
+    width: 330px;
+    height:41px;
 }
 
 .search_container>input {
-    width: 441px;
+    width: 300px;
     height: 45px;
     background: transparent;
-    border-radius: 4px 0px 0px 4px;
     padding-left: 15px;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
     color: white
 }
 
 .search_container>input::placeholder{
-    color: white;
-}
-.search_container>button {
-    width: 110px;
-    height: 45px;
-    background: var(--gold);
-    border-radius: 0px 4px 4px 0px;
-    font-size: 18px;
-    color: var(--white);
-    letter-spacing: 0.03rem;
-    cursor: pointer;
-
+    color: rgb(212, 201, 201);
 }
 
-.logo-area {
-    width:3000px
-}
-
-.search_container>button> span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-
-.search_container>button> span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -5px;
-    transition: 0.5s;
-}
-
-.search_container>button:hover span {
-    padding-right: 15px;
-}
-
-.search_container>button:hover span:after {
-    opacity: 1;
-    right: 0;
+.logo_area {
+    height: 28px;
+    width: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/location-pin.png');
 }
 
 .about_login{
