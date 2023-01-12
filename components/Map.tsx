@@ -16,6 +16,8 @@ type singleBarType = {
     website: string
 }
 
+
+
 export default function Map(){
   const [barDetails, setBarDetails] = useState<singleBarType[]>([])   
   
