@@ -1,8 +1,21 @@
 import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
+import { useState } from 'react'
 
 export default function ResultsSearchSection() {
+
+  const [toggle, setToggle] = useState(false)
+
+  function showFilterPanel() {
+    console.log("HIIIIIIII")
+    setToggle(true)
+  }
+
+  function hideFilterPanel(){
+    setToggle(false)
+  }
+
   return (
     <div>
         {/* Search bar for filtering results by keyword */}
@@ -15,10 +28,10 @@ export default function ResultsSearchSection() {
         {/* Filter dropdown that should expand / close when clicked */}
         <FilterDropdown/>
         {/* Filter panel should show when "filters" button is clicked */}
-        <FilterPanel/>
+        {toggle ? <FilterPanel hideFilterPanel={hideFilterPanel}/> : null}
         </>
         <button data-testid="reset-button">Reset</button>
-        <button data-testid="filters-button">Filters</button>
+        <button data-testid="filters-button" onClick={showFilterPanel}>Filters</button>
     </div>
   )
 }
