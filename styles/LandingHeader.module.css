@@ -1,0 +1,96 @@
+.Navbar{
+    width:100%;
+    background-color: transparent;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding-left: 45px; 
+    padding-right: 45px;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 3;
+}
+
+.about_login>div>h3>a{
+    text-decoration: none;
+    color: var(--white);
+    width: 100px;
+    height: 20px;
+}
+
+.logo{
+    font-size: 32px;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    width:165px;
+}
+
+.about_login{
+    display: flex;
+    width: 230px;
+    justify-content: space-around;
+}
+
+.HeroImage{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    /* margin-bottom: -15px; */
+}
+
+.about_us>h3 {
+    display: inline-block;
+    position: relative;
+    color: var(--gold);
+}
+
+.about_us>h3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--gold);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.about_us>h3:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.login>h3 {
+    display: inline-block;
+    position: relative;
+}
+
+.login>h3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--gold);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.login>h3:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.HeroImage {
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    position: fixed;
+}
