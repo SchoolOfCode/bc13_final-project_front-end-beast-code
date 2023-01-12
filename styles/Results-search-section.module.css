@@ -1,4 +1,4 @@
-.keywordinput_container {
+.keywordsearch_main_container {
     position: relative;
     width: 100%;
     padding: 0;
@@ -8,6 +8,13 @@
     flex-direction: column;
     align-items: center;
     height: 44px;
+}
+
+.icon_input_toggle_container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search_icon {
@@ -50,14 +57,7 @@
     cursor: pointer;
 }
 
-.inner_div{
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.line{
+.gold_underline{
     border-bottom: 1px solid var(--gold);
     width: 61%
 }
