@@ -26,6 +26,8 @@ type barArray = {
     coordinates: [number, number]
 }[]
 
+
+
 export default function Map(){
 
 
