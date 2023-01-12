@@ -1,0 +1,14 @@
+import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import Map from "../components/Map";
+
+//TEST NOT WORKING CURRENTLY
+
+describe("<Map />", () => {
+  it("renders the map on the map page with at least one marker", () => {
+    render(<Map />);
+    // check if all components are rendered
+    expect(screen.getByTestId("map-container")).toBeInTheDocument();
+    expect(screen.getByTestId("marker")).toBeInTheDocument();
+  });
+});
