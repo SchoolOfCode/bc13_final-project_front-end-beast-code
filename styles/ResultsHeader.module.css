@@ -1,0 +1,139 @@
+.Navbar{
+    width:100%;
+    background-color: var(--gold);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding-left: 45px; 
+    padding-right: 45px;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 3;
+}
+
+.about_login>div>h3>a{
+    text-decoration: none;
+    color: var(--white);
+    width: 100px;
+    height: 20px;
+}
+
+.logo{
+    font-size: 32px;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    width:165px;
+}
+
+.search_container {
+    display: flex;
+    margin-top: 15px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.search_container>input {
+    width: 441px;
+    height: 45px;
+    background: transparent;
+    border-radius: 4px 0px 0px 4px;
+    padding-left: 15px;
+    font-size: 18px;
+    outline: none;
+    
+}
+
+.search_container>input::placeholder{
+    color: white;
+}
+.search_container>button {
+    width: 110px;
+    height: 45px;
+    background: var(--gold);
+    border-radius: 0px 4px 4px 0px;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 0.03rem;
+    cursor: pointer;
+}
+
+
+.search_container>button> span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.search_container>button> span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -5px;
+    transition: 0.5s;
+}
+
+.search_container>button:hover span {
+    padding-right: 15px;
+}
+
+.search_container>button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.about_login{
+    display: flex;
+    width: 230px;
+    justify-content: space-around;
+}
+
+.about_us>h3 {
+    display: inline-block;
+    position: relative;
+    color: var(--gold);
+}
+
+.about_us>h3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--gold);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.about_us>h3:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.login>h3 {
+    display: inline-block;
+    position: relative;
+}
+
+.login>h3::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--gold);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.login>h3:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
