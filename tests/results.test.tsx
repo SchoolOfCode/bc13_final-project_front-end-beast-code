@@ -1,6 +1,9 @@
 import ResultsHeader from "../components/ResultsHeader";
 import ResultCard from "../components/ResultCard";
+import FilterPanel from "../components/FilterPanel";
 import "@testing-library/jest-dom";
+import FilterDropdown from "../components/FilterDropdown"
+import SearchSection from "../components/SearchSection";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("<ResultsHeader />", () => {
@@ -27,4 +30,32 @@ describe("<ResultCard />", () => {
       expect(screen.getByTestId("text")).toBeInTheDocument();
       expect(screen.getByTestId("icon")).toBeInTheDocument();
     });
+});
+
+describe("<SearchSection />", () => {
+  it("renders the advanced filter panel on results page", () => {
+    render(<SearchSection />);
+    // check if all components are rendered
+    expect(screen.getByTestId("search-icon")).toBeInTheDocument();
+    expect(screen.getByTestId("input")).toBeInTheDocument();
+  });
+});
+
+describe("<FilterDropdown />", () => {
+  it("renders the filter dropdown with checkbox options on results page", () => {
+    render(<FilterDropdown />);
+    // check if all components are rendered
+    expect(screen.getByTestId("unordered-list")).toBeInTheDocument();
+    expect(screen.getByTestId("list-item")).toBeInTheDocument();
+    expect(screen.getByTestId("option-text")).toBeInTheDocument();
+  });
+});
+
+describe("<FilterPanel />", () => {
+  it("renders the advanced filter panel on results page", () => {
+    render(<FilterPanel />);
+    // check if all components are rendered
+    expect(screen.getByTestId("reset-button")).toBeInTheDocument();
+    expect(screen.getByTestId("done-button")).toBeInTheDocument();
+  });
 });
