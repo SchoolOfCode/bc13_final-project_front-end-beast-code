@@ -3,7 +3,7 @@ import ResultCard from "../components/ResultCard";
 import FilterPanel from "../components/FilterPanel";
 import "@testing-library/jest-dom";
 import FilterDropdown from "../components/FilterDropdown"
-import SearchSection from "../components/SearchSection";
+import SearchSection from "../components/ResultsSearchSection";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("<ResultsHeader />", () => {
