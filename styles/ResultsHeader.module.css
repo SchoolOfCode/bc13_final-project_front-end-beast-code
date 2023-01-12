@@ -28,9 +28,13 @@
 
 .search_container {
     display: flex;
+    padding-left: 30px;
     margin-top: 15px;
     color: white;
     border-bottom: 2px solid white;
+    width: 194px;
+    margin-right: auto;
+    
 }
 
 .search_container>input {
