@@ -1,5 +1,5 @@
 .Navbar{
-    width:100%;
+    width: 100%;
     background-color: var(--gold);
     height: 90px;
     display: flex;
@@ -24,17 +24,18 @@
     display: flex;
     justify-content: space-between;
     width:165px;
+    padding-right: 20px
 }
 
 .search_container {
     display: flex;
-    padding-left: 30px;
     margin-top: 15px;
     color: white;
     border-bottom: 2px solid white;
-    width: 194px;
-    margin-right: auto;
-    
+    width: 350px;
+    /* margin-right: 700px; */
+    padding: 10px
+
 }
 
 .search_container>input {
@@ -45,7 +46,7 @@
     padding-left: 15px;
     font-size: 18px;
     outline: none;
-    
+    color: white
 }
 
 .search_container>input::placeholder{
@@ -60,8 +61,12 @@
     color: var(--white);
     letter-spacing: 0.03rem;
     cursor: pointer;
+
 }
 
+.logo-area {
+    width:3000px
+}
 
 .search_container>button> span {
     cursor: pointer;
@@ -90,14 +95,14 @@
 
 .about_login{
     display: flex;
-    width: 230px;
+    width: 200px;
     justify-content: space-around;
 }
 
 .about_us>h3 {
     display: inline-block;
     position: relative;
-    color: var(--gold);
+    color: var(--white);
 }
 
 .about_us>h3::after {
@@ -108,7 +113,7 @@
     height: 3px;
     bottom: -3px;
     left: 0;
-    background-color: var(--gold);
+    background-color: var(--white);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -131,7 +136,7 @@
     height: 3px;
     bottom: -3px;
     left: 0;
-    background-color: var(--gold);
+    background-color: var(--white);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }

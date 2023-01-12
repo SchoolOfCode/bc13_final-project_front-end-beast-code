@@ -12,7 +12,8 @@ export default function ResultsHeader(){
       <strong>Cheers</strong>
     </div>
     <div className={styles.search_container}>
-          <div data-testid="location-pin"> location pin icon </div>
+          <div data-testid="location-pin" className="logo-area"> location pin icon 
+          </div>
           <input data-testid="location-input" placeholder="Location or Postcode" className={styles.location_input}></input>
         </div>
     <div className={styles.about_login}>
