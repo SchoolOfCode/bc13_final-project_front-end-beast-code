@@ -32,7 +32,6 @@ export default function ResultsSearchSection() {
         <FilterPanel/> 
         </>
         <button data-testid="reset-button">Reset</button>
-        <button data-testid="filters-button" onClick={showFilterPanel}>Filters</button>
     </div>
   );
 }
