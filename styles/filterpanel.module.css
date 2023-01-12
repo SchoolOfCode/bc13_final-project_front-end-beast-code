@@ -1,0 +1,32 @@
+.panel {
+    background-color: var(--green);
+    display: flex;
+}
+
+.panel_header {
+    background-color: var(--green);
+}
+
+.done_button {
+    color: white;
+    background: var(--gold);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    width: 112px;
+    height: 44px;
+}
+
+.reset_button {
+    color: white;
+    background-color: var(--lightgreen);
+    border-radius: 2px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 44px;
+}
