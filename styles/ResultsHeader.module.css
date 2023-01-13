@@ -22,13 +22,19 @@
     display: flex;
     justify-content: space-between;
     width:140px;
+    align-items: center;
+}
+
+.logo_icon{
+    padding-top: 0px;
+    display: flex;
 }
 
 .align_input_left{
     width: 70%;
-    width:165px;
     padding-right: 20px;
     text-decoration: none;
+    /* border: 1px solid red; */
 }
 
 .search_container {
@@ -48,7 +54,7 @@
     padding-left: 15px;
     font-size: 16px;
     outline: none;
-    color: white
+    color: white;
 }
 
 .search_container>input::placeholder{

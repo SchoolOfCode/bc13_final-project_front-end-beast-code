@@ -3,6 +3,6 @@
     color: white;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 50px;
+    /* align-items: center; */
+    width: 100vw;
 }
