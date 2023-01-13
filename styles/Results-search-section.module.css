@@ -12,6 +12,7 @@
 
 .icon_input_toggle_container {
     width: 60%;
+    height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +28,7 @@
 }
 
 .keyword_input{
-    width: 100%;
+    width: 75%;
     padding: 8px 16px;
     padding-bottom: 9px;
     font-size: 16px;
@@ -60,6 +61,53 @@
     width: 61%
 }
 
+
+
+.button_box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    border-radius: 30px;
+    background: #173234;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.toggle_btn {
+    color: white;
+    padding: 10px 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+    /* border: 1px solid blue; */
+}
+
+.btn {
+    left: -1px;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #AF8541;
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.btn10 {
+    left: 111px;
+    top: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #AF8541;
+    border-radius: 30px;
+    transition: .5s;
+
 .dropdown_container {
     display: flex;
     gap: 10px;
@@ -76,4 +124,5 @@
     justify-content: center;
     width: 112px;
     height: 44px;
+
 }
