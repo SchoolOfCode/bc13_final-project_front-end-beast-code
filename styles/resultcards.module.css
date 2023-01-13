@@ -5,9 +5,14 @@
     align-items: center;
     gap: 15px;
     max-width: 100%;
-    padding: 240px;
+    /* padding: 240px; */
+    padding: 100px;
     justify-content: space-around;
     font-family: 'Inter', sans-serif;
+}
+
+.cardContainer > a {
+    text-decoration: none;
 }
 
 .resultCard {

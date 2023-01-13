@@ -50,7 +50,8 @@ export default function Map(){
           />
           {barDetails.map((element) => <Marker key={element.postcode} data-testId="marker" position={element.coordinates}>
             <Popup>
-              <h3>{element.name}</h3>
+              {/* Bar name changed from h3 to h4 for demo purposes */}
+              <h4>{element.name}</h4>
               <p>{element.address}</p>
               <p>Cost: {element.cost}/3</p>
               <p>Rating: {element.rating}/5</p>

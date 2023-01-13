@@ -8,8 +8,6 @@ export default function Results() {
         <ResultsHeader/>
         <div className={styles.results_main}>
             <ResultsSearchSection/>
-            <BarCards/>
-            <button>Load More...</button>
         </div>
     </>
 }

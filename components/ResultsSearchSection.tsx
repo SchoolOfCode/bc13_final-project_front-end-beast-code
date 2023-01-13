@@ -4,17 +4,27 @@ import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
 import {basicFilterOptions, advancedFilterOptions} from "../data/filters.js"
 import Image from "next/image";
+import BarCards from './BarCards';
+import dynamic from 'next/dynamic';
 import { useState } from "react";
 
 export default function ResultsSearchSection() {
+  const [view, setView] = useState("list")
+
   const [style, setStyle] = useState("btn");
   function leftClick() {
     setStyle("btn10");
+    setView("map")
   }
 
   function rightClick() {
     setStyle("btn");
+    setView("list")
   }
+
+  const Map = dynamic(
+    () => import('../components/Map'),
+    { ssr: false })
 
   return (
     <div className={styles.parent_container}>
@@ -60,9 +70,10 @@ export default function ResultsSearchSection() {
             <button data-testid="reset-button" className={styles.reset_button}>Reset</button>
         </div>
         {/* Filter panel shows when "filters" button is clicked */}
-        <FilterPanel initialFilterOptions={advancedFilterOptions}/> 
+        <FilterPanel initialFilterOptions={advancedFilterOptions}/>
+        {view === "list" ? <BarCards/> : <Map/>}
+        <button>Load More...</button>
         </>
-
     </div>
   );
 }
