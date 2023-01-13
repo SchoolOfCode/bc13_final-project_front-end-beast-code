@@ -1,8 +1,8 @@
 .keywordsearch_main_container {
     position: relative;
     width: 100%;
-    margin-top: 115px;
-    margin-bottom: 50px;
+    padding-top: 125px;
+    margin-bottom: 90px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -120,6 +120,7 @@
 
 .dropdown_container {
     display: flex;
+    justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
@@ -128,12 +129,42 @@
 .reset_button {
     color: white;
     background-color: var(--green);
-    border-radius: 2px;
+    border-radius: 15px;
     font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 112px;
+    width: 120px;
     height: 44px;
+    margin-left: 32px;
+    margin-right: 10px;
 
 }
+
+.all_filter_buttons{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.button_centering{
+    width: 100%;
+    text-align: center;
+}
+
+.load_more_button{
+    background-color: var(--gold);
+    color: white;
+    font-size: 20px;
+    width: 180px;
+    height: 60px;
+    border-radius: 7px;
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.load_more_button:hover{
+    cursor: pointer;
+}
+

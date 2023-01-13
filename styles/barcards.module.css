@@ -1,0 +1,134 @@
+.outerCardContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 69%;
+    font-family: 'Inter', sans-serif;
+    gap:40px;
+    row-gap: 80px;
+}
+
+.cardContainer > a {
+    text-decoration: none;
+}
+
+.resultCard {
+    width: 327px;
+    height: 468px;
+    background-color: var(--green);
+    border-radius: 15px;
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+}
+
+.imageStandIn {
+    width: 100%;
+    height: 200px;
+    background-color: var(--lightgreen);
+    border-radius: 15px 15px 0px 0px;
+    position: relative;
+    overflow: hidden;
+}
+
+.goldRectangle {
+    background-color: var(--gold);
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bar_name {
+    width: 75%;
+    padding-left: 25px;
+}
+
+.description {
+    font-size: 16px;
+    padding: 20px 27px;
+    height: 120px;
+    line-height: 1.35rem;
+    font-weight: normal;
+}
+
+.icons_container{
+    width: 100%;
+    height: 80px;
+    padding: 0px 27px;
+    padding-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.drinks{
+    width: 55%;
+    display: flex;
+    align-items: center;
+}
+
+.drinks_icon{
+    width:24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-drinks-icon.png');
+    margin-right: 10px;
+}
+.cost{
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+.cost_icon{
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-price-icon.png');
+    margin-right: 10px;
+}
+
+.food{
+    width: 55%;
+    display: flex;
+    align-items: center;
+}
+
+.food_icon{
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-food-icon.png');
+    margin-right: 10px;
+}
+
+.reviews{
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+.reviews_icon{
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-review-icon.png');
+    margin-right: 10px;
+}
+

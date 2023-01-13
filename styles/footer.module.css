@@ -1,12 +1,12 @@
 .Footer{
     width:100%;
     background-color: var(--black);
-    height: 533px;
+    height: 600px;
     color: white;
     display: flex;
     justify-content: space-around;
     padding-top: 100px;
-    padding-bottom: 30px;
+    border-top: 4px solid var(--gold);
 }
 
 .contact_us_container{
@@ -57,8 +57,9 @@
     height: 36.03px;
     margin-bottom: 22px;
     padding-left: 12px;
-    font-size: 18px;
+    font-size: 16px;
     border: 3px solid transparent;
+    border-radius: 2px;
 }
 
 .contact_us_container>input:focus {
@@ -72,9 +73,10 @@
     padding-left: 12px;
     padding-left: 12px;
     padding-top: 12px;
-    font-size: 18px;
+    font-size: 16px;
     border: 3px solid transparent;
     resize: none;
+    border-radius: 2px;
 }
 
 .contact_us_container>textarea:focus {
@@ -83,14 +85,15 @@
 }
 
 .contact_us_container>button{
-    width: 170.12px;
-    height: 45.77px;
+    width: 130px;
+    height: 42px;
     background-color: #AF8541;
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     color: white;
     border: 0px;
     padding: 0px;
+    border-radius: 2px;
 }
 
 .sitemap_container>ul>li{
