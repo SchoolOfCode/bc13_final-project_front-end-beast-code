@@ -9,8 +9,8 @@ export default function LandingHeader() {
         <div className={styles.logo} data-testid="logo">
           <Image
             src="/../public/Logo.png"
-            width={40}
-            height={40}
+            width={33}
+            height={33}
             alt="logo"
           ></Image>
           <strong>Cheers</strong>
