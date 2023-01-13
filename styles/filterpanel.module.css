@@ -1,6 +1,7 @@
 .panel {
     background-color: var(--green);
     display: flex;
+    color: white;
 }
 
 .panel_header {
@@ -22,6 +23,24 @@
 .reset_button {
     color: white;
     background-color: var(--lightgreen);
+    border-radius: 2px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 44px;
+}
+
+.dropdown_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filters_button {
+    color: white;
+    background-color: var(--green);
     border-radius: 2px;
     font-size: 16px;
     display: flex;

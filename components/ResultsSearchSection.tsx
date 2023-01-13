@@ -2,9 +2,25 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
-import Image from "next/image";
+import { useState } from 'react';
+import {basicFilterOptions, advancedFilterOptions} from "../data/filters.js"
 
 export default function ResultsSearchSection() {
+
+  const [mapClass, setMapClass] = useState("var(--green)")
+  const [listClass, setListClass] = useState("var(--gold)")
+  
+  function setView(){
+    if (mapClass === "var(--green)") {
+      setMapClass("var(--gold)")
+      setListClass("var(--green)")
+    }
+    else {
+      setMapClass("var(--green)")
+      setListClass("var(--gold)")
+    }
+  }
+
   return (
     <div>
       {/* Search bar for filtering results by keyword */}
@@ -17,21 +33,20 @@ export default function ResultsSearchSection() {
             placeholder="Search by keyword"
             data-testid="search-input"
           />
-          <button className={styles.map_button}>Map View</button>
-          <button className={styles.list_button}>List View</button>
+          <button className={styles.map_button} style={{ ["background-color" as any]: mapClass }} onClick={setView}>Map View</button>
+          <button className={styles.list_button} style={{ ["background-color" as any]: listClass }} onClick={setView}>List View</button>
         </div>
         <div className={styles.gold_underline}></div>
       </div>
-        {/* Map toggle button */}
-        <input type="checkbox" className="map_view_toggle"/>
-        <label htmlFor='map_view_toggle'>Map view toggle</label>
         <>
-        {/* Filter dropdown that should expand / close when clicked */}
-        <FilterDropdown/>
-        {/* Filter panel should show when "filters" button is clicked */}
-        <FilterPanel/> 
+        <div className={styles.dropdown_container}>
+            {/* Filter dropdown expands / closes when clicked */}
+            <FilterDropdown initialFilterOptions={basicFilterOptions}/>
+            <button data-testid="reset-button" className={styles.reset_button}>Reset</button>
+        </div>
+        {/* Filter panel shows when "filters" button is clicked */}
+        <FilterPanel initialFilterOptions={advancedFilterOptions}/> 
         </>
-        <button data-testid="reset-button">Reset</button>
     </div>
   );
 }
