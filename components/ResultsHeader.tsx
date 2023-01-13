@@ -11,9 +11,10 @@ export default function ResultsHeader() {
           <Link href="/">
             <Image
               src="/../public/Logo.png"
-              width={33}
-              height={33}
+              width={32}
+              height={32}
               alt="logo"
+              className={styles.logo_icon}
             ></Image>
           </Link>
           <strong>Cheers</strong>
@@ -26,10 +27,8 @@ export default function ResultsHeader() {
               placeholder="Location or Postcode"
               className={styles.location_input}
             ></input>
-
           </div>
         </div>
-
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>

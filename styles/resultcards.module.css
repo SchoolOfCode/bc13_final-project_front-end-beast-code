@@ -3,9 +3,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px;
+    gap: 15px;
     max-width: 100%;
-    padding: 200px;
+    padding: 240px;
     justify-content: space-around;
     font-family: 'Inter', sans-serif;
 }
@@ -17,7 +17,6 @@
     border-radius: 15px;
     font-family: 'Inter', sans-serif;
     color: var(--white);
-
 }
 
 .ul {

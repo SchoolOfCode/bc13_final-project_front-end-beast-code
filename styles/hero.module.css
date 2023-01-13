@@ -22,7 +22,7 @@
     outline: none;
 }
 
-.search_container>button {
+.search_button {
     width: 110px;
     height: 45px;
     background: var(--gold);
@@ -34,14 +34,14 @@
 }
 
 
-.search_container>button> span {
+.search_button> span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-.search_container>button> span:after {
+.search_button> span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -50,20 +50,19 @@
     transition: 0.5s;
 }
 
-.search_container>button:hover span {
+.search_button:hover span {
     padding-right: 15px;
 }
 
-.search_container>button:hover span:after {
+.search_button:hover span:after {
     opacity: 1;
     right: 0;
 }
 
-
 .main_container>h1{
     letter-spacing: 0.18rem;
     display: inline-block;
-        position: relative;
+    position: relative;
 }
 
 .main_container>h1::after {

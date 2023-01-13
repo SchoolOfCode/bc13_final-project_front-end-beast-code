@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     margin-top: 115px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -12,16 +13,16 @@
 
 .icon_input_toggle_container {
     width: 60%;
-    height: 55px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .search_icon {
-    margin-top: 6px;
-    height: 33px;
-    width: 33px;
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url('../public/search-icon.png')
@@ -31,7 +32,17 @@
     width: 75%;
     padding: 8px 16px;
     padding-bottom: 9px;
+    padding-top: 17px;
     font-size: 16px;
+    background-color: black;
+    color: white;
+}
+
+.keyword_input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(166, 154, 154);
+    opacity: 1;
+    /* Firefox */
 }
 
 .keyword_input:focus {
