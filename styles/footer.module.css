@@ -1,6 +1,6 @@
 .Footer{
     width:100%;
-    background-color: black;
+    background-color: var(--black);
     height: 533px;
     color: white;
     display: flex;
