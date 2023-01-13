@@ -4,13 +4,12 @@ import Image from "next/image"
 
 export default function ResultsHeader(){
     return (
-      
   <>
   <div className={styles.Navbar}>
-    <div className={styles.logo} data-testid="logo">
-      <Image src='/../public/Logo.png' width={40} height={40} alt='logo'></Image>
-      <strong>Cheers</strong>
-    </div>
+      <div className={styles.logo} data-testid="logo">
+        <Image src='/../public/Logo.png' width={40} height={40} alt='logo'></Image>
+        <strong className={styles.text}>Cheers</strong>
+      </div>
     <div className={styles.search_container}>
           <div data-testid="location-pin" className="logo-area"> location pin icon 
           </div>
