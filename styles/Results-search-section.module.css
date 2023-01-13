@@ -107,6 +107,7 @@
     background: #AF8541;
     border-radius: 30px;
     transition: .5s;
+}
 
 .dropdown_container {
     display: flex;

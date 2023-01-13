@@ -24,16 +24,38 @@ export default function FilterDropdown({initialFilterOptions} : any){
     }
 
     function Dropdown(){
-        return filterOptions.map((element: { isOpen: boolean; category: string; options: string[] }) => element.isOpen ? 
-            <div className={styles.dropdown_container}>
-                <p onClick={setDropdown} className={styles.p} id={element.category}>{element.category}</p>
+        return filterOptions.map(
+          (
+            element: { isOpen: boolean; category: string; options: string[] },
+            index: number
+          ) =>
+            element.isOpen ? (
+              <div key={index} className={styles.dropdown_container}>
+                <p
+                  onClick={setDropdown}
+                  className={styles.p}
+                  id={element.category}
+                >
+                  {element.category}
+                </p>
                 <ul data-testid="unordered-list" className={styles.ul}>
-                    {element.options.map((option: string) => <Option optionText={option}/>)}
+                  {element.options.map((option: string, index: number) => (
+                    <Option key={index} optionText={option} />
+                  ))}
                 </ul>
-            </div> :
-        <div className={styles.dropdown_container}>
-        <p onClick={setDropdown} className={styles.p} id={element.category}>{element.category}</p> 
-        </div>)
+              </div>
+            ) : (
+              <div key={index} className={styles.dropdown_container}>
+                <p
+                  onClick={setDropdown}
+                  className={styles.p}
+                  id={element.category}
+                >
+                  {element.category}
+                </p>
+              </div>
+            )
+        );
     }
 
     function Option({optionText} : optionProps){
