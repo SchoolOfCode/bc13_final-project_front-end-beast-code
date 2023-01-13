@@ -1,12 +1,15 @@
 import BarCards from "../../components/BarCards"
 import ResultsHeader from "../../components/ResultsHeader"
 import ResultsSearchSection from "../../components/ResultsSearchSection"
+import styles from "../../styles/resultspage.module.css"
 
 export default function Results() {
     return <>
-    <ResultsHeader/>
-    <ResultsSearchSection/>
-    <BarCards/>
-    <button>Load More...</button>
+        <ResultsHeader/>
+        <div className={styles.results_main}>
+            <ResultsSearchSection/>
+            <BarCards/>
+            <button>Load More...</button>
+        </div>
     </>
 }

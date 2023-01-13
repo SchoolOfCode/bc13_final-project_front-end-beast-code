@@ -26,6 +26,9 @@
 
 .align_input_left{
     width: 70%;
+    width:165px;
+    padding-right: 20px;
+    text-decoration: none;
 }
 
 .search_container {
@@ -113,3 +116,6 @@
     transform-origin: bottom left;
 }
 
+.text {
+    text-decoration: none;
+}

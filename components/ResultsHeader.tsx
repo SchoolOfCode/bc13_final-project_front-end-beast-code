@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
 
+
 export default function ResultsHeader() {
   return (
     <>
@@ -25,6 +26,7 @@ export default function ResultsHeader() {
               placeholder="Location or Postcode"
               className={styles.location_input}
             ></input>
+
           </div>
         </div>
 
