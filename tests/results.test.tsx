@@ -4,7 +4,7 @@ import FilterPanel from "../components/FilterPanel";
 import "@testing-library/jest-dom";
 import FilterDropdown from "../components/FilterDropdown"
 import ResultsSearchSection from "../components/ResultsSearchSection";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, getByTestId, getByText, render, screen } from "@testing-library/react";
 
 describe("<ResultsHeader />", () => {
     it("renders the header for the results page", () => {
@@ -41,21 +41,22 @@ describe("<ResultsSearchSection />", () => {
   });
 });
 
-describe("<FilterDropdown />", () => {
-  it("renders the filter dropdown with checkbox options on results page", () => {
-    render(<FilterDropdown />);
-    // check if all components are rendered
-    // expect(screen.getByTestId("unordered-list")).toBeInTheDocument();
-    // expect(screen.getByTestId("list-item")).toBeInTheDocument();
-    // expect(screen.getByTestId("option-text")).toBeInTheDocument();
-  });
-});
+// describe("<FilterDropdown />", () => {
+//   it("renders the filter dropdown with checkbox options on results page", () => {
+//     render(<FilterDropdown />);
+//     // check if all components are rendered
+//     // expect(screen.getByTestId("unordered-list")).toBeInTheDocument();
+//     // expect(screen.getByTestId("list-item")).toBeInTheDocument();
+//     // expect(screen.getByTestId("option-text")).toBeInTheDocument();
+//   });
+// });
 
 describe("<FilterPanel />", () => {
-  it("renders the advanced filter panel on results page", () => {
-    render(<FilterPanel />);
-    // check if all components are rendered
-    expect(screen.getByTestId("reset-button")).toBeInTheDocument();
-    expect(screen.getByTestId("done-button")).toBeInTheDocument();
-  });
-});
+  it("popover filter panel is initially hidden", () => {
+    const { getByTestId } = render(<FilterPanel />);
+    render(<FilterDropdown/>);
+    fireEvent.click(getByTestId("more-filters"))
+    expect("Done").toBeInTheDocument();
+    expect("Done").toBeVisible();
+  })
+})

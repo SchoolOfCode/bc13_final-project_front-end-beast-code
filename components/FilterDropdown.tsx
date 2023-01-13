@@ -9,7 +9,7 @@ export default function FilterDropdown({initialFilterOptions} : any){
         console.log(filterOptions)
     }, [filterOptions])
 
-    function setDropdown(event : any) : any{
+    function setDropdown(event : any) : void{
         const newFilterOptions = filterOptions.map((element: { category: string; isOpen: boolean }) => {
             if (event.target.id === element.category) {
                 element.isOpen = !element.isOpen
@@ -32,7 +32,7 @@ export default function FilterDropdown({initialFilterOptions} : any){
             element.isOpen ? (
               <div key={index} className={styles.dropdown_container}>
                 <p
-                  onClick={setDropdown}
+                  onClick={() => setDropdown}
                   className={styles.p}
                   id={element.category}
                 >
@@ -47,7 +47,7 @@ export default function FilterDropdown({initialFilterOptions} : any){
             ) : (
               <div key={index} className={styles.dropdown_container}>
                 <p
-                  onClick={setDropdown}
+                  onClick={() => setDropdown}
                   className={styles.p}
                   id={element.category}
                 >
