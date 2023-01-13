@@ -61,8 +61,6 @@
     width: 61%
 }
 
-
-
 .button_box {
     width: 220px;
     margin: 35px auto;
@@ -113,6 +111,7 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .reset_button {
