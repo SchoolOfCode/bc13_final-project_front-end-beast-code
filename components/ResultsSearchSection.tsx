@@ -53,8 +53,6 @@ export default function ResultsSearchSection() {
         <div className={styles.gold_underline}></div>
       </div>
       {/* Map toggle button */}
-      <input type="checkbox" className="map_view_toggle" />
-      <label htmlFor="map_view_toggle">Map view toggle</label>
         <>
         <div className={styles.dropdown_container}>
             {/* Filter dropdown expands / closes when clicked */}
