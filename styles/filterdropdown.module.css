@@ -1,6 +1,8 @@
 .dropdown_container {
     background-color: var(--lightgreen);
     border-radius: 2px;
+    width: 250px;
+    color: white;
 }
 
 .p {
@@ -11,6 +13,9 @@
     background-color: var(--lightgrey);
     list-style: none;
     border-radius: 2px;
+    position: absolute;
+    width: 250px;
+    color: black;
 }
 
 .li {

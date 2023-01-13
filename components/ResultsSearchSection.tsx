@@ -2,6 +2,7 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
+import {basicFilterOptions, advancedFilterOptions} from "../data/filters.js"
 import Image from "next/image";
 import { useState } from "react";
 
@@ -54,13 +55,16 @@ export default function ResultsSearchSection() {
       {/* Map toggle button */}
       <input type="checkbox" className="map_view_toggle" />
       <label htmlFor="map_view_toggle">Map view toggle</label>
-      <>
-        {/* Filter dropdown that should expand / close when clicked */}
-        <FilterDropdown />
-        {/* Filter panel should show when "filters" button is clicked */}
-        <FilterPanel />
-      </>
-      <button data-testid="reset-button">Reset</button>
+        <>
+        <div className={styles.dropdown_container}>
+            {/* Filter dropdown expands / closes when clicked */}
+            <FilterDropdown initialFilterOptions={basicFilterOptions}/>
+            <button data-testid="reset-button" className={styles.reset_button}>Reset</button>
+        </div>
+        {/* Filter panel shows when "filters" button is clicked */}
+        <FilterPanel initialFilterOptions={advancedFilterOptions}/> 
+        </>
+
     </div>
   );
 }

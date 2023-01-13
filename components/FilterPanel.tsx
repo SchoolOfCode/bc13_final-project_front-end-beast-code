@@ -4,13 +4,13 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import FilterDropdown from "./FilterDropdown";
 import styles from "../styles/filterpanel.module.css"
 
-export default function FilterPanel(){
+export default function FilterPanel({initialFilterOptions} : any){
     const [state, setState] = useState(false);
 
     return (
         <div>
-          <button onClick={() => setState(true)}>
-            Filters
+          <button onClick={() => setState(true)} className={styles.filters_button}>
+            More Filters
           </button>
           <SlidingPane
             closeIcon={<div className={styles.done_button}>Done</div>}
@@ -23,8 +23,8 @@ export default function FilterPanel(){
             width="350px"
             onRequestClose={() => setState(false)}
           >
-            <div>
-                <FilterDropdown/>
+            <div className={styles.dropdown_container}>
+                <FilterDropdown initialFilterOptions={initialFilterOptions}/>
             </div>
           </SlidingPane>
         </div>
