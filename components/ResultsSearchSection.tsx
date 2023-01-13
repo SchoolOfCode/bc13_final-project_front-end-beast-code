@@ -17,7 +17,7 @@ export default function ResultsSearchSection() {
   }
 
   return (
-    <div>
+    <div className={styles.parent_container}>
       {/* Search bar for filtering results by keyword */}
       <div className={styles.keywordsearch_main_container}>
         <div className={styles.icon_input_toggle_container}>
