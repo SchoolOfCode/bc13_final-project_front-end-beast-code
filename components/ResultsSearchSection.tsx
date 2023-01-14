@@ -76,9 +76,17 @@ export default function ResultsSearchSection() {
           <FilterPanel initialFilterOptions={advancedFilterOptions} />
         </div>
         {view === "list" ? <BarCards /> : <Map />}
-        <div className={styles.button_centering}>
-          <button className={styles.load_more_button}>Load More</button>
-        </div>
+        {view === "list" ? ( <div className={styles.button_centering}>
+          <button className={styles.load_more_button}>
+            <span>Load More</span>
+          </button>
+        </div>) : null}
+
+        {/* <div className={styles.button_centering}>
+          <button className={styles.load_more_button}>
+            <span>Load More</span>
+          </button>
+        </div> */}
       </>
     </div>
   );

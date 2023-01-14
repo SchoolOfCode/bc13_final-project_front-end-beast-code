@@ -43,12 +43,21 @@ export default function FilterDropdown({ initialFilterOptions }: any) {
             </ul>
           </div>
         ) : (
-          <div key={index} className={styles.dropdown_container}>
-            <p onClick={setDropdown} className={styles.p} id={element.category}>
-              {element.category}
-            </p>
-            <div className={styles.dropdown_icon}></div>
-          </div>
+            <div
+            
+              key={index}
+              className={styles.dropdown_container}
+            >
+              <p
+                onClick={setDropdown}
+                className={styles.p}
+                id={element.category}
+              >
+                {element.category}
+              </p>
+              <div className={styles.dropdown_icon}></div>
+            </div>
+         
         )
     );
   }

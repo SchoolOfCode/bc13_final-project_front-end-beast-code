@@ -35,7 +35,7 @@ export default function LandingHeader() {
 
       <div className={styles.HeroImage}>
         <Image
-          src={"/../public/Hero-Image2.png"}
+          src={"/Hero-Image2.png"}
           alt="Hero"
           layout="fill"
           objectFit="cover"

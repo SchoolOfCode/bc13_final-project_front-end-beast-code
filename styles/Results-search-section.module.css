@@ -78,7 +78,6 @@
     position: relative;
     border-radius: 30px;
     background: #173234;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -93,7 +92,6 @@
     outline: none;
     position: relative;
     text-align: center;
-    /* border: 1px solid blue; */
 }
 
 .btn {
@@ -142,7 +140,6 @@
 }
 
 .all_filter_buttons{
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     margin-bottom: 60px;
@@ -162,9 +159,30 @@
     border-radius: 7px;
     margin-top: 90px;
     margin-bottom: 90px;
-}
-
-.load_more_button:hover{
     cursor: pointer;
 }
 
+.load_more_button>span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.load_more_button>span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -5px;
+    transition: 0.5s;
+}
+
+.load_more_button:hover span {
+    padding-right: 18px;
+}
+
+.load_more_button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
