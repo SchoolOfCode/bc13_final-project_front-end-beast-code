@@ -1,20 +1,24 @@
 .Footer{
     width:100%;
     background-color: var(--black);
-    height: 600px;
+    height: 550px;
     color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding-top: 100px;
     border-top: 4px solid var(--gold);
 }
-
+.Footer_breakpoints{
+    display: flex;
+    width: 80%;
+    justify-content:space-between;
+    max-width: 1020px;
+}
 .contact_us_container{
         width: 365.25px;
         height: 432px;
         display: flex;
         flex-direction: column;
-        margin-left: 200px;
 }
 
 .contact_us_container>h2 {
@@ -37,7 +41,6 @@
 .socials_container{
     width: 196.14px;
     height: 125px;
-    margin-right: 200px;
 }
 
 .sitemap_container>ul{
@@ -49,6 +52,7 @@
 .socials_icons{
     display: flex;
     justify-content: space-between;
+    width: 75%;
 }
 
 .contact_us_container>input{

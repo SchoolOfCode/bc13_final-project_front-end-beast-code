@@ -12,8 +12,10 @@ export default function BarPageInfo() {
           objectFit="cover"
         ></Image>
       </div>
-      <div className={styles.bar_name}>
-        <h2 data-testid="name-of-bar">Patterns</h2>
+      <div className={styles.bar_name_container}>
+        <div className={styles.bar_name_innerContainer}>
+          <h2 data-testid="name-of-bar">Patterns</h2>
+        </div>
       </div>
       <div className={styles.main_body}>
         <div className={styles.breakpoints}>
@@ -22,7 +24,21 @@ export default function BarPageInfo() {
               This place is just so much more than your typical boozer, it just
               keeps on giving. Not only have they got a HUGE food menu,
               literally you can eat anything but you can even kick start your
-              day with one of their amazing breakfasts.
+              day with one of their amazing breakfasts. This place is just so
+              much more than your typical boozer, it just keeps on giving. Not
+              only have they got a HUGE food menu, literally you can eat
+              anything but you can even kick start your day with one of their
+              amazing breakfasts. This place is just so much more than your
+              typical boozer, it just keeps on giving. Not only have they got a
+              HUGE food menu, literally you can eat anything but you can even
+              kick start your day with one of their amazing breakfasts. This
+              place is just so much more than your typical boozer, it just keeps
+              on giving. Not only have they got a HUGE food menu, literally you
+              can eat anything but you can even kick start your day with one of
+              their amazing breakfasts. This place is just so much more than
+              your typical boozer, it just keeps on giving. Not only have they
+              got a HUGE food menu, literally you can eat anything but you can
+              even kick start your day with one of their amazing breakfasts.
             </p>
           </div>
           <div className={styles.bar_features}>
