@@ -18,7 +18,7 @@
 }
 
 .contact_us_container>h2 {
-    margin-bottom: 45px;
+    margin-bottom: 35px;
 }
 
 .sitemap_container>h2{
@@ -41,7 +41,7 @@
 }
 
 .sitemap_container>ul{
-    font-size: 24px;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     list-style: none;
 }
@@ -85,15 +85,16 @@
 }
 
 .contact_us_container>button{
-    width: 130px;
-    height: 42px;
+    width: 100px;
+    height: 35px;
     background-color: #AF8541;
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     color: white;
     border: 0px;
     padding: 0px;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .sitemap_container>ul>li{

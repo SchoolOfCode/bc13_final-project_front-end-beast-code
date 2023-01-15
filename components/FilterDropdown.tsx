@@ -35,7 +35,11 @@ export default function FilterDropdown({ initialFilterOptions }: any) {
             <p onClick={setDropdown} className={styles.p} id={element.category}>
               {element.category}
             </p>
-            <div className={styles.dropdown_icon_click}></div>
+            <div
+              onClick={setDropdown}
+              id={element.category}
+              className={styles.dropdown_icon_click}
+            ></div>
             <ul data-testid="unordered-list" className={styles.ul}>
               {element.options.map((option: string, index: number) => (
                 <Option key={index} optionText={option} />
@@ -43,21 +47,16 @@ export default function FilterDropdown({ initialFilterOptions }: any) {
             </ul>
           </div>
         ) : (
+          <div key={index} className={styles.dropdown_container}>
+            <p onClick={setDropdown} className={styles.p} id={element.category}>
+              {element.category}
+            </p>
             <div
-            
-              key={index}
-              className={styles.dropdown_container}
-            >
-              <p
-                onClick={setDropdown}
-                className={styles.p}
-                id={element.category}
-              >
-                {element.category}
-              </p>
-              <div className={styles.dropdown_icon}></div>
-            </div>
-         
+              onClick={setDropdown}
+              id={element.category}
+              className={styles.dropdown_icon}
+            ></div>
+          </div>
         )
     );
   }
