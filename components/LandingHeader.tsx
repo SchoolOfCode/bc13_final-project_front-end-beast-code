@@ -8,7 +8,7 @@ export default function LandingHeader() {
       <div className={styles.Navbar}>
         <div className={styles.logo} data-testid="logo">
           <Image
-            src="/../public/Logo.png"
+            src="/Logo.png"
             width={33}
             height={33}
             alt="logo"
