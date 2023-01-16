@@ -81,7 +81,7 @@ export default function ResultsSearchSection({results} : propsObj) {
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel initialFilterOptions={advancedFilterOptions} />
         </div>
-        {view === "list" ? <BarCards /> : <Map />}
+        {view === "list" ? <BarCards results={results} /> : <Map />}
         {view === "list" ? ( <div className={styles.button_centering}>
           <button className={styles.load_more_button}>
             <span>Load More</span>

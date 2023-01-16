@@ -3,7 +3,7 @@ import ResultsSearchSection from "../../components/ResultsSearchSection"
 import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
-import {tempArray} from "./temparray"
+import {tempArray} from "../../data/temparray"
 
 export type resultsArray = {
   City: string;
