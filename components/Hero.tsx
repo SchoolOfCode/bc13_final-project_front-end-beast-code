@@ -7,7 +7,8 @@ export default function Hero() {
 
   //SORT OUT TYPESCRIPT IF POSS
   function getLocation(event : any) {
-    setLocation(event.target.value)
+    setLocation(event.target.value.toLowerCase())
+    console.log("this is the event", location)
   }
 
   return (
@@ -16,11 +17,17 @@ export default function Hero() {
         <h1 data-testid="title">Raise the bar, sink into the atmosphere</h1>
         <div data-testid="search-container" className={styles.search_container}>
           <input placeholder="Location or Postcode" data-testid="input" onChange={getLocation}></input>
-          <Link href={{pathname: "/results/results", query: {location: location}}}>
+          {(location === "london" || location === "birmingham" || location === "manchester") ? (<Link href={{pathname: "/results/results", query: {location: location}}}>
             <button data-testid="button" className={styles.search_button}>
               <span>Search</span>
             </button>
-          </Link>
+          </Link>) :(<div className={styles.error_msg}>
+            <button data-testid="button" className={styles.search_button}>
+              <span>Search</span>
+            </button>
+             <p>Results Not Found</p>
+             </div>
+          ) }
         </div>
       </div>
     </>

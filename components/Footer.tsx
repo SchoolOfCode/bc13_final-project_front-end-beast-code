@@ -38,7 +38,7 @@ function Footer() {
             ></Image>
             <Image
               data-testid="icon-insta"
-              src="/instagram-icon.png"
+              src="/Instagram-icon.png"
               alt="Instagram icon"
               width={40}
               height={40}
