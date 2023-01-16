@@ -19,8 +19,8 @@
 }
 
 .error_msg>p{
-    margin-left: -450px;
-    margin-top: 20px;
+    margin-left: -550px;
+    margin-top: 70px;
     font-size: 16px;
 }
 
@@ -45,6 +45,9 @@
     cursor: pointer;
 }
 
+.search_button:disabled {
+    background-color: #BDA57F;
+}
 
 .search_button> span {
     cursor: pointer;
