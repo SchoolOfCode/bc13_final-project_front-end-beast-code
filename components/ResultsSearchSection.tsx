@@ -63,17 +63,31 @@ export default function ResultsSearchSection() {
         <div className={styles.gold_underline}></div>
       </div>
       {/* Map toggle button */}
-        <>
-        <div className={styles.dropdown_container}>
+      <>
+        <div className={styles.all_filter_buttons}>
+          <div className={styles.dropdown_container}>
             {/* Filter dropdown expands / closes when clicked */}
-            <FilterDropdown initialFilterOptions={basicFilterOptions}/>
-            <button data-testid="reset-button" className={styles.reset_button}>Reset</button>
+            <FilterDropdown initialFilterOptions={basicFilterOptions} />
+            <button data-testid="reset-button" className={styles.reset_button}>
+              Reset
+            </button>
+          </div>
+          {/* Filter panel shows when "filters" button is clicked */}
+          <FilterPanel initialFilterOptions={advancedFilterOptions} />
         </div>
-        {/* Filter panel shows when "filters" button is clicked */}
-        <FilterPanel initialFilterOptions={advancedFilterOptions}/>
-        {view === "list" ? <BarCards/> : <Map/>}
-        <button>Load More...</button>
-        </>
+        {view === "list" ? <BarCards /> : <Map />}
+        {view === "list" ? ( <div className={styles.button_centering}>
+          <button className={styles.load_more_button}>
+            <span>Load More</span>
+          </button>
+        </div>) : null}
+
+        {/* <div className={styles.button_centering}>
+          <button className={styles.load_more_button}>
+            <span>Load More</span>
+          </button>
+        </div> */}
+      </>
     </div>
   );
 }

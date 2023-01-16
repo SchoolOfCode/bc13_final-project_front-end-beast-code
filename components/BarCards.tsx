@@ -1,7 +1,7 @@
 import React from 'react'
 import ResultCard from './ResultCard'
 import { ResultCardProps } from './ResultCard'
-import styles from "../styles/resultcards.module.css"
+import styles from "../styles/barcards.module.css"
 import Link from 'next/link'
 
 const DummyData = [
@@ -46,18 +46,20 @@ const DummyData = [
 function BarCards() {
 
   return (
-    <div className={styles.cardContainer}>
-      {DummyData.map((item: ResultCardProps, index: number) => (
-        <Link href="/bar/bar" key={index}>
-          <ResultCard
-            key={index}
-            name={item.name}
-            cost={item.cost}
-            description={item.description}
-            image={item.image}
-          />{" "}
-        </Link>
-      ))}
+    <div className={styles.outerCardContainer}>
+      <div className={styles.cardContainer}>
+        {DummyData.map((item: ResultCardProps, index: number) => (
+          <Link href="/bar/bar" key={index}>
+            <ResultCard
+              key={index}
+              name={item.name}
+              cost={item.cost}
+              description={item.description}
+              image={item.image}
+            />{" "}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 

@@ -1,0 +1,12 @@
+.map_container{
+    border: 3px solid var(--gold);
+    z-index: 1;
+    margin-bottom: 130px;
+}
+
+.map_centering_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
