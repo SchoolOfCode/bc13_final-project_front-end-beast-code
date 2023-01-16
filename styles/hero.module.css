@@ -12,6 +12,18 @@
     margin-top: 130px;
 }
 
+.error_msg{
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+
+.error_msg>p{
+    margin-left: -450px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
 .search_container>input {
     width: 441px;
     height: 45px;
