@@ -14,9 +14,15 @@ function Pounds({ number }: any) {
   for (let i = 0; i < number; i++) {
     poundStr += "£";
   }
+  
   return <p>{poundStr}</p>;
 }
+// Display only 9 results at a time
+// Display only some of the desc
+  function Description({description}: any) {
+    return  <p className={styles.description}>{description.slice(0, 115)}...</p>
 
+  }
 export default function ResultCard(props: ResultCardProps) {
   return (
     <div className={styles.resultCard}>
@@ -25,7 +31,6 @@ export default function ResultCard(props: ResultCardProps) {
           src={props.image}
           alt="Bar image"
           layout="fill"
-          objectFit="cover"
         ></Image>
       </div>
       <div className={styles.goldRectangle}>
@@ -34,7 +39,7 @@ export default function ResultCard(props: ResultCardProps) {
         </div>
         <h3>12km</h3>
       </div>
-      <p className={styles.description}>{props.description}</p>
+      <Description description={props.description} />
       <div className={styles.icons_container} data-testid="container">
         <div className={styles.drinks}>
           <div className={styles.drinks_icon}></div>
