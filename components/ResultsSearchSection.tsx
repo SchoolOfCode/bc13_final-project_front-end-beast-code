@@ -7,8 +7,14 @@ import Image from "next/image";
 import BarCards from './BarCards';
 import dynamic from 'next/dynamic';
 import { useState } from "react";
+import { StringLiteral } from 'typescript';
+import {resultsArray} from "../pages/results/results"
 
-export default function ResultsSearchSection() {
+type propsObj = {
+  results: resultsArray;
+}
+
+export default function ResultsSearchSection({results} : propsObj) {
   const [view, setView] = useState("list")
 
   const [style, setStyle] = useState("btn");
