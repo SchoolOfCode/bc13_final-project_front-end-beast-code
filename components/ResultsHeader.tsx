@@ -10,7 +10,7 @@ export default function ResultsHeader() {
         <div className={styles.logo} data-testid="logo">
           <Link href="/">
             <Image
-              src="/../public/Logo.png"
+              src="/Logo.png"
               width={32}
               height={32}
               alt="logo"

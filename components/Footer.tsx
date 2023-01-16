@@ -25,20 +25,20 @@ function Footer() {
           <h2>Socials</h2>
           <div className={styles.socials_icons}>
             <Image
-              src="/../public/Facebook-icon.png"
+              src="/Facebook-icon.png"
               alt="Facebook icon"
               width={40}
               height={40}
             ></Image>
             <Image
-              src="/../public/Twitter-icon.png"
+              src="/Twitter-icon.png"
               alt="Twitter icon"
               width={40}
               height={40}
             ></Image>
             <Image
               data-testid="icon-insta"
-              src="/../public/instagram-icon.png"
+              src="/instagram-icon.png"
               alt="Instagram icon"
               width={40}
               height={40}
