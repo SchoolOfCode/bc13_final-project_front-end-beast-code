@@ -2,7 +2,7 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
-import {basicFilterOptions, advancedFilterOptions} from "../data/filters.js"
+import {basicFilterOptions, advancedFilterOptions} from "../data/filters"
 import Image from "next/image";
 import BarCards from './BarCards';
 import dynamic from 'next/dynamic';

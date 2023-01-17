@@ -1,16 +1,26 @@
 import { useEffect, useState } from "react";
+import { filtersArr } from "../data/filters";
 import styles from "../styles/filterdropdown.module.css";
 
-export default function FilterDropdown({ initialFilterOptions }: any) {
+type propsObj = {
+  initialFilterOptions: filtersArr;
+}
+
+export default function FilterDropdown({ initialFilterOptions }: propsObj) {
   const [filterOptions, setFilterOptions] = useState(initialFilterOptions);
 
-  useEffect(() => {
-    console.log(filterOptions);
-  }, [filterOptions]);
+  function setCheckbox(event: { target: { id: any; }; }){
+    console.log(event.target.id)
+    filterOptions.map((filter: { options: any[]; }) => filter.options.map((option: { text: any; checked: boolean; }) => {
+      if (option.text === event.target.id) {
+        option.checked = !option.checked
+      }
+    }))
+  }
 
-  function setDropdown(event: any): any {
+  function setDropdown(event: { target: { id: string; }; }) {
     const newFilterOptions = filterOptions.map(
-      (element: { category: string; isOpen: boolean }) => {
+      (element: { category: string; options: {text: string, checked: boolean}[]; isOpen: boolean }) => {
         if (event.target.id === element.category) {
           element.isOpen = !element.isOpen;
         }
@@ -22,12 +32,13 @@ export default function FilterDropdown({ initialFilterOptions }: any) {
 
   type optionProps = {
     optionText: string;
+    checked: boolean;
   };
 
   function Dropdown() {
     return filterOptions.map(
       (
-        element: { isOpen: boolean; category: string; options: string[] },
+        element: { isOpen: boolean; category: string; options: string[] | {text: string, checked: boolean}[]},
         index: number
       ) =>
         element.isOpen ? (
@@ -41,8 +52,8 @@ export default function FilterDropdown({ initialFilterOptions }: any) {
               className={styles.dropdown_icon_click}
             ></div>
             <ul data-testid="unordered-list" className={styles.ul}>
-              {element.options.map((option: string, index: number) => (
-                <Option key={index} optionText={option} />
+              {element.options.map((option: any, index: number) => (
+                <Option key={index} optionText={option.text} checked={option.checked}/>
               ))}
             </ul>
           </div>
@@ -61,12 +72,12 @@ export default function FilterDropdown({ initialFilterOptions }: any) {
     );
   }
 
-  function Option({ optionText }: optionProps) {
+  function Option({ optionText, checked }: optionProps) {
     return (
       <>
         <li data-testid="list-item" className={styles.li}>
           <p data-testid="option-text">{optionText}</p>
-          <input type="checkbox" data-testid="checkbox"></input>
+          <input type="checkbox" data-testid="checkbox" defaultChecked={checked} onClick={setCheckbox} id={optionText}></input>
         </li>
       </>
     );
