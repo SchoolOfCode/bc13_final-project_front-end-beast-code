@@ -1,26 +1,24 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
-import {basicFilterOptions, advancedFilterOptions, filtersArr} from "../data/filters"
-import Image from "next/image";
 import BarCards from './BarCards';
 import dynamic from 'next/dynamic';
 import { useState } from "react";
-import { StringLiteral } from 'typescript';
-import {resultsArray} from "../pages/results/results"
+import {filtersArrType, resultsArrType} from "../data/types"
 
 type propsObj = {
-  results: resultsArray;
-  filters: filtersArr;
+  results: resultsArrType;
+  filters: filtersArrType;
+  setDropdown: MouseEventHandler<HTMLParagraphElement>;
+  setCheckbox: MouseEventHandler<HTMLParagraphElement>;
 }
 
-export default function ResultsSearchSection({results} : propsObj) {
+export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox} : propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
 
   function updateNumberOfResults(){
-    console.log("update function called HELSJGKS!!!!")
     setNumberOfResults(numberOfResults + 9)
   }
 
@@ -80,13 +78,13 @@ export default function ResultsSearchSection({results} : propsObj) {
         <div className={styles.all_filter_buttons}>
           <div className={styles.dropdown_container}>
             {/* Filter dropdown expands / closes when clicked */}
-            <FilterDropdown initialFilterOptions={basicFilterOptions} />
+            <FilterDropdown filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
             <button data-testid="reset-button" className={styles.reset_button}>
               Reset
             </button>
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
-          <FilterPanel initialFilterOptions={advancedFilterOptions} />
+          <FilterPanel filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
         </div>
         {view === "list" ? <BarCards results={results} numberOfResults={numberOfResults} /> : <Map />}
         {view === "list" ? ( <div className={styles.button_centering}>

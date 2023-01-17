@@ -1,40 +1,17 @@
 import { MouseEventHandler, useEffect, useState } from "react";
-import { filtersArr } from "../data/filters";
+import { filtersArrType } from "../data/types";
 import styles from "../styles/filterdropdown.module.css";
+import {optionsPropsType} from "../data/types"
 
-type propsObj = {
-  initialFilterOptions: filtersArr;
+type propsObjType = {
+  filters: filtersArrType;
+  setDropdown: MouseEventHandler<HTMLParagraphElement>;
+  setCheckbox: MouseEventHandler<HTMLParagraphElement>;
 }
 
-export default function FilterDropdown({ initialFilterOptions }: propsObj) {
-  const [filterOptions, setFilterOptions] = useState(initialFilterOptions);
+export default function FilterDropdown({ filters, setDropdown, setCheckbox }: propsObjType) {
 
-  function setCheckbox(event: any){
-    filterOptions.map((filter: { options: any[]; }) => filter.options.map((option: { text: any; checked: boolean; }) => {
-      if (option.text === event.target.id) {
-        option.checked = !option.checked
-      }
-    }))
-  }
-
-  function setDropdown(event: any) {
-    const newFilterOptions = filterOptions.map(
-      (element: { category: string; options: {text: string, checked: boolean}[]; isOpen: boolean }) => {
-        if (event.target.id === element.category) {
-          element.isOpen = !element.isOpen;
-        }
-        return element;
-      }
-    );
-    setFilterOptions(newFilterOptions);
-  }
-
-  type optionProps = {
-    optionText: string;
-    checked: boolean;
-  };
-
-  function Option({ optionText, checked }: optionProps) {
+  function Option({ optionText, checked }: optionsPropsType) {
     return (
       <>
         <li data-testid="list-item" className={styles.li}>
@@ -45,7 +22,8 @@ export default function FilterDropdown({ initialFilterOptions }: propsObj) {
     );
   }
 
-    return filterOptions.map(
+    return <>
+    {filters.map(
       (
         element: { isOpen: boolean; category: string; options: string[] | {text: string, checked: boolean}[]},
         index: number
@@ -78,6 +56,7 @@ export default function FilterDropdown({ initialFilterOptions }: propsObj) {
             ></div>
           </div>
         )
-    );
+    )}
+    </>
   }
 
