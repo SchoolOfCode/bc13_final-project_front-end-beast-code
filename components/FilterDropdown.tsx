@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { filtersArr } from "../data/filters";
 import styles from "../styles/filterdropdown.module.css";
 
@@ -9,8 +9,7 @@ type propsObj = {
 export default function FilterDropdown({ initialFilterOptions }: propsObj) {
   const [filterOptions, setFilterOptions] = useState(initialFilterOptions);
 
-  function setCheckbox(event: { target: { id: any; }; }){
-    console.log(event.target.id)
+  function setCheckbox(event: any){
     filterOptions.map((filter: { options: any[]; }) => filter.options.map((option: { text: any; checked: boolean; }) => {
       if (option.text === event.target.id) {
         option.checked = !option.checked
@@ -18,7 +17,7 @@ export default function FilterDropdown({ initialFilterOptions }: propsObj) {
     }))
   }
 
-  function setDropdown(event: { target: { id: string; }; }) {
+  function setDropdown(event: any) {
     const newFilterOptions = filterOptions.map(
       (element: { category: string; options: {text: string, checked: boolean}[]; isOpen: boolean }) => {
         if (event.target.id === element.category) {
@@ -35,7 +34,17 @@ export default function FilterDropdown({ initialFilterOptions }: propsObj) {
     checked: boolean;
   };
 
-  function Dropdown() {
+  function Option({ optionText, checked }: optionProps) {
+    return (
+      <>
+        <li data-testid="list-item" className={styles.li}>
+          <p data-testid="option-text">{optionText}</p>
+          <input type="checkbox" data-testid="checkbox" defaultChecked={checked} onClick={setCheckbox} id={optionText}></input>
+        </li>
+      </>
+    );
+  }
+
     return filterOptions.map(
       (
         element: { isOpen: boolean; category: string; options: string[] | {text: string, checked: boolean}[]},
@@ -72,16 +81,3 @@ export default function FilterDropdown({ initialFilterOptions }: propsObj) {
     );
   }
 
-  function Option({ optionText, checked }: optionProps) {
-    return (
-      <>
-        <li data-testid="list-item" className={styles.li}>
-          <p data-testid="option-text">{optionText}</p>
-          <input type="checkbox" data-testid="checkbox" defaultChecked={checked} onClick={setCheckbox} id={optionText}></input>
-        </li>
-      </>
-    );
-  }
-
-  return <Dropdown />;
-}

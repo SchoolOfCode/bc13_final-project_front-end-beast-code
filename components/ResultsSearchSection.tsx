@@ -2,7 +2,7 @@ import React from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
-import {basicFilterOptions, advancedFilterOptions} from "../data/filters"
+import {basicFilterOptions, advancedFilterOptions, filtersArr} from "../data/filters"
 import Image from "next/image";
 import BarCards from './BarCards';
 import dynamic from 'next/dynamic';
@@ -12,6 +12,7 @@ import {resultsArray} from "../pages/results/results"
 
 type propsObj = {
   results: resultsArray;
+  filters: filtersArr;
 }
 
 export default function ResultsSearchSection({results} : propsObj) {

@@ -4,6 +4,7 @@ import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import {tempArray} from "../../data/temparray"
+import { filtersArr, advancedFilterOptions } from "../../data/filters"
 
 export type resultsArray = {
   City: string;
@@ -29,7 +30,12 @@ export type resultsArray = {
   }
 }[]
 
+type propsObj = {
+  results: resultsArray;
+}
+
 export default function Results() {
+  const [filterOptions, setFilterOptions] = useState(advancedFilterOptions)
   const [results, setResults] = useState<resultsArray>(tempArray)
   const router = useRouter();
   const data = router.query;
@@ -38,7 +44,7 @@ export default function Results() {
       console.log("This is the data in results", data)
     }, [data])
 
-    //FETCH REQUEST WOULD HAPPEN HERE? 
+    //FETCH REQUEST WOULD HAPPEN HERE 
     // useEffect(() => {
     //   async function getData() {
     //     const response = await fetch('api')
@@ -51,8 +57,11 @@ export default function Results() {
       <>
         <ResultsHeader />
         <div className={styles.results_main}>
-          <ResultsSearchSection results={results}/>
+          <ResultsSearchSection results={results} filters={filterOptions}/>
         </div>
       </>
     );
 }
+
+// checked property is in FilterDropdown component file
+//
