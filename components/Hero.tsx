@@ -25,7 +25,7 @@ export default function Hero() {
             <button data-testid="button" className={styles.search_button}>
               <span>Search</span>
             </button>
-             <p>Results Not Found</p>
+             <p>Enter a valid location</p>
              </div>
           ) }
         </div>
