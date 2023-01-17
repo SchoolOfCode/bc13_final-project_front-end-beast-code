@@ -94,8 +94,6 @@
 }
 
 @media (max-width: 500px) {
-
-
     .search_container>input {
         width: 241px;
         height: 45px;

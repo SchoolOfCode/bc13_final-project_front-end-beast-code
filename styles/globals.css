@@ -44,6 +44,6 @@ h3 {
 @media (max-width: 500px) {
   h1.hero-header {
     max-width: 95%;
-    font-size: 34px;
+    font-size: 32px;
   }
 }
