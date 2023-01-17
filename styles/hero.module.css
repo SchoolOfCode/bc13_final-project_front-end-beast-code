@@ -93,3 +93,42 @@
     transform: scaleX(1);
 }
 
+@media (max-width: 500px) {
+
+
+    .search_container>input {
+        width: 241px;
+        height: 45px;
+        background: var(--white);
+        border-radius: 4px 0px 0px 4px;
+        padding-left: 15px;
+        font-size: 18px;
+        outline: none;
+    }
+    
+    .search_button {
+         width: 90px;
+         height: 45px;
+         background: var(--gold);
+         border-radius: 0px 4px 4px 0px;
+         font-size: 18px;
+        color: var(--white);
+         letter-spacing: 0.03rem;
+        cursor: pointer;
+    }
+    .search_container {
+        display: flex;
+        margin-top: 80px;
+    }
+    .error_msg {
+        display: flex;
+        color: white;
+        flex-direction: column;
+     }
+
+    .error_msg>p {
+        margin-left: -250px;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+}
