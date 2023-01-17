@@ -16,6 +16,12 @@ type propsObj = {
 
 export default function ResultsSearchSection({results} : propsObj) {
   const [view, setView] = useState("list")
+  const [numberOfResults, setNumberOfResults] = useState(9)
+
+  function updateNumberOfResults(){
+    console.log("update function called HELSJGKS!!!!")
+    setNumberOfResults(numberOfResults + 9)
+  }
 
   const [style, setStyle] = useState("btn");
   function leftClick() {
@@ -81,10 +87,10 @@ export default function ResultsSearchSection({results} : propsObj) {
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel initialFilterOptions={advancedFilterOptions} />
         </div>
-        {view === "list" ? <BarCards /> : <Map />}
+        {view === "list" ? <BarCards results={results} numberOfResults={numberOfResults} /> : <Map />}
         {view === "list" ? ( <div className={styles.button_centering}>
-          <button className={styles.load_more_button}>
-            <span>Load More</span>
+          <button className={styles.load_more_button} onClick={updateNumberOfResults}>
+            <span onClick={updateNumberOfResults}>Load More</span>
           </button>
         </div>) : null}
 
