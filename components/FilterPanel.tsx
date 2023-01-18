@@ -13,11 +13,12 @@ export default function FilterPanel({filters, setDropdown, setCheckbox} : any){
         <button
           onClick={() => setState(true)}
           className={styles.filters_button}
+          data-testid="more-filters"
         >
           More Filters
         </button>
         <SlidingPane
-          closeIcon={<div className={styles.done_button}>Done</div>}
+          closeIcon={<div data-testid="close-button" className={styles.done_button}>Done</div>}
           isOpen={state}
           title={
             <button data-testid="reset-button" className={styles.reset_button}>
