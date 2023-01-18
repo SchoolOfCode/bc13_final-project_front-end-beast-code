@@ -35,6 +35,7 @@ export type resultsArrType = {
       type: string, 
       coordinates: number[]
     }
+    dist: Dist;
 }[]
 
 export type optionsPropsType = {
@@ -69,26 +70,26 @@ export interface Dist {
     calculated: number;
 }
 
-export interface RootObject {
-    _id: string;
-    City: string;
-    Name: string;
-    Cost: number;
-    Description: string;
-    Image: string;
-    Rating: number;
-    Address: string;
-    Postcode: string;
-    Hygiene: number;
-    Happy_hr: string;
-    Website: string;
-    Music: string[];
-    Venue_type: string[];
-    Other: string[];
-    Vibe: string[];
-    Features: string[];
-    Who_with: string[];
-    location: Location;
-    dist: Dist;
-}
+// export interface fetchResultsType {
+//     _id: string;
+//     City: string;
+//     Name: string;
+//     Cost: number;
+//     Description: string;
+//     Image: string;
+//     Rating: number;
+//     Address: string;
+//     Postcode: string;
+//     Hygiene: number;
+//     Happy_hr: string;
+//     Website: string;
+//     Music: string[];
+//     Venue_type: string[];
+//     Other: string[];
+//     Vibe: string[];
+//     Features: string[];
+//     Who_with: string[];
+//     location: Location;
+//     dist: Dist;
+// }[]
 

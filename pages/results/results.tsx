@@ -3,7 +3,6 @@ import ResultsSearchSection from "../../components/ResultsSearchSection"
 import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
-import { tempArray } from "../../data/temparray"
 import { filterOptions } from "../../data/filters"
 import { filtersObjectType, resultsArrType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
@@ -15,7 +14,7 @@ export default function Results() {
   const coords = router.query
   const [location, setLocation] = useState(coords)
 
-    // FETCH REQUEST 
+  // FETCH REQUEST 
   useEffect(() => {
     async function getData() {
       console.log('im the location', location)

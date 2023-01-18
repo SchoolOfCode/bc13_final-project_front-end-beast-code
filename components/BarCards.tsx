@@ -23,7 +23,7 @@ function BarCards({results, numberOfResults}: propsObjectType) {
   return (
     <div className={styles.outerCardContainer}>
       <div className={styles.cardContainer}>
-        {resultState.map((item, index) => (
+        {results.slice(0, numberOfResults).map((item, index) => (
           <Link href="/bar/bar" key={index}>
             <ResultCard
               key={index}
@@ -31,6 +31,7 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               cost={item.Cost}
               description={item.Description}
               image={item.Image}
+              distance={item.dist.calculated}
             />{" "}
           </Link>
         ))}
