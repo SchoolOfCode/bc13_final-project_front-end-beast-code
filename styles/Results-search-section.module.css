@@ -171,28 +171,9 @@
     right: 0;
 }
 
-@media(max-width: 500px){
-    .all_filter_buttons{
-        margin-left: 85px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 60%;
-        align-items: center;
-        justify-content: center;
-        height: 330px;
-    }
-        .reset_button {
-            
-            margin-bottom: 11px;
-            margin-left: 11px;
-        }
-}
-
 .button_centering{
     text-align: center;
 }
-
 
 .load_more_button{
     background-color: var(--gold);
@@ -231,3 +212,36 @@
     right: 0;
 }
 
+
+@media(max-width: 500px){
+    .all_filter_buttons{
+        margin-left: 85px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 60%;
+        align-items: center;
+        justify-content: center;
+        height: 330px;
+        margin-bottom: 2.5vw;
+        margin-top: 0vw;
+    }
+    .reset_button {
+            
+        margin-bottom: 11px;
+        margin-left: 11px;
+    }
+    .keywordsearch_main_container {
+        position: relative;
+        width: 100%;
+        padding-top: 20vw;
+        padding-bottom: 10vw;
+        margin-bottom: 0px !important;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 100px;
+        gap: 10px;
+    }
+}
