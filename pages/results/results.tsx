@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { tempArray } from "../../data/temparray"
 import { filterOptions } from "../../data/filters"
-import { resultsArrType } from "../../data/types"
+import { filtersObjectType, resultsArrType } from "../../data/types"
 
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
@@ -28,8 +28,8 @@ export default function Results() {
 
   function setDropdown(event: any) {
     const newFilters = filterOptions.map(
-      (element: { category: string; options: { text: string, checked: boolean }[]; isOpen: boolean }) => {
-        if (event.target.id === element.category) {
+      (element: filtersObjectType) => {
+        if (event.target.id === element.category.text) {
           element.isOpen = !element.isOpen;
         }
         return element;
@@ -40,7 +40,7 @@ export default function Results() {
 
   function setCheckbox(event: any) {
     const newFilters = filterOptions.map(
-      (filter: { category: string; options: { text: string, checked: boolean }[]; isOpen: boolean }) => {
+      (filter: filtersObjectType) => {
         filter.options.map((option: { text: string; checked: boolean; }) => {
         if (option.text === event.target.id) {
           option.checked = !option.checked
@@ -52,6 +52,22 @@ export default function Results() {
       });
     setFilters(newFilters)
   }
+
+    type checkedOpsArrType = {
+      category: string;
+      options: string | number | (string | number | null)[]
+    }[]
+
+    useEffect(() => {
+    function findDif() {
+      const checkedOps : checkedOpsArrType = filters.map(dd => {
+        return {category: dd.category.data,  
+                options: dd.options.map(option => option.checked ? option.data : null).filter(item => item !== null )}
+        }).filter(element => element.options.length > 0)
+        console.log(checkedOps)
+    }
+    findDif()
+  },[filters])
 
   return (
     <>

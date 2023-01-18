@@ -1,8 +1,17 @@
-export type filtersArrType = {
-    category: {text: string, data: string};
-    options: {text: string, data: string | number, checked: boolean}[];
+export type filtersObjectType = {
+    category: {
+        text: string;
+        data: string;
+    };
+    options: {
+        text: string;
+        data: string | number;
+        checked: boolean;
+    }[];
     isOpen: boolean;
-}[]
+}
+
+export type filtersArrType = filtersObjectType[]
 
 export type resultsArrType = {
     City: string;
@@ -50,3 +59,4 @@ export type singleBarType = {
     coordinates: [number,number],
     website: string
 }
+

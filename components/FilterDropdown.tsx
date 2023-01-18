@@ -1,7 +1,6 @@
 import { MouseEventHandler, useEffect, useState } from "react";
-import { filtersArrType } from "../data/types";
 import styles from "../styles/filterdropdown.module.css";
-import {optionsPropsType} from "../data/types"
+import {optionsPropsType, filtersObjectType, filtersArrType} from "../data/types"
 
 type propsObjType = {
   filters: filtersArrType;
@@ -25,17 +24,17 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
     return <>
     {filters.map(
       (
-        element: { isOpen: boolean; category: string; options: string[] | {text: string, checked: boolean}[]},
+        element: filtersObjectType,
         index: number
       ) =>
         element.isOpen ? (
           <div key={index} className={styles.dropdown_container}>
-            <p onClick={setDropdown} className={styles.p} id={element.category}>
-              {element.category}
+            <p onClick={setDropdown} className={styles.p} id={element.category.text}>
+              {element.category.text}
             </p>
             <div
               onClick={setDropdown}
-              id={element.category}
+              id={element.category.text}
               className={styles.dropdown_icon_click}
             ></div>
             <ul data-testid="unordered-list" className={styles.ul}>
@@ -46,12 +45,12 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
           </div>
         ) : (
           <div key={index} className={styles.dropdown_container}>
-            <p onClick={setDropdown} className={styles.p} id={element.category}>
-              {element.category}
+            <p onClick={setDropdown} className={styles.p} id={element.category.text}>
+              {element.category.text}
             </p>
             <div
               onClick={setDropdown}
-              id={element.category}
+              id={element.category.text}
               className={styles.dropdown_icon}
             ></div>
           </div>
