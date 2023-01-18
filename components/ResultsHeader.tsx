@@ -3,7 +3,11 @@ import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
 
 
-export default function ResultsHeader() {
+export default function ResultsHeader({ ...data }) {
+  const placeholderText = data.searchInputPlacholder;
+  const capitalisePlaceholderText =
+    placeholderText.charAt(0).toUpperCase() + placeholderText.slice(1);
+  
   return (
     <>
       <div className={styles.Navbar}>
@@ -24,7 +28,7 @@ export default function ResultsHeader() {
             <div data-testid="location-pin" className={styles.logo_area}></div>
             <input
               data-testid="location-input"
-              placeholder="Location or Postcode"
+              placeholder={capitalisePlaceholderText}
               className={styles.location_input}
             ></input>
           </div>

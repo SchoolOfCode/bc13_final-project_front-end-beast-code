@@ -55,9 +55,14 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader />
+      <ResultsHeader {...data} />
       <div className={styles.results_main}>
-        <ResultsSearchSection results={results} filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox} />
+        <ResultsSearchSection
+          results={results}
+          filters={filters}
+          setDropdown={setDropdown}
+          setCheckbox={setCheckbox}
+        />
       </div>
     </>
   );

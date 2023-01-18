@@ -34,12 +34,13 @@ export type optionsPropsType = {
 };
 
 export type dataPCType = {
-    status: number;
-    result: {
-      longitude: number;
-      latitude: number;
-    }
-}
+  status: number;
+  result: {
+    longitude: number;
+    latitude: number;
+    admin_district: string;
+  };
+};
 
 export type singleBarType = {
     name: string, 
