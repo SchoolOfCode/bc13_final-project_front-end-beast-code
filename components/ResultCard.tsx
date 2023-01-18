@@ -7,6 +7,7 @@ export type propsObjType = {
   cost: number;
   description: string;
   image: string;
+  distance: number;
 };
 
 function Pounds({ number }: any) {
@@ -17,12 +18,7 @@ function Pounds({ number }: any) {
   
   return <p>{poundStr}</p>;
 }
-// Display only 9 results at a time
-// Display only some of the desc
-  function Description({description}: any) {
-    return  <p className={styles.description}>{description.slice(0, 115)}...</p>
 
-  }
 export default function ResultCard(props: propsObjType) {
   return (
     <div className={styles.resultCard}>
@@ -37,9 +33,9 @@ export default function ResultCard(props: propsObjType) {
         <div className={styles.bar_name}>
           <h3 data-testid="title">{props.name}</h3>
         </div>
-        <h3>12km</h3>
+        <h3>{Math.round((props.distance / 1000) * 10) / 10}km</h3>
       </div>
-      <Description description={props.description} />
+      <p className={styles.description}>{props.description.slice(0, 115)}...</p>
       <div className={styles.icons_container} data-testid="container">
         <div className={styles.drinks}>
           <div className={styles.drinks_icon}></div>

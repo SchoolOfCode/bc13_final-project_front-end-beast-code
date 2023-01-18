@@ -8,6 +8,8 @@ type propsObjectType = {results: resultsArrType, numberOfResults: number}
 
 function BarCards({results, numberOfResults}: propsObjectType) {
  const [resultState, setResultState] = useState(results)
+ console.log('im the results in BarCard', results)
+ console.log('im the resultState in BarCard', resultState)
 
   function displayResults(number : number){
     const newResults = results.filter((element, index) => index < number)
@@ -21,7 +23,7 @@ function BarCards({results, numberOfResults}: propsObjectType) {
   return (
     <div className={styles.outerCardContainer}>
       <div className={styles.cardContainer}>
-        {resultState.map((item, index) => (
+        {results.slice(0, numberOfResults).map((item, index) => (
           <Link href="/bar/bar" key={index}>
             <ResultCard
               key={index}
@@ -29,6 +31,7 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               cost={item.Cost}
               description={item.Description}
               image={item.Image}
+              distance={item.dist.calculated}
             />{" "}
           </Link>
         ))}
