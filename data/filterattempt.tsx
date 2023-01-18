@@ -1,3 +1,5 @@
+export {}
+
 // import { useState, useEffect } from "react"
 // import { tempArray } from "../../data/temparray"
 // import { filterOptions } from "../../data/filters"

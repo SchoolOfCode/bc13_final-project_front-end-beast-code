@@ -1,6 +1,6 @@
 export type filtersArrType = {
-    category: string;
-    options: {text: string, checked: boolean}[];
+    category: {text: string, data: string};
+    options: {text: string, data: string | number, checked: boolean}[];
     isOpen: boolean;
 }[]
 
