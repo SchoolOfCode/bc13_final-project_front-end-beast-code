@@ -170,3 +170,64 @@
     opacity: 1;
     right: 0;
 }
+
+@media(max-width: 500px){
+    .all_filter_buttons{
+        margin-left: 85px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 60%;
+        align-items: center;
+        justify-content: center;
+        height: 330px;
+    }
+        .reset_button {
+            
+            margin-bottom: 11px;
+            margin-left: 11px;
+        }
+}
+
+.button_centering{
+    text-align: center;
+}
+
+
+.load_more_button{
+    background-color: var(--gold);
+    color: white;
+    font-size: 16px;
+    width: 160px;
+    height: 50px;
+    border-radius: 7px;
+    margin-top: 110px;
+    margin-bottom: 110px;
+    cursor: pointer;
+}
+
+.load_more_button>span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.load_more_button>span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -5px;
+    transition: 0.5s;
+}
+
+.load_more_button:hover span {
+    padding-right: 18px;
+}
+
+.load_more_button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
