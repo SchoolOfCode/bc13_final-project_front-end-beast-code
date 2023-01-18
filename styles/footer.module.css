@@ -104,3 +104,51 @@
 .sitemap_container>ul>li{
     margin-bottom: 12px;
 }
+
+@media (max-width: 500px){
+.Footer_breakpoints {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 120px;
+    padding: 0px;
+    margin: 0px;
+    }
+.contact_us_container {
+    width: 90vw;
+    height: 332px;
+    display: flex;
+    flex-direction: column;
+}
+.sitemap_container {
+    margin-top: 50px;
+    width: 90vw;
+    height: 182px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.socials_container {
+    width: 100vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-top: 50px;
+    height: 332px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--black);
+}
+.Footer {
+    width: 100%;
+    background-color: var(--black);
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    border-top: 4px solid var(--gold);
+}
+}

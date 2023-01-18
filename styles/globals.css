@@ -41,3 +41,9 @@ h3 {
   font-family: 'Montserrat', sans-serif;
 }
 
+@media (max-width: 500px) {
+  h1.hero-header {
+    max-width: 95%;
+    font-size: 32px;
+  }
+}
