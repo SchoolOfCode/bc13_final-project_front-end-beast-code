@@ -4,7 +4,7 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import FilterDropdown from "./FilterDropdown";
 import styles from "../styles/filterpanel.module.css"
 
-export default function FilterPanel({initialFilterOptions} : any){
+export default function FilterPanel({filters, setDropdown, setCheckbox} : any){
     const [state, setState] = useState(false);
 
     return (
@@ -39,7 +39,7 @@ export default function FilterPanel({initialFilterOptions} : any){
             </a>
           </div>
           <div className={styles.dropdown_container}>
-            <FilterDropdown initialFilterOptions={initialFilterOptions} />
+            <FilterDropdown filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
           </div>
         </SlidingPane>
       </div>

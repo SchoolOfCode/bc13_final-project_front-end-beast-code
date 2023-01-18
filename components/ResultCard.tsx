@@ -2,7 +2,7 @@ import { JSXElement } from "@babel/types";
 import Image from "next/image";
 import styles from "../styles/barcards.module.css";
 
-export type ResultCardProps = {
+export type propsObjType = {
   name: string;
   cost: number;
   description: string;
@@ -23,7 +23,7 @@ function Pounds({ number }: any) {
     return  <p className={styles.description}>{description.slice(0, 115)}...</p>
 
   }
-export default function ResultCard(props: ResultCardProps) {
+export default function ResultCard(props: propsObjType) {
   return (
     <div className={styles.resultCard}>
       <div className={styles.imageStandIn}>

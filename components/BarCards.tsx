@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import ResultCard from './ResultCard'
-import { ResultCardProps } from './ResultCard'
 import styles from "../styles/barcards.module.css"
 import Link from 'next/link'
-import { resultsArray } from '../pages/results/results'
+import { resultsArrType } from '../data/types'
 
-type propsObject = {results: resultsArray, numberOfResults: number}
+type propsObjectType = {results: resultsArrType, numberOfResults: number}
 
-function BarCards({results, numberOfResults}: propsObject) {
+function BarCards({results, numberOfResults}: propsObjectType) {
  const [resultState, setResultState] = useState(results)
 
   function displayResults(number : number){
     const newResults = results.filter((element, index) => index < number)
     setResultState(newResults)
   }
+
+  useEffect(() => {
+    displayResults(numberOfResults)
+  }, [numberOfResults])
 
   return (
     <div className={styles.outerCardContainer}>

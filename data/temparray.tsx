@@ -1,28 +1,6 @@
-type resultsArray = {
-    City: string;
-    Name: string;
-    Cost: number;
-    Description: string;
-    Image: string;
-    Rating: number;
-    Address: string;
-    Features: string[];
-    Postcode: string;
-    Hygiene: number;
-    Happy_hr: string;
-    Website: string;
-    Music: string[];
-    Venue_type: string[];
-    Other: string[];
-    Vibe: string[] | string;
-    Who_with: string[];
-    location: {
-      type: string, 
-      coordinates: number[]
-    }
-  }[]
+import { resultsArrType } from "./types";
 
-export const tempArray : resultsArray = [
+export const tempArray : resultsArrType = [
     {
          "City": "Manchester",
          "Name": "Cosy Club",

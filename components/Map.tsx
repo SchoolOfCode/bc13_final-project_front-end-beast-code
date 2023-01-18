@@ -6,17 +6,9 @@ import { Popup } from 'react-leaflet';
 import * as bardata from '../bar-data.json';
 import { useEffect, useState } from 'react';
 import styles from '../styles/map.module.css'
+import { singleBarType } from '../data/types';
 import { Icon } from "leaflet";
 
-type singleBarType = {
-    name: string, 
-    address: string,
-    postcode: string, 
-    cost: number,
-    rating: number, 
-    coordinates: [number,number],
-    website: string
-}
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",

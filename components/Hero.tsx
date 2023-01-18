@@ -1,15 +1,7 @@
 import styles from "../styles/hero.module.css";
 import { useState, useEffect, createContext } from "react";
 import Link from 'next/link'
-
-type dataPCType = {
-  status: number;
-  result: {
-    longitude: number;
-    latitude: number;
-  }
-
-}
+import { dataPCType } from "../data/types";
 
 export default function Hero() {
   const [location, setLocation] = useState("")
