@@ -61,3 +61,7 @@ export type singleBarType = {
     website: string
 }
 
+export type heroQueryObject = {
+  location: string[];
+  searchInputPlaceholder: string;
+};
