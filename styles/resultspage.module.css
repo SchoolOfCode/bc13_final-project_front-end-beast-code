@@ -1,8 +1,9 @@
+
 .results_main {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 50px;
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }

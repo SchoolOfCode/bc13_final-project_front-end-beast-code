@@ -12,6 +12,18 @@
     margin-top: 130px;
 }
 
+.error_msg{
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+
+.error_msg>p{
+    margin-left: -550px;
+    margin-top: 70px;
+    font-size: 16px;
+}
+
 .search_container>input {
     width: 441px;
     height: 45px;
@@ -22,7 +34,7 @@
     outline: none;
 }
 
-.search_container>button {
+.search_button {
     width: 110px;
     height: 45px;
     background: var(--gold);
@@ -33,15 +45,18 @@
     cursor: pointer;
 }
 
+.search_button:disabled {
+    background-color: #BDA57F;
+}
 
-.search_container>button> span {
+.search_button> span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
 
-.search_container>button> span:after {
+.search_button> span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -50,20 +65,19 @@
     transition: 0.5s;
 }
 
-.search_container>button:hover span {
+.search_button:hover span {
     padding-right: 15px;
 }
 
-.search_container>button:hover span:after {
+.search_button:hover span:after {
     opacity: 1;
     right: 0;
 }
 
-
 .main_container>h1{
     letter-spacing: 0.18rem;
     display: inline-block;
-        position: relative;
+    position: relative;
 }
 
 .main_container>h1::after {
@@ -80,4 +94,42 @@
 
 .main_container>h1:hover::after {
     transform: scaleX(1);
+}
+
+@media (max-width: 500px) {
+    .search_container>input {
+        width: 241px;
+        height: 45px;
+        background: var(--white);
+        border-radius: 4px 0px 0px 4px;
+        padding-left: 15px;
+        font-size: 18px;
+        outline: none;
+    }
+    
+    .search_button {
+         width: 90px;
+         height: 45px;
+         background: var(--gold);
+         border-radius: 0px 4px 4px 0px;
+         font-size: 18px;
+        color: var(--white);
+         letter-spacing: 0.03rem;
+        cursor: pointer;
+    }
+    .search_container {
+        display: flex;
+        margin-top: 80px;
+    }
+    .error_msg {
+        display: flex;
+        color: white;
+        flex-direction: column;
+     }
+
+    .error_msg>p {
+        margin-left: -250px;
+        margin-top: 20px;
+        font-size: 16px;
+    }
 }

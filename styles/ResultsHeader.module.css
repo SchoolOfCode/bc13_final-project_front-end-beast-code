@@ -22,12 +22,18 @@
     display: flex;
     justify-content: space-between;
     width:140px;
+    align-items: center;
+}
+
+.logo_icon{
+    padding-top: 0px;
+    display: flex;
 }
 
 .align_input_left{
     width: 70%;
-    width:165px;
     padding-right: 20px;
+    padding-left: 45px;
     text-decoration: none;
 }
 
@@ -48,7 +54,7 @@
     padding-left: 15px;
     font-size: 16px;
     outline: none;
-    color: white
+    color: white;
 }
 
 .search_container>input::placeholder{
@@ -65,7 +71,7 @@
 
 .about_login{
     display: flex;
-    width: 200px;
+    width: 232px;
     justify-content: space-around;
 }
 

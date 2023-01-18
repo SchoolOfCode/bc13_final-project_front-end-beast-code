@@ -2,50 +2,57 @@
     background-color: var(--green);
     display: flex;
     color: white;
+    align-items: center;
 }
 
-.panel_header {
-    background-color: var(--green);
+
+.buttons_div{
+    display: flex;
+    margin-bottom: 30px;
+    width: 250px;
+    justify-content: space-between;
 }
 
 .done_button {
     color: white;
     background: var(--gold);
-    border-radius: 2px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    width: 112px;
+    width: 110px;
     height: 44px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .reset_button {
     color: white;
     background-color: var(--lightgreen);
-    border-radius: 2px;
+    border-radius: 5px;
     font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 112px;
+    width: 110px;
     height: 44px;
 }
 
 .dropdown_container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .filters_button {
     color: white;
     background-color: var(--green);
-    border-radius: 2px;
+    border-radius: 10px;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 112px;
+    width: 120px;
     height: 44px;
 }

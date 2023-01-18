@@ -1,21 +1,25 @@
 .bar_image {
     width: 100%;
-    height: 100vh;
+    height: 65vh;
     border-top: 1px solid black;
-    /* background-size: 100%;
-    background-repeat: no-repeat;
-    background-image: url(https://i.postimg.cc/0QwStdyj/14-remini-enhanced.png); */
     position: relative;
 }
 
-.bar_name {
+.bar_name_container{
     width: 100%;
-    height: 66px;
     background-color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bar_name_innerContainer {
+    width: 80%;
+    max-width: 1130px;
+    height: 66px;
     color: var(--white);
     display: flex;
     align-items: center;
-    padding-left: 287.5px;
     letter-spacing: 0.02rem;
     border-top: 1px solid black;
 }
@@ -24,21 +28,24 @@
     width: 100%;
     background-color: black;
     min-height: 400px;
-    border-bottom: 4px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bar_description {
     color: white;
     line-height: 1.8;
     text-align: justify;
-    width: 760px;
+    width: 70%;
+    max-width: 1130px;
 }
 
 .breakpoints{
-    width: 65%;
-    margin-left: 287.5px;
+    width: 80%;
+    max-width: 1130px;
     padding-top: 76px;
-    padding-bottom: 60px;
+    padding-bottom: 76px;
     display: flex;
     justify-content: space-between;
 
@@ -50,4 +57,40 @@
     height: 245px;
     width: 250px;
     border-radius: 6px;
+    padding: 25px;
+}
+
+.bar_features>ul{
+    list-style: none;
+}
+
+@media(max-width: 500px) {
+    .main_body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .breakpoints {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        margin: 0px;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .bar_features {
+        padding: 25px;
+        margin-top: 20px;
+    }
+
+    .bar_description {
+        color: white;
+        line-height: 1.8;
+        text-align: justify;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+
 }
