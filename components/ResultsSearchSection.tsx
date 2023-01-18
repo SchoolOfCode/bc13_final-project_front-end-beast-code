@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import FilterDropdown from './FilterDropdown'
 import FilterPanel from "./FilterPanel"
 import styles from "../styles/Results-search-section.module.css";
-import {basicFilterOptions, advancedFilterOptions} from "../data/filters.js"
-import Image from "next/image";
 import BarCards from './BarCards';
 import dynamic from 'next/dynamic';
 import { useState } from "react";
+import {filtersArrType, resultsArrType} from "../data/types"
 
-export default function ResultsSearchSection() {
+type propsObj = {
+  results: resultsArrType;
+  filters: filtersArrType;
+  setDropdown: MouseEventHandler<HTMLParagraphElement>;
+  setCheckbox: MouseEventHandler<HTMLParagraphElement>;
+}
+
+export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox} : propsObj) {
   const [view, setView] = useState("list")
+  const [numberOfResults, setNumberOfResults] = useState(9)
+
+  function updateNumberOfResults(){
+    setNumberOfResults(numberOfResults + 9)
+  }
 
   const [style, setStyle] = useState("btn");
   function leftClick() {
@@ -67,18 +78,18 @@ export default function ResultsSearchSection() {
         <div className={styles.all_filter_buttons}>
           <div className={styles.dropdown_container}>
             {/* Filter dropdown expands / closes when clicked */}
-            <FilterDropdown initialFilterOptions={basicFilterOptions} />
+            <FilterDropdown filters={filters.filter((element, index) => index < 4)} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
             <button data-testid="reset-button" className={styles.reset_button}>
               Reset
             </button>
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
-          <FilterPanel initialFilterOptions={advancedFilterOptions} />
+          <FilterPanel filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
         </div>
-        {view === "list" ? <BarCards /> : <Map />}
+        {view === "list" ? <BarCards results={results} numberOfResults={numberOfResults} /> : <Map />}
         {view === "list" ? ( <div className={styles.button_centering}>
-          <button className={styles.load_more_button}>
-            <span>Load More</span>
+          <button className={styles.load_more_button} onClick={updateNumberOfResults}>
+            <span onClick={updateNumberOfResults}>Load More</span>
           </button>
         </div>) : null}
 
