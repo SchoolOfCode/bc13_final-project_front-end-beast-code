@@ -78,7 +78,7 @@ export default function ResultsSearchSection({results, filters, setDropdown, set
         <div className={styles.all_filter_buttons}>
           <div className={styles.dropdown_container}>
             {/* Filter dropdown expands / closes when clicked */}
-            <FilterDropdown filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
+            <FilterDropdown filters={filters.filter((element, index) => index < 4)} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
             <button data-testid="reset-button" className={styles.reset_button}>
               Reset
             </button>

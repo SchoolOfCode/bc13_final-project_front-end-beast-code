@@ -53,59 +53,11 @@ export default function Results() {
     setFilters(newFilters)
   }
 
-  // "City" | "Name" | "Cost" | "Description" | "Image" | "Rating" | "Address" | "Features" | "Postcode" | "Hygiene" | "Happy_hr" | "Website" | "Music" |
-  //   "Venue_type" | "Other" | "Vibe" | "Who_with" | "location" | 
-
-  type checkedOpsArrType = {
-    category: string;
-    options: {text: string, checked: boolean}[]
-  }[]
-
-  useEffect(() => {
-    function findDif() {
-      const checkedOps : checkedOpsArrType = filters.map(dd => {
-        return {category: dd.category,  
-                options: dd.options.filter((option: { checked: boolean }) => option.checked)}
-        }).filter(element => element.options.length > 0)
-      filterResults(checkedOps)
-    }
-
-    function filterResults(checkedOps : checkedOpsArrType) {
-        setResults(tempArray)
-        const filteredResults = []
-        //Loop through the results
-        for (let i = 0; i < results.length; i++){
-          //Iterate over each object
-          for (const property in results[i]){
-            //Loop through 
-            for (let j = 0; j < checkedOps.length; j++) {
-              //Find the object properties that exist in the checkedOps array
-              if (checkedOps[j].category === property){
-                for (let k = 0 ; k < checkedOps[j].options.length; k++) {
-                  if (results[i][property].includes(checkedOps[j].options[k].text)){
-                    filteredResults.push(results[i])
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (filteredResults.length > 0){
-          setResults(filteredResults)
-        }
-      }
-    findDif()
-    }, [filters])
-
-    useEffect(() => {
-      console.log("HEYYYYYY i'm the new results :)", results)
-    }, [results])
-
   return (
     <>
       <ResultsHeader />
       <div className={styles.results_main}>
-        <ResultsSearchSection results={results} filters={filterOptions} setDropdown={setDropdown} setCheckbox={setCheckbox} />
+        <ResultsSearchSection results={results} filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox} />
       </div>
     </>
   );
