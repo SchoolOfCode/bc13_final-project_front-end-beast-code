@@ -73,7 +73,6 @@ text-decoration: underline;
     width: 30px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../public/hero-Image.png');
 }
 
 @media (max-width: 500px) {
