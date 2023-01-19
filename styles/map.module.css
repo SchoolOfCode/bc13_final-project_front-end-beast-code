@@ -23,7 +23,7 @@
 
 .popup_container{
     display: flex;
-    width: 100%;
+    width: 349px;
     flex-direction: column;
     z-index: 1;
 }
@@ -73,5 +73,20 @@ text-decoration: underline;
     width: 30px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../public/hero-Image.png');
+}
+
+@media (max-width: 500px) {
+    .map_container{
+        border: 3px solid var(--gold);
+        width: 95vw !important;
+        height: 70vh !important;
+        z-index: 0;
+        margin-bottom:2.5vw;
+    }
+    .map_centering_div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
 }

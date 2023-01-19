@@ -35,6 +35,7 @@ export type resultsArrType = {
       type: string, 
       coordinates: number[]
     }
+    dist: Dist;
 }[]
 
 export type optionsPropsType = {
@@ -61,7 +62,13 @@ export type singleBarType = {
     website: string
 }
 
-export type heroQueryObject = {
-  location: string[];
-  searchInputPlaceholder: string;
-};
+
+export interface Location {
+    type: string;
+    coordinates: number[];
+}
+
+export interface Dist {
+    calculated: number;
+}
+

@@ -1,11 +1,11 @@
-import ResultsHeader from "../../components/ResultsHeader";
-import ResultsSearchSection from "../../components/ResultsSearchSection";
-import styles from "../../styles/resultspage.module.css";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { tempArray } from "../../data/temparray";
-import { filterOptions } from "../../data/filters";
-import { filtersObjectType, resultsArrType } from "../../data/types";
+import ResultsHeader from "../../components/ResultsHeader"
+import ResultsSearchSection from "../../components/ResultsSearchSection"
+import styles from "../../styles/resultspage.module.css"
+import { useState, useEffect } from "react"
+import { useRouter } from 'next/router'
+import { filterOptions } from "../../data/filters"
+import { filtersObjectType, resultsArrType } from "../../data/types"
+import { ParsedUrlQuery } from "querystring"
 
 //DO NOT DELETE
 declare global {
@@ -19,23 +19,30 @@ declare global {
 
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions);
-  const [results, setResults] = useState<resultsArrType>(tempArray);
+  const [results, setResults] = useState<resultsArrType>([]);
   const router = useRouter() as TRouter;
   const heroPageQuery = router.query;
   console.log("heroPageUserInput", heroPageQuery);
+  const [location, setLocation] = useState(heroPageQuery)
 
-  //FETCH REQUEST WOULD HAPPEN HERE
-  // useEffect(() => {
-  //   async function getData() {
-  //     const response = await fetch('api')
-  //     const data = await response.json()
-  //     setResults(data)
-  //   } getData()
-  // }, [])
+  // FETCH REQUEST 
+  useEffect(() => {
+    async function getData() {
+      console.log('im the location', location)
+      if (location.location !== undefined) {
+        const url = `http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`
+        console.log('HEY IM THE URL', url)
+        const response = await fetch(url)
+        const data = await response.json()
+        setResults(data.payload)
+        console.log('HEY IM THE DATA', data.payload)
+      }
+    } getData()
+  }, [location])
 
   useEffect(() => {
-    console.log("This is the data in results", heroPageQuery);
-  }, [heroPageQuery]);
+    console.log('HEY IM RESULTS', results)
+  }, [results])
 
   function setDropdown(event: any) {
     const newFilters = filterOptions.map((element: filtersObjectType) => {
