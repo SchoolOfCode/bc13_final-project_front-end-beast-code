@@ -78,7 +78,7 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader {...data} />
+      <ResultsHeader {...coords} />
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
