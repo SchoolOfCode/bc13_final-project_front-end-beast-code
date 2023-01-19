@@ -12,9 +12,10 @@ type propsObj = {
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
+  coords: any;
 }
 
-export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox} : propsObj) {
+export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox, coords} : propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
 
@@ -86,7 +87,7 @@ export default function ResultsSearchSection({results, filters, setDropdown, set
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
         </div>
-        {view === "list" ? <BarCards results={results} numberOfResults={numberOfResults} /> : <Map />}
+        {view === "list" ? <BarCards results={results} numberOfResults={numberOfResults} /> : <Map results={results} coords={coords}/>}
         {view === "list" ? ( <div className={styles.button_centering}>
           <button className={styles.load_more_button} onClick={updateNumberOfResults}>
             <span onClick={updateNumberOfResults}>Load More</span>

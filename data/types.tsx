@@ -1,3 +1,5 @@
+import { LatLngExpression } from 'leaflet';
+
 export type filtersObjectType = {
     category: {
         text: string;
@@ -31,9 +33,10 @@ export type resultsArrType = {
     Other: string[];
     Vibe: string[] | string;
     Who_with: string[];
+    _id: "string";
     location: {
       type: string, 
-      coordinates: number[]
+      coordinates: [number, number];
     }
     dist: Dist;
 }[]

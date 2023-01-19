@@ -14,11 +14,17 @@ export default function Results() {
   const [location, setLocation] = useState(coords)
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
 
+  useEffect(() => {
+    console.log(results)
+  }, [results])
+
   // FETCH REQUEST 
   useEffect(() => {
     async function getData() {
       if (location.location !== undefined) {
-        const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
+        const deployed = "https://cheers-bar-finder.onrender.com/"
+        const local = "http://localhost:3000/"
+        const url = `${local}api/router/${location.location[0]},${location.location[1]}`
         const response = await fetch(url)
         const data = await response.json()
         setResults(data.payload)
@@ -91,6 +97,7 @@ export default function Results() {
           filters={filters}
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
+          coords={coords}
         />
         <button onClick={getFilteredData}>Apply filter pls</button>
       </div>

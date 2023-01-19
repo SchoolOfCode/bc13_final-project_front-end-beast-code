@@ -11,7 +11,8 @@ export default function Hero() {
    useState("");
   
   function getLocation(event: React.ChangeEvent<HTMLInputElement>) {
-    setLocation(event.target.value.toLowerCase())
+    const userInput = event.target.value.toLowerCase().replace(/\s/g, '')
+    setLocation(userInput)
   }
 
   useEffect(() => {
