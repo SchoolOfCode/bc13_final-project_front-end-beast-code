@@ -28,7 +28,11 @@ export default function Results() {
         const url = `http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`
         const response = await fetch(url)
         const data = await response.json()
-        setResults(data.payload)
+        const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
+          element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
+          return element;
+        })
+        setResults(newResults)
       }
     } getData()
   }, [location])
@@ -46,8 +50,11 @@ export default function Results() {
           })
         })
       const data = await response.json()
-      const filteredData = data.payload;
-      setResults(filteredData)
+      const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
+        element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
+        return element;
+      })
+      setResults(newResults)
     }
   }
 

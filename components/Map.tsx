@@ -22,44 +22,8 @@ type propsObjType = {
 
 export default function Map({results, coords}: propsObjType){
   console.log("COORDSSSSS", coords)
-  const [mapResults, setMapResults] = useState<resultsArrType>([])   
 
-  function getCoordinates(){
-    const newResults : resultsArrType = results.map(element => {
-      element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
-      return element;
-    })
-    setMapResults(newResults);
-  }
-
-  useEffect( () => {
-    getCoordinates();
-  }, [])
-
-  
-  // function getBarDetails() {
-  //   let tempBarDetailsArr = []
-  //   for (let i=0; i<bardata.length; i++) {
-  //     let barArray:singleBarType = {
-  //       name: bardata[i].Name,
-  //       address: bardata[i].Address,
-  //       postcode: bardata[i].Postcode,
-  //       cost: bardata[i].Cost,
-  //       rating: bardata[i].Rating,
-  //       coordinates: [bardata[i].location.coordinates[1], bardata[i].location.coordinates[0]],
-  //       website: bardata[i].Website
-  //     }
-  //   tempBarDetailsArr.push(barArray)  
-  //   }
-  //   setBarDetails(tempBarDetailsArr)
-  // }
-  
-  // useEffect(() => {
-  //   getBarDetails()
-  // }, [])
-
-  return (
-    <div className={styles.map_centering_div}>
+  return (<div className={styles.map_centering_div}>
       <MapContainer
         className={styles.map_container}
         id="map"
@@ -73,7 +37,7 @@ export default function Map({results, coords}: propsObjType){
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {mapResults.map(element => (
+        {results.map(element => (
           <Marker
             icon={customPinIcon}
             key={element._id}
@@ -101,6 +65,5 @@ export default function Map({results, coords}: propsObjType){
           </Marker>
         ))}
       </MapContainer>
-    </div>
-  );
+    </div>);
 }
