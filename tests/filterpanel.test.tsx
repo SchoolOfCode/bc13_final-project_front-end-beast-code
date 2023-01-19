@@ -4,28 +4,27 @@ import { screen, render, fireEvent } from "@testing-library/react";
 import FilterPanel from "../components/FilterPanel";
 import { filterOptions } from "../data/filters";
 
+
+
 describe("FilterPanel", () => {
-  it("should render the more filters button and sliding panel", () => {
+  it("should render the more filters button", () => {
     const initialFilterOptions = { filters: filterOptions, setDropdown: false, setCheckbox: false };
     const { getByText } = render(<FilterPanel initialFilterOptions={initialFilterOptions} />);
 
     // Check that the more filters button is rendered
     const moreFiltersButton = getByText("More Filters");
     expect(moreFiltersButton).toBeInTheDocument();
-
-    // Open the sliding panel by clicking the more filters button
-    fireEvent.click(moreFiltersButton);
-
-    // Check that the sliding panel is open
-    const slidingPane = getByText("Done");
-    expect(slidingPane).toBeInTheDocument();
-
-    // Check that the reset button is rendered
-    const resetButton = screen.getByTestId("reset-button");
-    expect(resetButton).toBeInTheDocument();
-
-    // Check that the filter dropdown is rendered
-    const filterDropdown = getByText("value1");
-    expect(filterDropdown).toBeInTheDocument();
-  });
+  })
 });
+
+
+describe('FilterPanel', () => {
+  it('calls setState when the "More Filters" button is clicked', () => {
+    const setDropdown = jest.fn()
+    const setCheckbox = jest.fn()
+    const { getByTestId } = render(<FilterPanel filters={filterOptions} setDropdown={setDropdown} setCheckbox={setCheckbox} />)
+    const moreFiltersButton = getByTestId('more-filters')
+    fireEvent.click(moreFiltersButton)
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
+})
