@@ -17,21 +17,18 @@ export default function Results() {
   // FETCH REQUEST 
   useEffect(() => {
     async function getData() {
-      console.log('im the location', location)
       if (location.location !== undefined) {
         const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
-        console.log('HEY IM THE URL', url)
         const response = await fetch(url)
         const data = await response.json()
         setResults(data.payload)
-        console.log('HEY IM THE DATA', data.payload)
       }
     } getData()
   }, [location])
 
   async function getFilteredData() {
     if (location.location !== undefined) {
-      const filteredData = await fetch(`http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`,
+      const response = await fetch(`http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`,
         {
           method: 'POST',
           headers: {
@@ -41,12 +38,11 @@ export default function Results() {
             queryFilters
           })
         })
+      const data = await response.json()
+      const filteredData = data.payload;
+      setResults(filteredData)
     }
   }
-
-  useEffect(() => {
-    console.log('HEY IM RESULTS', results)
-  }, [results])
 
   function setDropdown(event: any) {
     const newFilters = filterOptions.map(
@@ -81,7 +77,6 @@ export default function Results() {
         return {category: dd.category.data,  
                 options: dd.options.map(option => option.checked ? option.data : null).filter(item => item !== null )}
         }).filter(element => element.options.length > 0)
-        console.log(checkedOps)
         setQueryFilters(checkedOps)
     }
     findDif()

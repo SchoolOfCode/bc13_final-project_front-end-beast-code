@@ -5,8 +5,7 @@ import Image from "next/image";
 
 export default function ResultsHeader({ ...data }) {
   const placeholderText = data.searchInputPlacholder;
-  const capitalisePlaceholderText =
-    placeholderText.charAt(0).toUpperCase() + placeholderText.slice(1);
+  const capitalisePlaceholderText = placeholderText?.charAt(0).toUpperCase() + placeholderText?.slice(1);
   
   return (
     <>
