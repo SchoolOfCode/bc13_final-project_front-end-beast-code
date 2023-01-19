@@ -72,3 +72,7 @@ export interface Dist {
     calculated: number;
 }
 
+export type heroQueryObject = {
+  location: string[];
+  searchInputPlaceholder: string;
+};

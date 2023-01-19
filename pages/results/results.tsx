@@ -98,7 +98,6 @@ export default function Results() {
           filters={filters}
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
-          heroPageQuery={heroPageQuery}
         />
       </div>
     </>
