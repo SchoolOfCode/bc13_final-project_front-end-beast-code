@@ -5,7 +5,6 @@ import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
 import { filtersObjectType, resultsArrType } from "../../data/types"
-import { ParsedUrlQuery } from "querystring"
 
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
@@ -19,7 +18,7 @@ export default function Results() {
     async function getData() {
       console.log('im the location', location)
       if (location.location !== undefined) {
-        const url = `http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`
+        const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
         console.log('HEY IM THE URL', url)
         const response = await fetch(url)
         const data = await response.json()
