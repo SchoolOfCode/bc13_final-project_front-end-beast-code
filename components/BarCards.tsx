@@ -30,6 +30,9 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               description={item.Description}
               image={item.Image}
               distance={item.dist.calculated}
+              rating={item.Rating}
+              venue={item.Venue_type}
+              vibe={item.Vibe}
             />{" "}
           </Link>
         ))}

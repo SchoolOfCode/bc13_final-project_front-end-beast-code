@@ -8,6 +8,9 @@ export type propsObjType = {
   description: string;
   image: string;
   distance: number;
+  rating: Number;
+  venue: String[];
+  vibe: string | string[];
 };
 
 function Pounds({ number }: any) {
@@ -39,7 +42,7 @@ export default function ResultCard(props: propsObjType) {
       <div className={styles.icons_container} data-testid="container">
         <div className={styles.drinks}>
           <div className={styles.drinks_icon}></div>
-          <p>Coctail bar</p>
+          <p>{props.venue[0]}</p>
         </div>
         <div className={styles.cost}>
           <div className={styles.cost_icon}></div>
@@ -47,11 +50,11 @@ export default function ResultCard(props: propsObjType) {
         </div>
         <div className={styles.food}>
           <div className={styles.food_icon}></div>
-          <p>Italian</p>
+          <p>{props.vibe[0]}</p>
         </div>
         <div className={styles.reviews}>
           <div className={styles.reviews_icon}></div>
-          <p>4.2/5</p>
+          <p>{`${props.rating}`}</p>
         </div>
       </div>
     </div>

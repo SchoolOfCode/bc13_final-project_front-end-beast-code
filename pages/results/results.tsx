@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
 import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 
+localStorage.setItem('pageLoadCount', 0)
+
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
   const [results, setResults] = useState<resultsArrType>([])
@@ -23,8 +25,7 @@ export default function Results() {
     async function getData() {
       if (location.location !== undefined) {
         const deployed = "https://cheers-bar-finder.onrender.com/"
-        const local = "http://localhost:3000/"
-        const url = `${local}api/router/${location.location[0]},${location.location[1]}`
+        const url = `http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`
         const response = await fetch(url)
         const data = await response.json()
         setResults(data.payload)
