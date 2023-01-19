@@ -7,19 +7,14 @@ export default function LandingHeader() {
     <>
       <div className={styles.Navbar}>
         <div className={styles.logo} data-testid="logo">
-          <Image
-            src="/Logo.png"
-            width={33}
-            height={33}
-            alt="logo"
-          ></Image>
+          <Image src="/Logo.png" width={33} height={33} alt="logo"></Image>
           <strong>Cheers</strong>
         </div>
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>
               <Link href="/results/results" data-testid="about-us">
-                  About us
+                About us
               </Link>
             </h3>
           </div>
@@ -37,8 +32,11 @@ export default function LandingHeader() {
         <Image
           src={"/Hero-Image2.png"}
           alt="Hero"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 2200px) 100vw,
+              (max-width: 2200px) 50vw,
+              33vw"
         ></Image>
       </div>
     </>
