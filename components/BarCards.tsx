@@ -30,7 +30,6 @@ function BarCards({results, numberOfResults}: propsObjectType) {
 
         {results.slice(0, numberOfResults).map((item, index) => (
           <Link href="/bar/bar" key={index}>
-
             <ResultCard
               key={index}
               name={item.Name}

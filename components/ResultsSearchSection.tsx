@@ -6,25 +6,20 @@ import BarCards from "./BarCards";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { filtersArrType, resultsArrType } from "../data/types";
-import { heroQueryObject } from "../data/types";
 
 type propsObj = {
   results: resultsArrType;
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
-  heroPageQuery: heroQueryObject;
 };
-
 
 export default function ResultsSearchSection({
   results,
   filters,
   setDropdown,
   setCheckbox,
-  heroPageQuery,
 }: propsObj) {
-
   const [view, setView] = useState("list");
   const [numberOfResults, setNumberOfResults] = useState(9);
 
@@ -104,7 +99,6 @@ export default function ResultsSearchSection({
         </div>
         {view === "list" ? (
           <BarCards
-            heroPageQuery={heroPageQuery}
             results={results}
             numberOfResults={numberOfResults}
           />
