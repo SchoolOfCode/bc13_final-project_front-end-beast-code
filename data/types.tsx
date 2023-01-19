@@ -71,6 +71,11 @@ export interface Dist {
     calculated: number;
 }
 
+export type checkedOpsArrType = {
+    category: string;
+    options: string | number | (string | number | null)[]
+  }[]
+
 // export interface fetchResultsType {
 //     _id: string;
 //     City: string;

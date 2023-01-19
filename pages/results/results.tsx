@@ -4,7 +4,7 @@ import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
-import { filtersObjectType, resultsArrType } from "../../data/types"
+import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
@@ -12,6 +12,7 @@ export default function Results() {
   const router = useRouter();
   const coords = router.query
   const [location, setLocation] = useState(coords)
+  const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
 
   // FETCH REQUEST 
   useEffect(() => {
@@ -27,6 +28,21 @@ export default function Results() {
       }
     } getData()
   }, [location])
+
+  async function getFilteredData() {
+    if (location.location !== undefined) {
+      const filteredData = await fetch(`http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            queryFilters
+          })
+        })
+    }
+  }
 
   useEffect(() => {
     console.log('HEY IM RESULTS', results)
@@ -59,11 +75,6 @@ export default function Results() {
     setFilters(newFilters)
   }
 
-    type checkedOpsArrType = {
-      category: string;
-      options: string | number | (string | number | null)[]
-    }[]
-
     useEffect(() => {
     function findDif() {
       const checkedOps : checkedOpsArrType = filters.map(dd => {
@@ -71,6 +82,7 @@ export default function Results() {
                 options: dd.options.map(option => option.checked ? option.data : null).filter(item => item !== null )}
         }).filter(element => element.options.length > 0)
         console.log(checkedOps)
+        setQueryFilters(checkedOps)
     }
     findDif()
   },[filters])
@@ -85,6 +97,7 @@ export default function Results() {
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
         />
+        <button onClick={getFilteredData}>Apply filter pls</button>
       </div>
     </>
   );
