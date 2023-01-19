@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
 import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 
-localStorage.setItem('pageLoadCount', 0)
+//localStorage.setItem('pageLoadCount', 0)
 
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
