@@ -1,20 +1,9 @@
-import Link from "next/link";
+import React from 'react'
 import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
-type dataObject = {
-  heroPageQuery: {
-    location: string[];
-    searchInputPlaceholder: string;
-  };
-};
-
-export default function ResultsHeader({ heroPageQuery }: dataObject) {
-  let placeholderText = heroPageQuery.searchInputPlaceholder;
-  console.log("results header placeholder", placeholderText);
-  let capitalisePlaceholderText =
-    placeholderText.charAt(0).toUpperCase() + placeholderText.slice(1);
-
+export default function BarPageHeader() {
   return (
     <>
       <div className={styles.Navbar}>
@@ -29,16 +18,6 @@ export default function ResultsHeader({ heroPageQuery }: dataObject) {
             ></Image>
           </Link>
           <strong>Cheers</strong>
-        </div>
-        <div className={styles.align_input_left}>
-          <div className={styles.search_container}>
-            <div data-testid="location-pin" className={styles.logo_area}></div>
-            <input
-              data-testid="location-input"
-              placeholder={capitalisePlaceholderText}
-              className={styles.location_input}
-            ></input>
-          </div>
         </div>
         <div className={styles.about_login}>
           <div className={styles.about_us}>
