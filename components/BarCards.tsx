@@ -9,18 +9,7 @@ type propsObjectType = {
   numberOfResults: number;
 };
 
-
 function BarCards({results, numberOfResults}: propsObjectType) {
- const [resultState, setResultState] = useState(results)
-
-  function displayResults(number: number) {
-    const newResults = results.filter((element, index) => index < number);
-    setResultState(newResults);
-  }
-
-  useEffect(() => {
-    displayResults(numberOfResults);
-  }, [numberOfResults]);
 
   return (
     <div className={styles.outerCardContainer}>

@@ -12,10 +12,13 @@ type propsObj = {
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
-  coords: any;
+  heroPageQuery: {
+    location: string[];
+    searchInputPlaceholder: string;
+  };
 }
 
-export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox, coords} : propsObj) {
+export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox, heroPageQuery} : propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
 
@@ -100,7 +103,7 @@ export default function ResultsSearchSection({results, filters, setDropdown, set
            /> : 
            <Map 
               results={results} 
-              coords={coords}
+              heroPageQuery={heroPageQuery}
            />
          }
         {view === "list" ? ( 
