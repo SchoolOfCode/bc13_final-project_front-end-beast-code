@@ -18,7 +18,7 @@ export const filterOptions: filtersArrType = [
   },
   {
     category: {text: "Vibe", data: "Vibe"},
-    options: [{ text: "Romantic", data: "Romantic", checked: false }, { text: "Formal", data: "Formal",  checked: false }, { text: "Retro", data: "Retro", checked: false }, { text: "Quirky", data: "Quirky", checked: false }, { text: "Lively", data: "Lively", checked: false }, { text: "Cosy", data: "Cosy", checked: false }, { text: "Traditional", data: "Traditional", checked: false }, { text: "Instagrammable", data: "Instagrammable", checked: false }],
+    options: [{ text: "Romantic", data: "Romantic", checked: false }, { text: "Formal", data: "Formal",  checked: false }, { text: "Retro", data: "Retro", checked: false }, { text: "Quirky", data: "Quirky", checked: false }, { text: "Lively", data: "Lively", checked: false }, { text: "Cosy", data: "Cosy", checked: false }, { text: "Traditional", data: "Traditional", checked: false }, { text: "Instagram", data: "Instagram", checked: false }],
     isOpen: false
   },
   {
