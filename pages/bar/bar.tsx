@@ -1,11 +1,13 @@
-import BarPageInfo from "../../components/Barpage"
-import ResultHeader from "../../components/ResultsHeader"
+import BarPageInfo from "../../components/Barpage";
+import BarPageHeader from "../../components/BarPageHeader";
 
-export default function Bar(){
+
+export default function Bar() {
+
     return (
-    <>
-    <ResultHeader/>
-    <BarPageInfo/>
-    </>
-    )
+      <>
+        <BarPageHeader />
+        <BarPageInfo />
+      </>
+    );
 }

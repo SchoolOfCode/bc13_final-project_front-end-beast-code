@@ -8,17 +8,23 @@ import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data
 
 //localStorage.setItem('pageLoadCount', 0)
 
+//DO NOT DELETE
+declare global {
+  type TRouter = ReturnType<typeof useRouter> & {
+    query: {
+      location: string[];
+      searchInputPlaceholder: string;
+    };
+  };
+}
+
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
   const [results, setResults] = useState<resultsArrType>([])
-  const router = useRouter();
-  const coords = router.query
-  const [location, setLocation] = useState(coords)
+  const router = useRouter() as TRouter;
+  const heroPageQuery = router.query;
+  const [location, setLocation] = useState(heroPageQuery)
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
-
-  useEffect(() => {
-    console.log(results)
-  }, [results])
 
   // FETCH REQUEST 
   useEffect(() => {
@@ -59,53 +65,55 @@ export default function Results() {
   }
 
   function setDropdown(event: any) {
-    const newFilters = filterOptions.map(
-      (element: filtersObjectType) => {
-        if (event.target.id === element.category.text) {
-          element.isOpen = !element.isOpen;
-        }
-        return element;
+    const newFilters = filterOptions.map((element: filtersObjectType) => {
+      if (event.target.id === element.category.text) {
+        element.isOpen = !element.isOpen;
       }
-    );
+      return element;
+    });
     setFilters(newFilters);
   }
 
   function setCheckbox(event: any) {
-    const newFilters = filterOptions.map(
-      (filter: filtersObjectType) => {
-        filter.options.map((option: { text: string; checked: boolean; }) => {
+    const newFilters = filterOptions.map((filter: filtersObjectType) => {
+      filter.options.map((option: { text: string; checked: boolean }) => {
         if (option.text === event.target.id) {
-          option.checked = !option.checked
+          option.checked = !option.checked;
         }
         return option;
-      }
-      )
-      return filter;
       });
-    setFilters(newFilters)
+      return filter;
+    });
+    setFilters(newFilters);
   }
-
-    useEffect(() => {
+  
+  useEffect(() => {
     function findDif() {
-      const checkedOps : checkedOpsArrType = filters.map(dd => {
-        return {category: dd.category.data,  
-                options: dd.options.map(option => option.checked ? option.data : null).filter(item => item !== null )}
-        }).filter(element => element.options.length > 0)
+      const checkedOps: checkedOpsArrType = filters
+        .map(dd => {
+          return {
+            category: dd.category.data,
+            options: dd.options
+              .map(option => option.checked ? option.data : null)
+              .filter(item => item !== null),
+          };
+        })
+        .filter(element => element.options.length > 0);
         setQueryFilters(checkedOps)
     }
-    findDif()
-  },[filters])
+    findDif();
+  }, [filters]);
 
   return (
     <>
-      <ResultsHeader {...coords} />
+      <ResultsHeader heroPageQuery={heroPageQuery} />
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
           filters={filters}
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
-          coords={coords}
+          heroPageQuery={heroPageQuery}
         />
         <button onClick={getFilteredData}>Apply filter pls</button>
       </div>

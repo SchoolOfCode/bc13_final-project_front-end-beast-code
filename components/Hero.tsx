@@ -70,7 +70,7 @@ export default function Hero() {
                 pathname: "/results/results",
                 query: {
                   location: longLat,
-                  searchInputPlacholder: locationForResultsPageHeader,
+                  searchInputPlaceholder: locationForResultsPageHeader,
                 },
               }}
             >

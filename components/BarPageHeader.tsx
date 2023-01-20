@@ -1,21 +1,30 @@
-import styles from "../styles/LandingHeader.module.css";
+import React from 'react'
+import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function LandingHeader() {
+export default function BarPageHeader() {
   return (
     <>
       <div className={styles.Navbar}>
         <div className={styles.logo} data-testid="logo">
-          <Image src="/Logo.png" width={33} height={33} alt="logo"></Image>
+          <Link href="/">
+            <Image
+              src="/Logo.png"
+              width={32}
+              height={32}
+              alt="logo"
+              className={styles.logo_icon}
+            ></Image>
+          </Link>
           <strong>Cheers</strong>
         </div>
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>
-              <Link href="/results/results" data-testid="about-us">
+              <a href="#" data-testid="about-us">
                 About us
-              </Link>
+              </a>
             </h3>
           </div>
           <div className={styles.login}>
@@ -26,18 +35,6 @@ export default function LandingHeader() {
             </h3>
           </div>
         </div>
-      </div>
-
-      <div className={styles.HeroImage}>
-        <Image
-          src={"/Hero-Image2.png"}
-          alt="Hero"
-          fill
-          style={{ objectFit: "cover" }}
-          sizes="(max-width: 2200px) 100vw,
-              (max-width: 2200px) 50vw,
-              33vw"
-        ></Image>
       </div>
     </>
   );

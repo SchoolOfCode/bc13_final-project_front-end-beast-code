@@ -65,6 +65,7 @@ export type singleBarType = {
     website: string
 }
 
+
 export interface Location {
     type: string;
     coordinates: number[];
@@ -79,26 +80,7 @@ export type checkedOpsArrType = {
     options: string | number | (string | number | null)[]
   }[]
 
-// export interface fetchResultsType {
-//     _id: string;
-//     City: string;
-//     Name: string;
-//     Cost: number;
-//     Description: string;
-//     Image: string;
-//     Rating: number;
-//     Address: string;
-//     Postcode: string;
-//     Hygiene: number;
-//     Happy_hr: string;
-//     Website: string;
-//     Music: string[];
-//     Venue_type: string[];
-//     Other: string[];
-//     Vibe: string[];
-//     Features: string[];
-//     Who_with: string[];
-//     location: Location;
-//     dist: Dist;
-// }[]
-
+export type heroQueryObject = {
+  location: string[];
+  searchInputPlaceholder: string;
+};

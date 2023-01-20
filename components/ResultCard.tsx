@@ -29,7 +29,10 @@ export default function ResultCard(props: propsObjType) {
         <Image
           src={props.image}
           alt="Bar image"
-          layout="fill"
+          fill
+          sizes="(max-width: 2200px) 100vw,
+              (max-width: 2200px) 50vw,
+              33vw"
         ></Image>
       </div>
       <div className={styles.goldRectangle}>

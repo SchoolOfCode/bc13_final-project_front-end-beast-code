@@ -1,11 +1,11 @@
-import React, { MouseEventHandler } from 'react'
-import FilterDropdown from './FilterDropdown'
-import FilterPanel from "./FilterPanel"
+import React, { MouseEventHandler } from "react";
+import FilterDropdown from "./FilterDropdown";
+import FilterPanel from "./FilterPanel";
 import styles from "../styles/Results-search-section.module.css";
-import BarCards from './BarCards';
-import dynamic from 'next/dynamic';
+import BarCards from "./BarCards";
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import {filtersArrType, resultsArrType} from "../data/types"
+import { filtersArrType, resultsArrType } from "../data/types";
 
 type propsObj = {
   results: resultsArrType;
@@ -19,24 +19,22 @@ export default function ResultsSearchSection({results, filters, setDropdown, set
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
 
-  function updateNumberOfResults(){
-    setNumberOfResults(numberOfResults + 9)
+  function updateNumberOfResults() {
+    setNumberOfResults(numberOfResults + 9);
   }
 
   const [style, setStyle] = useState("btn");
   function leftClick() {
     setStyle("btn10");
-    setView("map")
+    setView("map");
   }
 
   function rightClick() {
     setStyle("btn");
-    setView("list")
+    setView("list");
   }
 
-  const Map = dynamic(
-    () => import('../components/Map'),
-    { ssr: false })
+  const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
   return (
     <div className={styles.parent_container}>
@@ -79,17 +77,38 @@ export default function ResultsSearchSection({results, filters, setDropdown, set
         <div className={styles.all_filter_buttons}>
           <div className={styles.dropdown_container}>
             {/* Filter dropdown expands / closes when clicked */}
-            <FilterDropdown filters={filters.filter((element, index) => index < 4)} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
+            <FilterDropdown
+              filters={filters.filter((element, index) => index < 4)}
+              setDropdown={setDropdown}
+              setCheckbox={setCheckbox}
+            />
             <button data-testid="reset-button" className={styles.reset_button}>
               Reset
             </button>
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
-          <FilterPanel filters={filters} setDropdown={setDropdown} setCheckbox={setCheckbox}/>
+          <FilterPanel
+            filters={filters}
+            setDropdown={setDropdown}
+            setCheckbox={setCheckbox}
+          />
         </div>
-        {view === "list" ? <BarCards results={results} numberOfResults={numberOfResults} /> : <Map results={results} coords={coords}/>}
-        {view === "list" ? ( <div className={styles.button_centering}>
-          <button className={styles.load_more_button} onClick={updateNumberOfResults}>
+        {view === "list" ? 
+          <BarCards 
+              results={results} 
+              numberOfResults={numberOfResults} 
+           /> : 
+           <Map 
+              results={results} 
+              coords={coords}
+           />
+         }
+        {view === "list" ? ( 
+          <div className={styles.button_centering}>
+            <button 
+                className={styles.load_more_button} 
+                onClick={updateNumberOfResults}
+            >
             <span onClick={updateNumberOfResults}>Load More</span>
           </button>
         </div>) : null}

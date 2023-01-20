@@ -8,8 +8,12 @@ export default function BarPageInfo() {
         <Image
           src="https://i.postimg.cc/0QwStdyj/14-remini-enhanced.png"
           alt="Bar image"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 2200px) 100vw,
+              (max-width: 2200px) 50vw,
+              33vw"
+          priority
         ></Image>
       </div>
       <div className={styles.bar_name_container}>
