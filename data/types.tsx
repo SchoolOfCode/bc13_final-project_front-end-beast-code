@@ -1,4 +1,5 @@
 import { LatLngExpression } from 'leaflet';
+import { ParsedUrlQuery } from "querystring"
 
 export type filtersObjectType = {
     category: {
@@ -84,3 +85,18 @@ export type heroQueryObject = {
   location: string[];
   searchInputPlaceholder: string;
 };
+
+export type dataObjectType = {
+    heroPageQuery: {
+      location: string[];
+      searchInputPlaceholder: string;
+    };
+  };
+
+export type resultsHeaderPropsType = {
+    heroPageQuery: heroQueryObject, 
+    setLocation: any ,
+    location: ParsedUrlQuery & {
+      location: string[];
+      searchInputPlaceholder: string;},
+  }

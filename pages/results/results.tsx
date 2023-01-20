@@ -4,7 +4,8 @@ import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
-import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
+import { dataObjectType, filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
+import { ParsedUrlQuery } from "querystring"
 
 //localStorage.setItem('pageLoadCount', 0)
 
@@ -23,8 +24,12 @@ export default function Results() {
   const [results, setResults] = useState<resultsArrType>([])
   const router = useRouter() as TRouter;
   const heroPageQuery = router.query;
-  const [location, setLocation] = useState(heroPageQuery)
+  console.log("heroPageUserInput", heroPageQuery);
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
+  const [location, setLocation] = useState<ParsedUrlQuery & {
+    location: string[];
+    searchInputPlaceholder: string;}>(heroPageQuery)
+
 
   // FETCH REQUEST 
   async function getData() {
@@ -111,7 +116,7 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader heroPageQuery={heroPageQuery} />
+      <ResultsHeader heroPageQuery={heroPageQuery} setLocation={setLocation} location={location} />
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
