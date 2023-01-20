@@ -23,8 +23,10 @@ export default function Results() {
   const router = useRouter() as TRouter;
   const heroPageQuery = router.query;
   console.log("heroPageUserInput", heroPageQuery);
-  const [location, setLocation] = useState(heroPageQuery)
-  // const [newLocation, setNewLocation] = useState<string[]>([])
+  const [location, setLocation] = useState<ParsedUrlQuery & {
+    location: string[];
+    searchInputPlaceholder: string;}>(heroPageQuery)
+
 
   // FETCH REQUEST 
   useEffect(() => {

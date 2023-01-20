@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from "querystring"
+
 export type filtersObjectType = {
     category: {
         text: string;
@@ -87,5 +89,7 @@ export type dataObjectType = {
 export type resultsHeaderPropsType = {
     heroPageQuery: heroQueryObject, 
     setLocation: any ,
-    location: heroQueryObject,
+    location: ParsedUrlQuery & {
+      location: string[];
+      searchInputPlaceholder: string;},
   }
