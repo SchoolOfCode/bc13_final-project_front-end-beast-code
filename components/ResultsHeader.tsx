@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 export default function ResultsHeader(props: resultsHeaderPropsType ) {
   const [input, setInput] = useState('')
-  const [placeHolderText, setPlaceHolderText] = useState(props.heroPageQuery.searchInputPlaceholder.charAt(0).toUpperCase() + props.heroPageQuery.searchInputPlaceholder.slice(1))
+  const [placeHolderText, setPlaceHolderText] = useState(props.heroPageQuery?.searchInputPlaceholder.charAt(0).toUpperCase() + props.heroPageQuery?.searchInputPlaceholder.slice(1))
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value.toLowerCase())
