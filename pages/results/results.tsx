@@ -6,8 +6,7 @@ import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
 import { dataObjectType, filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
-
-//localStorage.setItem('pageLoadCount', 0)
+import { getTsBuildInfoEmitOutputFilePath } from "typescript"
 
 //DO NOT DELETE
 declare global {
@@ -29,10 +28,19 @@ export default function Results() {
   const [location, setLocation] = useState<ParsedUrlQuery & {
     location: string[];
     searchInputPlaceholder: string;}>(heroPageQuery)
+    console.log("location", location)
 
+    useEffect (() => {
+      const storedLocation = localStorage.getItem('storedLocation')
+      console.log("this is the storedLocation", storedLocation)
+    }, [location])
 
   // FETCH REQUEST 
   async function getData() {
+    if(location.location == undefined){
+      localStorage.getItem('storedLocation')
+
+    }
     if (location.location !== undefined) {
       const deployed = "https://cheers-bar-finder.onrender.com/"
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`

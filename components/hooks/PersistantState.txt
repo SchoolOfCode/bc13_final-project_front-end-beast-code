@@ -1,0 +1,17 @@
+import { useEffect, useState } from "react";
+
+function usePersistentState({storeLocation}:any) {
+  const [storage, setStorage] = useState(storeLocation);
+
+  function handleChange({e}:any) {
+    setStorage(e.target.value);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("text", text);
+  }, [text]);
+
+  return [text, handleChange];
+}
+
+export default usePersistentState;

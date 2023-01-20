@@ -50,7 +50,19 @@ export default function Hero() {
     }
   }
   validateLocation(location)
+
   }, [location])
+
+
+  useEffect(()=>{
+    function storeCoords () {
+      localStorage.setItem('storedLocation', `${longLat}`)
+      localStorage.setItem('storedPageHeader', `${locationForResultsPageHeader}`)
+    }
+
+    storeCoords()
+
+  },[longLat])
 
   return (
     <>
