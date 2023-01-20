@@ -12,16 +12,12 @@ type propsObj = {
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
-};
+  coords: any;
+}
 
-export default function ResultsSearchSection({
-  results,
-  filters,
-  setDropdown,
-  setCheckbox,
-}: propsObj) {
-  const [view, setView] = useState("list");
-  const [numberOfResults, setNumberOfResults] = useState(9);
+export default function ResultsSearchSection({results, filters, setDropdown, setCheckbox, coords} : propsObj) {
+  const [view, setView] = useState("list")
+  const [numberOfResults, setNumberOfResults] = useState(9)
 
   function updateNumberOfResults() {
     setNumberOfResults(numberOfResults + 9);
@@ -97,24 +93,25 @@ export default function ResultsSearchSection({
             setCheckbox={setCheckbox}
           />
         </div>
-        {view === "list" ? (
-          <BarCards
-            results={results}
-            numberOfResults={numberOfResults}
-          />
-        ) : (
-          <Map />
-        )}
-        {view === "list" ? (
+        {view === "list" ? 
+          <BarCards 
+              results={results} 
+              numberOfResults={numberOfResults} 
+           /> : 
+           <Map 
+              results={results} 
+              coords={coords}
+           />
+         }
+        {view === "list" ? ( 
           <div className={styles.button_centering}>
-            <button
-              className={styles.load_more_button}
-              onClick={updateNumberOfResults}
+            <button 
+                className={styles.load_more_button} 
+                onClick={updateNumberOfResults}
             >
-              <span onClick={updateNumberOfResults}>Load More</span>
-            </button>
-          </div>
-        ) : null}
+            <span onClick={updateNumberOfResults}>Load More</span>
+          </button>
+        </div>) : null}
 
         {/* <div className={styles.button_centering}>
           <button className={styles.load_more_button}>

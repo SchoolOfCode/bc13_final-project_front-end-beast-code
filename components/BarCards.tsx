@@ -12,8 +12,6 @@ type propsObjectType = {
 
 function BarCards({results, numberOfResults}: propsObjectType) {
  const [resultState, setResultState] = useState(results)
- console.log('im the results in BarCard', results)
- console.log('im the resultState in BarCard', resultState)
 
   function displayResults(number: number) {
     const newResults = results.filter((element, index) => index < number);
@@ -37,6 +35,9 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               description={item.Description}
               image={item.Image}
               distance={item.dist.calculated}
+              rating={item.Rating}
+              venue={item.Venue_type}
+              vibe={item.Vibe}
             />{" "}
           </Link>
         ))}

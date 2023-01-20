@@ -9,11 +9,10 @@ export default function Hero() {
   const [dataValid, setDataValid] = useState<boolean>(false)
   const [locationForResultsPageHeader, setLocationForResultsPageHeader] =
    useState("");
-  console.log("pc data admin location for next page",locationForResultsPageHeader);
   
   function getLocation(event: React.ChangeEvent<HTMLInputElement>) {
-    setLocation(event.target.value.toLowerCase())
-    // console.log("this is the event", location)
+    const userInput = event.target.value.toLowerCase().replace(/\s/g, '')
+    setLocation(userInput)
   }
 
   useEffect(() => {
@@ -21,28 +20,23 @@ export default function Hero() {
       if (input.length >= 6 ) {
         if (input === "london" ) {
           setLongLat([-0.118092, 51.509865])
-          console.log('london', longLat)
           setDataValid(true)
           setLocationForResultsPageHeader("london");
         } else if (input === "birmingham") {
           setLongLat([-1.898575, 52.489471])
-          console.log('birmingham', longLat)
           setDataValid(true)
           setLocationForResultsPageHeader("birmingham");
         } else if (input === "manchester") {
           setLongLat([-2.244644, 53.483959])
-          console.log('manchester', longLat)
           setDataValid(true)
           setLocationForResultsPageHeader("manchester");
         } else {
             const url = `https://api.postcodes.io/postcodes/${input}`
             const response = await fetch(url + '/validate')
             const data = await response.json()
-            console.log('pc validate data', data)
             if (data.result === true) {
                 const responsePC = await fetch (url)
                 const dataPC: dataPCType = await responsePC.json()
-              console.log('pc data', dataPC)
               setLocationForResultsPageHeader(dataPC.result.admin_district);
                 const coords = [dataPC.result.longitude, dataPC.result.latitude]
                 setLongLat(coords)
@@ -57,10 +51,6 @@ export default function Hero() {
   }
   validateLocation(location)
   }, [location])
-
-  console.log('location', location)
-  console.log('longLat', longLat)
-  console.log('dataValid', dataValid)
 
   return (
     <>
