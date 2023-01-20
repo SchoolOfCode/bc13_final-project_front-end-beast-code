@@ -120,13 +120,39 @@
     width: 120px;
     height: 44px;
     margin-right: 11px;
+}
 
+.filters_button {
+    color: white;
+    background-color: var(--gold);
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 44px;
+    margin-right: 11px;
+}
+
+.more_filters_button {
+    color: white;
+    background-color: var(--green);
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 44px;
+    margin-right: 11px;
 }
 
 .all_filter_buttons{
     display: flex;
     justify-content: center;
     margin-bottom: 60px;
+    gap: 10px;
 }
 
 .button_centering{
@@ -244,4 +270,8 @@
         height: 100px;
         gap: 10px;
     }
+}
+
+.button_container {
+    display: flex;
 }

@@ -5,23 +5,26 @@ import styles from "../styles/Results-search-section.module.css";
 import BarCards from "./BarCards";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { filtersArrType, resultsArrType } from "../data/types";
+import { filtersArrType, resultsArrType, checkedOpsArrType } from "../data/types";
 
 type propsObj = {
   results: resultsArrType;
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
-};
+  getFilteredData: MouseEventHandler<HTMLButtonElement>;
+  heroPageQuery: {
+    location: string[];
+    searchInputPlaceholder: string;
+  };
+  queryFilters: checkedOpsArrType;
+  getData: MouseEventHandler<HTMLButtonElement>;
+}
 
-export default function ResultsSearchSection({
-  results,
-  filters,
-  setDropdown,
-  setCheckbox,
-}: propsObj) {
-  const [view, setView] = useState("list");
-  const [numberOfResults, setNumberOfResults] = useState(9);
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, getData }: propsObj) {
+  const [view, setView] = useState("list")
+  const [numberOfResults, setNumberOfResults] = useState(9)
+  const [panelState, setPanelState] = useState(false);
 
   function updateNumberOfResults() {
     setNumberOfResults(numberOfResults + 9);
@@ -80,31 +83,43 @@ export default function ResultsSearchSection({
       <>
         <div className={styles.all_filter_buttons}>
           <div className={styles.dropdown_container}>
-            {/* Filter dropdown expands / closes when clicked */}
-            <FilterDropdown
-              filters={filters.filter((element, index) => index < 4)}
-              setDropdown={setDropdown}
-              setCheckbox={setCheckbox}
-            />
-            <button data-testid="reset-button" className={styles.reset_button}>
-              Reset
-            </button>
+            {panelState ? null : <>
+              <FilterDropdown
+                filters={filters.filter((element, index) => index < 4)}
+                setDropdown={setDropdown}
+                setCheckbox={setCheckbox}
+              />
+              <div className={styles.button_container}>
+                <button className={styles.filters_button} onClick={getFilteredData}>Apply filters</button>
+                <button data-testid="reset-button" className={styles.reset_button} onClick={getData}>Reset</button>
+                <button
+                  onClick={() => setPanelState(true)}
+                  className={styles.more_filters_button}
+                  data-testid="more-filters">More Filters</button>
+              </div>
+            </>
+            }
+
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel
             filters={filters}
             setDropdown={setDropdown}
             setCheckbox={setCheckbox}
+            panelState={panelState}
+            setPanelState={setPanelState}
           />
         </div>
-        {view === "list" ? (
+        {view === "list" ?
           <BarCards
             results={results}
             numberOfResults={numberOfResults}
+          /> :
+          <Map
+            results={results}
+            heroPageQuery={heroPageQuery}
           />
-        ) : (
-          <Map />
-        )}
+        }
         {view === "list" ? (
           <div className={styles.button_centering}>
             <button
@@ -113,8 +128,7 @@ export default function ResultsSearchSection({
             >
               <span onClick={updateNumberOfResults}>Load More</span>
             </button>
-          </div>
-        ) : null}
+          </div>) : null}
 
         {/* <div className={styles.button_centering}>
           <button className={styles.load_more_button}>

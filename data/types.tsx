@@ -1,3 +1,4 @@
+import { LatLngExpression } from 'leaflet';
 import { ParsedUrlQuery } from "querystring"
 
 export type filtersObjectType = {
@@ -33,9 +34,10 @@ export type resultsArrType = {
     Other: string[];
     Vibe: string[] | string;
     Who_with: string[];
+    _id: "string";
     location: {
       type: string, 
-      coordinates: number[]
+      coordinates: [number, number];
     }
     dist: Dist;
 }[]
@@ -73,6 +75,11 @@ export interface Location {
 export interface Dist {
     calculated: number;
 }
+
+export type checkedOpsArrType = {
+    category: string;
+    options: string | number | (string | number | null)[]
+  }[]
 
 export type heroQueryObject = {
   location: string[];
