@@ -17,18 +17,20 @@ const customPinIcon = new Icon({
 
 type propsObjType = {
   results: resultsArrType;
-  coords: any;
+  heroPageQuery: {
+    location: string[];
+    searchInputPlaceholder: string;
+  };
 }
 
-export default function Map({results, coords}: propsObjType){
-  console.log("COORDSSSSS", coords)
+export default function Map({results, heroPageQuery}: propsObjType){
 
   return (<div className={styles.map_centering_div}>
       <MapContainer
         className={styles.map_container}
         id="map"
         data-testId="map-container"
-        center={[Number(coords.location[1]), (coords.location[0])]}
+        center={[Number(heroPageQuery.location[1]), Number(heroPageQuery.location[0])]}
         zoom={14}
         scrollWheelZoom={false}
         style={{ height: "700px", width: "55%" }}
