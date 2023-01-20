@@ -4,22 +4,13 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import FilterDropdown from "./FilterDropdown";
 import styles from "../styles/filterpanel.module.css"
 
-export default function FilterPanel({filters, setDropdown, setCheckbox} : any){
-    const [state, setState] = useState(false);
+export default function FilterPanel({filters, setDropdown, setCheckbox, panelState, setPanelState} : any){
 
     return (
       <div>
-        <div className={styles.more_filters_button_div}></div>
-        <button
-          onClick={() => setState(true)}
-          className={styles.filters_button}
-          data-testid="more-filters"
-        >
-          More Filters
-        </button>
         <SlidingPane
           closeIcon={<div data-testid="close-button" className={styles.done_button}>Done</div>}
-          isOpen={state}
+          isOpen={panelState}
           title={
             <button data-testid="reset-button" className={styles.reset_button}>
               Reset
@@ -28,11 +19,11 @@ export default function FilterPanel({filters, setDropdown, setCheckbox} : any){
           className={styles.panel}
           from="left"
           width="350px"
-          onRequestClose={() => setState(false)}
+          onRequestClose={() => setPanelState(false)}
           hideHeader
         >
           <div className={styles.buttons_div}>
-            <a onClick={() => setState(false)}>
+            <a onClick={() => setPanelState(false)}>
               <div className={styles.done_button}>Done</div>
             </a>
             <a>
