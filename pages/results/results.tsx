@@ -4,7 +4,7 @@ import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
-import { filtersObjectType, resultsArrType } from "../../data/types"
+import { dataObjectType, filtersObjectType, resultsArrType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
 
 //DO NOT DELETE
@@ -24,6 +24,7 @@ export default function Results() {
   const heroPageQuery = router.query;
   console.log("heroPageUserInput", heroPageQuery);
   const [location, setLocation] = useState(heroPageQuery)
+  // const [newLocation, setNewLocation] = useState<string[]>([])
 
   // FETCH REQUEST 
   useEffect(() => {
@@ -91,7 +92,7 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader heroPageQuery={heroPageQuery} />
+      <ResultsHeader heroPageQuery={heroPageQuery} setLocation={setLocation} location={location} />
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
