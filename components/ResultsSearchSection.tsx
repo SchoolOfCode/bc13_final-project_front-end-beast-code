@@ -122,12 +122,12 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
         }
         {view === "list" ? (
           <div className={styles.button_centering}>
-            <button
+            {numberOfResults > results.length ? null : <button
               className={styles.load_more_button}
               onClick={updateNumberOfResults}
             >
-              <span onClick={updateNumberOfResults}>Load More</span>
-            </button>
+              <span onClick={updateNumberOfResults}>Load More</span> </button>} 
+            
           </div>) : null}
 
         {/* <div className={styles.button_centering}>
