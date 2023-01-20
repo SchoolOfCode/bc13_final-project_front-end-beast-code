@@ -17,30 +17,30 @@ export type filtersObjectType = {
 export type filtersArrType = filtersObjectType[]
 
 export type resultsArrType = {
-    City: string;
-    Name: string;
-    Cost: number;
-    Description: string;
-    Image: string;
-    Rating: number;
-    Address: string;
-    Features: string[];
-    Postcode: string;
-    Hygiene: number;
-    Happy_hr: string;
-    Website: string;
-    Music: string[];
-    Venue_type: string[];
-    Other: string[];
-    Vibe: string[] | string;
-    Who_with: string[];
-    _id: "string";
-    location: {
-      type: string, 
-      coordinates: [number, number];
-    }
-    dist: Dist;
-}[]
+  _id: "string";
+  City: string;
+  Name: string;
+  Cost: number;
+  Description: string;
+  Image: string;
+  Rating: number;
+  Address: string;
+  Features: string[];
+  Postcode: string;
+  Hygiene: number;
+  Happy_hr: string;
+  Website: string;
+  Music: string[];
+  Venue_type: string[];
+  Other: string[];
+  Vibe: string[] | string;
+  Who_with: string[];
+  location: {
+    type: string;
+    coordinates: [number, number];
+  };
+  dist: Dist;
+}[];
 
 export type optionsPropsType = {
     optionText: string;

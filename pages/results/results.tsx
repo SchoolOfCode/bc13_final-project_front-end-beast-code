@@ -30,12 +30,11 @@ export default function Results() {
     location: string[];
     searchInputPlaceholder: string;}>(heroPageQuery)
 
-
   // FETCH REQUEST 
   async function getData() {
     if (location.location !== undefined) {
       const deployed = "https://cheers-bar-finder.onrender.com/"
-      const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
+      const url = `http://localhost:3002/api/router/${location.location[0]},${location.location[1]}`;
       const response = await fetch(url)
       const data = await response.json()
       const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {

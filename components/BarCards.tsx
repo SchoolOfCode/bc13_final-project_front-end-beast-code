@@ -16,7 +16,7 @@ function BarCards({results, numberOfResults}: propsObjectType) {
       <div className={styles.cardContainer}>
 
         {results.slice(0, numberOfResults).map((item, index) => (
-          <Link href="/bar/bar" key={index}>
+          <Link href={`/bar/${item._id}`} key={index}>
             <ResultCard
               key={index}
               name={item.Name}
@@ -27,12 +27,14 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               rating={item.Rating}
               venue={item.Venue_type}
               vibe={item.Vibe}
-            />{" "}
+            />
           </Link>
         ))}
       </div>
     </div>
   );
 }
+
+
 
 export default BarCards;
