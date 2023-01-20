@@ -25,7 +25,7 @@ export default function Results() {
     async function getData() {
       if (location.location !== undefined) {
         const deployed = "https://cheers-bar-finder.onrender.com/"
-        const url = `http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`
+        const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
         const response = await fetch(url)
         const data = await response.json()
         const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
@@ -39,7 +39,7 @@ export default function Results() {
 
   async function getFilteredData() {
     if (location.location !== undefined) {
-      const response = await fetch(`http://localhost:3000/api/router/${location.location[0]},${location.location[1]}`,
+      const response = await fetch(`https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`,
         {
           method: 'POST',
           headers: {
