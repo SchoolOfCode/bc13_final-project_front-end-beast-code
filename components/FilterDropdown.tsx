@@ -21,6 +21,10 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
     );
   }
 
+  function test() {
+    console.log("this is a blur!!")
+  }
+
     return <>
     {filters.map(
       (
@@ -29,7 +33,8 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
       ) =>
         element.isOpen ? (
           <div key={index} className={styles.dropdown_container}>
-            <p onClick={setDropdown} className={styles.p} id={element.category.text}>
+            <p onClick={setDropdown} 
+              className={styles.p} id={element.category.text}>
               {element.category.text}
             </p>
             <div

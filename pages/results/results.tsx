@@ -27,20 +27,22 @@ export default function Results() {
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
 
   // FETCH REQUEST 
+  async function getData() {
+    if (location.location !== undefined) {
+      const deployed = "https://cheers-bar-finder.onrender.com/"
+      const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
+      const response = await fetch(url)
+      const data = await response.json()
+      const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
+        element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
+        return element;
+      })
+      setResults(newResults)
+    }
+  }
+
   useEffect(() => {
-    async function getData() {
-      if (location.location !== undefined) {
-        const deployed = "https://cheers-bar-finder.onrender.com/"
-        const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
-        const response = await fetch(url)
-        const data = await response.json()
-        const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
-          element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
-          return element;
-        })
-        setResults(newResults)
-      }
-    } getData()
+     getData()
   }, [location])
 
   async function getFilteredData() {
@@ -68,6 +70,9 @@ export default function Results() {
     const newFilters = filterOptions.map((element: filtersObjectType) => {
       if (event.target.id === element.category.text) {
         element.isOpen = !element.isOpen;
+      }
+      else {
+        element.isOpen = false;
       }
       return element;
     });
@@ -114,8 +119,10 @@ export default function Results() {
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
           heroPageQuery={heroPageQuery}
+          getData={getData}
+          getFilteredData={getFilteredData}
+          queryFilters={queryFilters}
         />
-        <button onClick={getFilteredData}>Apply filter pls</button>
       </div>
     </>
   );
