@@ -1,10 +1,11 @@
 .dropdown_container {
     background-color: var(--lightgreen);
     border-radius: 10px;
-    width: 180px;
+    width: 210px;
     color: white;
     display: flex;
     /* position: relative; */
+    cursor: pointer;
 }
 
 .p {
@@ -22,7 +23,7 @@
     list-style: none;
     border-radius: 10px;
     position: absolute;
-    width: 180px;
+    width: 210px;
     color: black;
     z-index: 1;
     padding: 10px;
@@ -44,8 +45,8 @@
     background-repeat: no-repeat;
     background-image: url('../public/dropdown-icon.png');
     transition: .5s ease-in-out;
-    position: absolute;
-    margin-left: 150px;
+    position: relative;
+    margin-left: -35px;
     z-index: 0;
 }
 
@@ -57,9 +58,10 @@
     background-repeat: no-repeat;
     background-image: url('../public/dropdown-icon.png');
     transform: rotate(180deg);
-    position: absolute;
-    margin-left: 150px;
+    position: relative;
+    margin-left: -35px;
     z-index: 0;
+    transition: .5s ease-in-out;
         
 }
 

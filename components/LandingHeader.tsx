@@ -13,14 +13,12 @@ export default function LandingHeader() {
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>
-              <Link href="/results/results" data-testid="about-us">
-                About us
-              </Link>
+              <a>About us</a>
             </h3>
           </div>
           <div className={styles.login}>
             <h3>
-              <a href="#" data-testid="login">
+              <a data-testid="login">
                 Login
               </a>
             </h3>

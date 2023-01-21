@@ -39,7 +39,7 @@ export default function ResultCard(props: propsObjType) {
         <div className={styles.bar_name}>
           <h3 data-testid="title">{props.name}</h3>
         </div>
-        <h3>{Math.round((props.distance / 1000) * 10) / 10}km</h3>
+        <h3>{Math.round((props.distance / 1000) * 10) / 10} km</h3>
       </div>
       <p className={styles.description}>{props.description.slice(0, 115)}...</p>
       <div className={styles.icons_container} data-testid="container">

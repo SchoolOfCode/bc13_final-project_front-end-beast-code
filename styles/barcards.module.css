@@ -54,7 +54,7 @@
 }
 
 .bar_name {
-    width: 75%;
+    width: 72%;
     padding-left: 25px;
 }
 
@@ -116,7 +116,7 @@
     height: 24px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../public/barcard-food-icon.png');
+    background-image: url('../public/barcard-vibe-icon.png');
     margin-right: 10px;
 }
 
