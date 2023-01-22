@@ -12,7 +12,9 @@ export default function Bar({ barInfo }: Root) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch("http://localhost:3002/api/router/");
+  const response = await fetch(
+    "https://cheers-bar-finder.onrender.com/api/router/"
+  );
   const data = await response.json();
   const result = data.payload;
   const paths = result.map((bar: Bar) => {
@@ -31,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const params = context.params!; // ! is a non-null assertion
   const response = await fetch(
-    `http://localhost:3002/api/router/${params.barId}`
+    `https://cheers-bar-finder.onrender.com/api/router/${params.barId}`
   );
   const data = await response.json();
   const barData = data.payload[0]

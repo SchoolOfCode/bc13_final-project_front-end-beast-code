@@ -79,11 +79,11 @@ text-decoration: underline;
 @media (max-width: 500px) {
     .map_container{
         border: 3px solid var(--gold);
-        width: 95vw !important;
         height: 70vh !important;
         z-index: 0;
         margin-bottom:2.5vw;
         margin-bottom: 65px;
+        min-width: 95vw !important;
     }
     .map_centering_div{
         display: flex;
