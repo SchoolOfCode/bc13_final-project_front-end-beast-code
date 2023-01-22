@@ -42,10 +42,6 @@ export default function Results() {
 
   // FETCH REQUEST 
   async function getData() {
-    if(location.location == undefined){
-      localStorage.getItem('storedLocation')
-
-    }
     if (location.location !== undefined) {
       const deployed = "https://cheers-bar-finder.onrender.com/"
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
