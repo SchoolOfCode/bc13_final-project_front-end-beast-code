@@ -9,7 +9,7 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
   const [placeHolderText, setPlaceHolderText] = useState(`${props.location?.searchInputPlaceholder?.charAt(0).toUpperCase()}${props.location?.searchInputPlaceholder?.slice(1)}`)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setInput(e.target.value.toLowerCase())
+    setInput(e.target.value.toLowerCase().replace(/\s/g, ''))
   }
 
   //gets placeholderText from local storage if otherwise undeinfed (ie on page refresh)

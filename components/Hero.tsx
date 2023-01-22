@@ -90,7 +90,7 @@ export default function Hero() {
             </Link>
           ) : (
             <div>
-              {location.length >= 6 && dataValid === false ? (
+              {location.length >= 3 && dataValid === false ? (
                 <button
                   disabled={true}
                   data-testid="button"
@@ -109,7 +109,7 @@ export default function Hero() {
               )}
             </div>
           )}
-          {location.length >= 6 && dataValid === false ? (
+          {location.length >= 3 && dataValid === false ? (
             <div className={styles.error_msg}>
               <p>Enter a valid location or postcode</p>
             </div>
