@@ -3,7 +3,6 @@ import { MapContainer } from 'react-leaflet';
 import { TileLayer } from 'react-leaflet';
 import { Marker } from 'react-leaflet';
 import { Popup } from 'react-leaflet';
-// import * as bardata from '../bar-data.json';
 import { JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from 'react';
 import styles from '../styles/map.module.css'
 import { resultsArrType, singleBarType } from '../data/types';
@@ -31,7 +30,7 @@ export default function Map({results, heroPageQuery}: propsObjType){
         id="map"
         data-testId="map-container"
         center={[Number(heroPageQuery.location[1]), Number(heroPageQuery.location[0])]}
-        zoom={14}
+        zoom={13}
         scrollWheelZoom={false}
         style={{ height: "700px", width: "55%" }}
       >
