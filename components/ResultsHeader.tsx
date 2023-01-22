@@ -1,16 +1,26 @@
 import Link from "next/link";
 import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
-import { dataObjectType, resultsHeaderPropsType, dataPCType } from "../data/types";
-import { useState } from 'react'
+import { resultsHeaderPropsType, dataPCType } from "../data/types";
+import { useEffect, useState } from 'react'
 
 export default function ResultsHeader(props: resultsHeaderPropsType ) {
   const [input, setInput] = useState('')
-  const [placeHolderText, setPlaceHolderText] = useState(props.heroPageQuery?.searchInputPlaceholder?.charAt(0).toUpperCase() + props.heroPageQuery?.searchInputPlaceholder?.slice(1))
+  const [placeHolderText, setPlaceHolderText] = useState(`${props.location?.searchInputPlaceholder?.charAt(0).toUpperCase()}${props.location?.searchInputPlaceholder?.slice(1)}`)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value.toLowerCase())
   }
+
+  //gets placeholderText from local storage if otherwise undeinfed (ie on page refresh)
+  useEffect(() => {
+    if (props.location?.searchInputPlaceholder === undefined) {
+      const storedPlaceholder = localStorage.getItem('storedPageHeader')
+      if (storedPlaceholder !== null) {
+        setPlaceHolderText(storedPlaceholder)
+      }
+    }
+  }, [props.location?.searchInputPlaceholder])
 
   //e is typed as 'any' fix if poss?
   async function handleNewLocation(e: any) {
@@ -19,19 +29,24 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
         const relocation = {...props.location.location, searchInputPlaceholder: 'London', location: ['-0.118092', '51.509865']}
         props.setLocation(relocation)
         setPlaceHolderText('London')
+        localStorage.setItem('storedLocation', ['-0.118092', '51.509865'].toString())
+        localStorage.setItem('storedPageHeader', 'London')
       } else if (input === "birmingham") {
-        const relocation = {...props.location.location, searchInputPlaceholder: 'Birmingham', location: ['-1.898575', '52.489471']}
-        props.setLocation(relocation)
-        setPlaceHolderText('Birmingham')
+          const relocation = {...props.location.location, searchInputPlaceholder: 'Birmingham', location: ['-1.898575', '52.489471']}
+          props.setLocation(relocation)
+          setPlaceHolderText('Birmingham')
+          localStorage.setItem('storedLocation', ['-1.898575', '52.489471'].toString())
+          localStorage.setItem('storedPageHeader', 'Birmingham')
       } else if (input === "manchester") {
-        const relocation = {...props.location.location, searchInputPlaceholder: 'Manchester', location: ['-2.244644', '53.483959']}
-        props.setLocation(relocation)
-        setPlaceHolderText('Manchester')
+          const relocation = {...props.location.location, searchInputPlaceholder: 'Manchester', location: ['-2.244644', '53.483959']}
+          props.setLocation(relocation)
+          setPlaceHolderText('Manchester')
+          localStorage.setItem('storedLocation', ['-2.244644', '53.483959'].toString())
+          localStorage.setItem('storedPageHeader', 'Manchester')
     } else {
         const url = `https://api.postcodes.io/postcodes/${input}`
         const response = await fetch(url + '/validate')
         const data = await response.json()
-        console.log('pc validate data', data)
           if (data.result === true) {
             const responsePC = await fetch (url)
             const dataPC: dataPCType = await responsePC.json()
@@ -40,6 +55,8 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
             const relocation = {...props.location.location, searchInputPlaceholder: dataPC.result.admin_district, location: newCoords}
             props.setLocation(relocation)
             setPlaceHolderText(dataPC.result.admin_district)
+            localStorage.setItem('storedLocation', newCoords.toString())
+          localStorage.setItem('storedPageHeader', dataPC.result.admin_district)
             }
         }
     }

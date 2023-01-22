@@ -59,9 +59,7 @@ export default function Hero() {
       localStorage.setItem('storedLocation', `${longLat}`)
       localStorage.setItem('storedPageHeader', `${locationForResultsPageHeader}`)
     }
-
     storeCoords()
-
   },[longLat])
 
   return (
