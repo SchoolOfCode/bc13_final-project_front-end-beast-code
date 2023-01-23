@@ -1,11 +1,12 @@
 import ResultsHeader from "../../components/ResultsHeader"
 import ResultsSearchSection from "../../components/ResultsSearchSection"
 import styles from "../../styles/resultspage.module.css"
-import { useState, useEffect, SetStateAction } from "react"
+import { useState, useEffect, SetStateAction, CSSProperties } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
 import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
+import ClipLoader from "react-spinners/ClipLoader";
 import { type } from "os"
 import { matchesMiddleware } from "next/dist/shared/lib/router/router"
 
@@ -20,6 +21,8 @@ declare global {
 }
 
 export default function Results() {
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#FFF");
   const [filters, setFilters] = useState(filterOptions)
   const [allResults, setAllResults] = useState<resultsArrType>([])
   const [results, setResults] = useState<resultsArrType>([])
@@ -49,6 +52,7 @@ export default function Results() {
 
   // FETCH REQUEST 
   async function getData() {
+    setLoading(true)
     if (location.location !== undefined) {
       const deployed = "https://cheers-bar-finder.onrender.com/"
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`;
@@ -58,11 +62,12 @@ export default function Results() {
         element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
         return element;
       })
+      setLoading(false)
       setResults(newResults)
       setAllResults(newResults)
     }
   }
-
+  
   useEffect(() => {
     getData()
   }, [location])
@@ -221,6 +226,17 @@ export default function Results() {
           queryFilters={queryFilters}
           getQueryInput={getQueryInput}
         />
+      <div className={styles.spinner}>
+       <div>
+        <ClipLoader
+          color="#AF8541"
+          loading={loading}   
+          size={150}
+          aria-label="Loading-Spinner"
+          data-testid="loader"
+        />
+        </div>
+      </div>
       </div>
     </>
   );

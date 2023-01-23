@@ -1,9 +1,15 @@
 
 .results_main {
-    background-color: rgb(0, 0, 0);
+    background-color: #000707;
     color: white;
     width: 100%;
     /* display: flex;
     justify-content: center;
     align-items: center; */
+}
+
+
+.spinner {
+    display: flex;
+    padding-left: 43.5vw !important;
 }
