@@ -156,6 +156,7 @@ export default function Results() {
         if (filters[i].options[j].data === event.target.id) {
           newFilters[i].options[j].checked = false;
         }
+        //Checks for numbers (the id had to be a string)
         if (filters[i].options[j].data === Number(event.target.id)) {
           newFilters[i].options[j].checked = false;
         }

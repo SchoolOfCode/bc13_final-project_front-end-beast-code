@@ -346,6 +346,7 @@
     margin-bottom: 20px;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .query_filter_option {
