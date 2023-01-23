@@ -166,7 +166,7 @@ export default function Results() {
   }
 
   function getQueryInput(event: any) {
-      setQueryInput(event.target.value)
+      setQueryInput(event.target.value.toLowerCase())
   }
 
   //Look through the results array for any instances of the user's search term
