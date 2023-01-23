@@ -35,7 +35,7 @@
     padding-bottom: 9px;
     padding-top: 17px;
     font-size: 16px;
-    background-color: black;
+    background-color: #000707;
     color: white;
 }
 
@@ -283,12 +283,12 @@
             width: 35px;
             background-size: contain;
             background-repeat: no-repeat;
+           
             background-image: url('../public/search-icon.png')
-        }
-
-        .dropdown_inner_container {
-            margin-bottom: 0px;
-        }
+             }
+            .dropdown_inner_container {
+                margin-bottom: 0px;
+            }
 }
 
 .filter_section_container {

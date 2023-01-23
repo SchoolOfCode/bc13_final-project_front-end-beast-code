@@ -20,13 +20,13 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.02rem;
-    border-top: 1px solid black;
+    border-top: 1px solid #000707;
     max-width: 1020px;
 }
 
 .main_body {
     width: 100%;
-    background-color: black;
+    background-color: #000707;
     min-height: 400px;
     display: flex;
     align-items: center;
