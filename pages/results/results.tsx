@@ -145,6 +145,22 @@ export default function Results() {
     findDif();
   }, [filters]);
 
+  function removeOption(event: any): void {
+    let newFilters = [...filters]
+    for (let i = 0; i < filters.length; i++) {
+      for (let j = 0; j < filters[i].options.length; j++) {
+        console.log(filters[i].options[j])
+        if (filters[i].options[j].data === event.target.id) {
+          newFilters[i].options[j].checked = false;
+        }
+        if (filters[i].options[j].data === Number(event.target.id)) {
+          newFilters[i].options[j].checked = false;
+        }
+      }
+    }
+    setFilters(newFilters)
+  }
+
   function getQueryInput(event: any) {
       setQueryInput(event.target.value)
   }
@@ -235,6 +251,7 @@ export default function Results() {
           queryFilters={queryFilters}
           getQueryInput={getQueryInput}
           queryInput={queryInput}
+          removeOption={removeOption}
         />
       </div>
     </>

@@ -21,14 +21,13 @@ type propsObj = {
   resetResults: MouseEventHandler<HTMLButtonElement>;
   getQueryInput: ChangeEventHandler<HTMLInputElement>;
   queryInput: string;
+  removeOption: MouseEventHandler<HTMLButtonElement>
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption }: propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
   const [panelState, setPanelState] = useState(false);
-
-  console.log(queryFilters)
 
   function updateNumberOfResults() {
     setNumberOfResults(numberOfResults + 9);
@@ -89,7 +88,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
       <>
       <div className={styles.filter_section_container}>
         {/* First attempt at displaying filter options */}
-      {queryFilters ? <div className={styles.query_filters_container}>{queryFilters.map(filter => <div className={styles.query_filter_option} key={filter.category}>{filter.category.split("_")[0]}: {filter.options.map(option => <p key={option}>{option}</p>)}</div>)}</div> : null}
+      {queryFilters ? <div className={styles.query_filters_container}>{queryFilters.map(filter => <div className={styles.query_filter_option} key={filter.category}>{filter.category.split("_")[0]}: {filter.options.map(option => <p key={option}>{option}<button className={styles.query_filter_delete} id={`${option}`} onClick={removeOption}>X</button></p>)}</div>)}</div> : null}
         <div className={styles.all_filter_buttons}>        
           <div className={styles.dropdown_container}>
             {panelState ? null : (
