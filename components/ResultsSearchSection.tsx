@@ -83,23 +83,40 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
       <>
         <div className={styles.all_filter_buttons}>
           <div className={styles.dropdown_container}>
-            {panelState ? null : <>
-              <FilterDropdown
-                filters={filters.filter((element, index) => index < 4)}
-                setDropdown={setDropdown}
-                setCheckbox={setCheckbox}
-              />
-              <div className={styles.button_container}>
-                <button className={styles.filters_button} onClick={getFilteredData}>Apply filters</button>
-                <button data-testid="reset-button" className={styles.reset_button} onClick={getData}>Reset</button>
-                <button
-                  onClick={() => setPanelState(true)}
-                  className={styles.more_filters_button}
-                  data-testid="more-filters">More Filters</button>
-              </div>
-            </>
-            }
+            {panelState ? null : (
+              <>
+                <div className={styles.dropdown_inner_container}>
+                  <FilterDropdown
+                    filters={filters.filter((element, index) => index < 4)}
+                    setDropdown={setDropdown}
+                    setCheckbox={setCheckbox}
+                  />
 
+                  <button
+                    className={styles.filters_button}
+                    onClick={getFilteredData}
+                  >
+                    Apply filters
+                  </button>
+                </div>
+                <div className={styles.button_container}>
+                  <button
+                    data-testid="reset-button"
+                    className={styles.reset_button}
+                    onClick={getData}
+                  >
+                    Reset
+                  </button>
+                  <button
+                    onClick={() => setPanelState(true)}
+                    className={styles.more_filters_button}
+                    data-testid="more-filters"
+                  >
+                    More Filters
+                  </button>
+                </div>
+              </>
+            )}
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel
@@ -110,25 +127,22 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             setPanelState={setPanelState}
           />
         </div>
-        {view === "list" ?
-          <BarCards
-            results={results}
-            numberOfResults={numberOfResults}
-          /> :
-          <Map
-            results={results}
-            heroPageQuery={heroPageQuery}
-          />
-        }
+        {view === "list" ? (
+          <BarCards results={results} numberOfResults={numberOfResults} />
+        ) : (
+          <Map results={results} heroPageQuery={heroPageQuery} />
+        )}
         {view === "list" ? (
           <div className={styles.button_centering}>
             {numberOfResults > results.length ? null : <button
               className={styles.load_more_button}
               onClick={updateNumberOfResults}
             >
-              <span onClick={updateNumberOfResults}>Load More</span> </button>} 
-            
-          </div>) : null}
+              <span onClick={updateNumberOfResults}>Load More</span>
+            </button>
+          </div>
+        ) : null}
+
 
         {/* <div className={styles.button_centering}>
           <button className={styles.load_more_button}>

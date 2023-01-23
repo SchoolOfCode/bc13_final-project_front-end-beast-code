@@ -32,13 +32,14 @@
     justify-content: space-around;
 }
 
-.about_us>h3 {
+.about_us>h3, .login>h3 {
     display: inline-block;
     position: relative;
     color: var(--gold);
+    cursor: pointer;
 }
 
-.about_us>h3::after {
+.about_us>h3::after, .login>h3::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -51,30 +52,7 @@
     transition: transform 0.25s ease-out;
 }
 
-.about_us>h3:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.login>h3 {
-    display: inline-block;
-    position: relative;
-}
-
-.login>h3::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: -3px;
-    left: 0;
-    background-color: var(--gold);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.login>h3:hover::after {
+.about_us>h3:hover::after, .login>h3:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
@@ -86,172 +64,58 @@
     position: fixed;
 }
 
-.Navbar{
-    width:100%;
-    background-color: transparent;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    padding-left: 45px; 
-    padding-right: 45px;
-    justify-content: space-between;
-    position: absolute;
-    z-index: 3;
-}
-
-.nav_toggle{
+.checkbtn {
     display: none;
 }
 
-.logo{
-    font-size: 26px;
-    color: var(--white);
-    display: flex;
-    justify-content: space-between;
-    width:140px;
-}
-
-.about_login{
-    display: flex;
-    width: 230px;
-    justify-content: space-around;
-}
-
-.about_us>h3 {
-    display: inline-block;
-    position: relative;
-    color: var(--gold);
-}
-
-.about_us>h3::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: -3px;
-    left: 0;
-    background-color: var(--gold);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.about_us>h3:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.login>h3 {
-    display: inline-block;
-    position: relative;
-}
-
-.login>h3::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: -3px;
-    left: 0;
-    background-color: var(--gold);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.login>h3:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.HeroImage {
-    height: 100vh;
-    width: 100vw;
-    z-index: -1;
-    position: fixed;
-}
-
-.about_login>div>h3>a {
-    text-decoration: none;
-    color: var(--white);
-    width: 100px;
-    height: 20px;
-    position: relative;
-}
-
 @media (max-width: 500px) {
-    .Navbar>.about_login>div>h3 {
-        position: absolute;
-        top: 60px;
-        display: flex;
-        flex-direction: column;
-        background: var(--gold);
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transform: translateX(-100%);
-        transition: all .45s;
-    }
-
-    .about_login>div>h3>a {
-        background: transparent;
-    }
-
-    .about_login_open {
-        transform: translateX(0);
-    }
-
-    .nav_toggle {
-        display: flex;
-        width: 50px;
-        height: 50px;
-        align-items: center;
-        justify-content: center;
+    .checkbtn {
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../public/menu.png');
+        float: right;
+        line-height: 80px;
+        margin-right: 20px;
+        cursor: pointer;
+        margin-top: 0px;
         cursor: pointer;
     }
-
-    .nav_toggle>.bar {
-        position: relative;
-        width: 32px;
-        height: 2px;
-        background: #ffffff;
-        transition: all 0.45s ease-in-out;
+        .about_login>div>h3>a {
+            display: none;
+        }
+        .about_us>h3
+        .login>h3 {
+            display: block;
+            margin: 30px 0px;
+            line-height: 80px;
+            border: 1px solid red;
+        }
+    .about_login{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: var(--green);
+        top: 80px;
+        transform: translateX(-114%);
+        transition: all .5s;
+        text-align: center;
     }
-
-    .nav_toggle>.bar::before,
-    .nav_toggle>.bar::after {
-        content: "";
-        position: absolute;
-        height: 2px;
-        background: #ffffff;
-        border-radius: 2px;
-        transition: all 0.45s ease-in-out;
+    .about_login_checked{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: var(--green);
+        top: 60px;
+        transform: translateX(-11%);
+        transition: all .5s;
+        text-align: center;
+        box-sizing: none;
     }
-
-    .nav_toggle>.bar::before {
-        width: 25px;
-        transform: translateY(-8px);
-        right: 0;
+    .about_login_checked>div>h3{
+        margin-top: 35px;
+        color: white;
     }
-
-    .nav_toggle>.bar::after {
-        width: 32px;
-        transform: translateY(8px);
-    }
-
-    .nav_toggle_open>.bar {
-        transform: translateX(-40px);
-        background: transparent;
-    }
-
-    .nav_toggle_open>.bar::before {
-        width: 32px;
-        transform: rotate(45deg) translate(26px, -26px);
-    }
-
-    .nav_toggle_open>.bar::after {
-        transform: rotate(-45deg) translate(26px, 26px);
-    }
-
-
 }

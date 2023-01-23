@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
+
 import { resultsHeaderPropsType, dataPCType } from "../data/types";
 import { useEffect, useState } from 'react'
 
@@ -24,6 +25,7 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
 
   //e is typed as 'any' fix if poss?
   async function handleNewLocation(e: any) {
+
     if (e.key === 'Enter') {
       if (input === "london" ) {
         const relocation = {...props.location.location, searchInputPlaceholder: 'London', location: ['-0.118092', '51.509865']}
@@ -59,6 +61,7 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
           localStorage.setItem('storedPageHeader', dataPC.result.admin_district)
             }
         }
+      }
     }
   }
 

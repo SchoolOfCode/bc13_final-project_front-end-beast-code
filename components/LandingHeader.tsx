@@ -1,8 +1,10 @@
 import styles from "../styles/LandingHeader.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function LandingHeader() {
+  const [isCheck, setIsCheck] = useState(false);
   return (
     <>
       <div className={styles.Navbar}>
@@ -10,19 +12,23 @@ export default function LandingHeader() {
           <Image src="/Logo.png" width={33} height={33} alt="logo"></Image>
           <strong>Cheers</strong>
         </div>
-        <div className={styles.about_login}>
+        <div
+          onClick={() => {
+            setIsCheck(!isCheck);
+          }}
+          className={styles.checkbtn}
+        ></div>
+        <div
+          className={isCheck ? styles.about_login_checked : styles.about_login}
+        >
           <div className={styles.about_us}>
             <h3>
-              <Link href="/results/results" data-testid="about-us">
-                About us
-              </Link>
+              <a>About us</a>
             </h3>
           </div>
           <div className={styles.login}>
             <h3>
-              <a href="#" data-testid="login">
-                Login
-              </a>
+              <a data-testid="login">Login</a>
             </h3>
           </div>
         </div>
