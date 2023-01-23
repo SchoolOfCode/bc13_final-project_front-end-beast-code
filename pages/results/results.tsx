@@ -63,6 +63,20 @@ export default function Results() {
     }
   }
 
+  function resetResults(){
+    const newFilters = filters.map(el => {
+      el.isOpen = false; 
+      el.options.map(el2 => { 
+        el2.checked = false
+        return el2
+      })
+      return el
+    })
+    setFilters(newFilters)
+    setResults(allResults)
+    setQueryInput("")
+  }
+
   useEffect(() => {
     getData()
   }, [location])
@@ -216,10 +230,11 @@ export default function Results() {
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
           heroPageQuery={location}
-          getData={getData}
+          resetResults={resetResults}
           getFilteredData={getFilteredData}
           queryFilters={queryFilters}
           getQueryInput={getQueryInput}
+          queryInput={queryInput}
         />
       </div>
     </>

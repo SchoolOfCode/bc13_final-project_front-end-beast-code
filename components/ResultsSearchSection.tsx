@@ -18,14 +18,17 @@ type propsObj = {
     searchInputPlaceholder: string;
   };
   queryFilters: checkedOpsArrType;
-  getData: MouseEventHandler<HTMLButtonElement>;
+  resetResults: MouseEventHandler<HTMLButtonElement>;
   getQueryInput: ChangeEventHandler<HTMLInputElement>;
+  queryInput: string;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, getData, getQueryInput }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput }: propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
   const [panelState, setPanelState] = useState(false);
+
+  console.log(queryFilters)
 
   function updateNumberOfResults() {
     setNumberOfResults(numberOfResults + 9);
@@ -52,6 +55,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
           <div data-testid={"search-icon"} className={styles.search_icon}></div>
           <input
             className={styles.keyword_input}
+            value={queryInput}
             type="text"
             placeholder="Search by keyword"
             data-testid="search-input"
@@ -83,7 +87,10 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
       </div>
       {/* Map toggle button */}
       <>
-        <div className={styles.all_filter_buttons}>
+      <div className={styles.filter_section_container}>
+        {/* First attempt at displaying filter options */}
+      {queryFilters ? <div className={styles.query_filters_container}>{queryFilters.map(filter => <div className={styles.query_filter_option} key={filter.category}>{filter.category.split("_")[0]}: {filter.options.map(option => <p key={option}>{option}</p>)}</div>)}</div> : null}
+        <div className={styles.all_filter_buttons}>        
           <div className={styles.dropdown_container}>
             {panelState ? null : (
               <>
@@ -105,7 +112,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                   <button
                     data-testid="reset-button"
                     className={styles.reset_button}
-                    onClick={getData}
+                    onClick={resetResults}
                   >
                     Reset
                   </button>
@@ -127,8 +134,10 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             setCheckbox={setCheckbox}
             panelState={panelState}
             setPanelState={setPanelState}
+            resetResults={resetResults}
           />
         </div>
+      </div>
         {view === "list" ? (
           <BarCards results={results} numberOfResults={numberOfResults} />
         ) : (
