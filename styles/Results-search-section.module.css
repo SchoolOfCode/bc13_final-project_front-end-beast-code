@@ -325,18 +325,27 @@
 
 .query_filter_option {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     background-color: var(--green);
     padding: 5px;
     border-radius: 5px;
 }
 
+.query_filter_option>p{
+    display: flex;
+    align-items: center;
+}
+
 .query_filter_delete {
-    padding-left: 5px;
-    padding-right: 5px;
-    color: white;
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
     background-color: transparent;
-    font-weight: bold;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/resultsSearchSection-cross-icon.png');
 }
 
 
