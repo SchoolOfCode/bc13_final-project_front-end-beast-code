@@ -79,7 +79,9 @@ export default function Hero() {
   }, [longLat]);
 
   function handleUserInput() {
-    const userInput = userLocationInput!.current!.value;
+    const userInput = userLocationInput!
+      .current!.value.toLowerCase()
+      .replace(/\s/g, "");
     setLocation(userInput);
   }
 
