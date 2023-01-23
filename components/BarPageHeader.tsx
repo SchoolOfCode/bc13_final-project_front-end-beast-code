@@ -22,9 +22,11 @@ export default function BarPageHeader() {
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>
-              <a href="#" data-testid="about-us">
+              <Link href="/aboutus">
+              <p>
                 About us
-              </a>
+              </p>
+              </Link>
             </h3>
           </div>
           <div className={styles.login}>
