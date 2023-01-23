@@ -145,8 +145,11 @@ export default function Results() {
     findDif();
   }, [filters]);
 
+  //Unchecks options if users click the "X" next to the option displayed above the dropdowns
+    //Small issue: if two numbers are the same both options will be removed, adding a fix for this as a stretch goal ticket
   function removeOption(event: any): void {
     let newFilters = [...filters]
+    //Looks for any filter options that match the id of the option that was clicked
     for (let i = 0; i < filters.length; i++) {
       for (let j = 0; j < filters[i].options.length; j++) {
         console.log(filters[i].options[j])
