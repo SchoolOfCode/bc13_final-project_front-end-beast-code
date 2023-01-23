@@ -17,7 +17,7 @@ export default function Hero() {
 
   useEffect(() => {
     async function validateLocation(input: string) {
-      if (input.length >= 6 ) {
+      if (input.length >= 3 ) {
         if (input === "london" ) {
           setLongLat([-0.118092, 51.509865])
           setDataValid(true)
