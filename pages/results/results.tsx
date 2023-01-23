@@ -4,10 +4,8 @@ import styles from "../../styles/resultspage.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
-import { dataObjectType, filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
+import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
-
-//localStorage.setItem('pageLoadCount', 0)
 
 //DO NOT DELETE
 declare global {
@@ -24,11 +22,24 @@ export default function Results() {
   const [results, setResults] = useState<resultsArrType>([])
   const router = useRouter() as TRouter;
   const heroPageQuery = router.query;
-  console.log("heroPageUserInput", heroPageQuery);
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
   const [location, setLocation] = useState<ParsedUrlQuery & {
     location: string[];
     searchInputPlaceholder: string;}>(heroPageQuery)
+
+    //gets location from local storage if query from landing page is undefined (ie on page refresh) 
+    useEffect (() => {
+      const storedLocation = localStorage.getItem('storedLocation')
+      const storedPlaceholder = localStorage.getItem('storedPageHeader')
+      if ((location.location === undefined) && (storedLocation!== null)&& (storedPlaceholder!== null)) {
+        const locationFromLocalStor = { 
+          location: storedLocation?.split(','),
+          searchInputPlaceholder: storedPlaceholder
+        }
+        setLocation(locationFromLocalStor)
+      }
+    }, [location])
+
 
   // FETCH REQUEST 
   async function getData() {
@@ -122,7 +133,7 @@ export default function Results() {
           filters={filters}
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
-          heroPageQuery={heroPageQuery}
+          heroPageQuery={location}
           getData={getData}
           getFilteredData={getFilteredData}
           queryFilters={queryFilters}
