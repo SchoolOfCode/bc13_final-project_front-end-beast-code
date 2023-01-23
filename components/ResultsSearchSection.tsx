@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { ChangeEventHandler, MouseEventHandler } from "react";
 import FilterDropdown from "./FilterDropdown";
 import FilterPanel from "./FilterPanel";
 import styles from "../styles/Results-search-section.module.css";
@@ -19,9 +19,10 @@ type propsObj = {
   };
   queryFilters: checkedOpsArrType;
   getData: MouseEventHandler<HTMLButtonElement>;
+  getQueryInput: ChangeEventHandler<HTMLInputElement>;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, getData }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, getData, getQueryInput }: propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
   const [panelState, setPanelState] = useState(false);
@@ -54,6 +55,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             type="text"
             placeholder="Search by keyword"
             data-testid="search-input"
+            onChange={getQueryInput}
           />
           <div className={styles.button_box}>
             <div className={styles[style]}></div>
