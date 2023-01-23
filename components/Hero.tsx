@@ -1,6 +1,5 @@
 import styles from "../styles/hero.module.css";
-import { useState, useEffect, createContext, useRef } from "react";
-import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 import { dataPCType } from "../data/types";
 import Router from "next/router";
 
@@ -12,11 +11,11 @@ export default function Hero() {
   const [dataValidonClick, setDataValidonClick] = useState<boolean>(false);
   const [locationForResultsPageHeader, setLocationForResultsPageHeader] =
     useState("");
-
-  // function getLocation(event: React.ChangeEvent<HTMLInputElement>) {
-  //   // const userInput = event.target.value.toLowerCase().replace(/\s/g, '')
-  //   // setLocation(userInput)
-  // }
+  
+  function handleUserInput() {
+    const userInput = userLocationInput!.current!.value.toLowerCase().replace(/\s/g, "");
+    setLocation(userInput);
+  }
 
   useEffect(() => {
     async function validateLocation(input: string) {
@@ -78,13 +77,6 @@ export default function Hero() {
     storeCoords();
   }, [longLat]);
 
-  function handleUserInput() {
-    const userInput = userLocationInput!
-      .current!.value.toLowerCase()
-      .replace(/\s/g, "");
-    setLocation(userInput);
-  }
-
   return (
     <>
       <div data-testid="main-container" className={styles.main_container}>
@@ -95,7 +87,6 @@ export default function Hero() {
           <input
             placeholder="Location or Postcode"
             data-testid="input"
-            // onChange={getLocation}
             ref={userLocationInput}
           ></input>
           <button
@@ -110,46 +101,6 @@ export default function Hero() {
               <p>Enter a valid location or postcode</p>
             </div>
           ) : null}
-          {/* {dataValid ? (
-            <Link
-              href={{
-                pathname: "/results/results",
-                query: {
-                  location: longLat,
-                  searchInputPlaceholder: locationForResultsPageHeader,
-                },
-              }}
-            >
-              <button data-testid="button" className={styles.search_button}>
-                <span>Search</span>
-              </button>
-            </Link>
-          ) : (
-            <div>
-              {location.length >= 3 && dataValid === false ? (
-                <button
-                  disabled={true}
-                  data-testid="button"
-                  className={styles.search_button}
-                >
-                  <span>Search</span>
-                </button>
-              ) : (
-                <button
-                  disabled={false}
-                  data-testid="button"
-                  className={styles.search_button}
-                >
-                  <span>Search</span>
-                </button>
-              )}
-            </div>
-          )}
-          {location.length >= 3 && dataValid === false ? (
-            <div className={styles.error_msg}>
-              <p>Enter a valid location or postcode</p>
-            </div>
-          ) : null} */}
         </div>
       </div>
     </>

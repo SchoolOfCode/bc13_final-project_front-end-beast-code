@@ -7,8 +7,8 @@ export default function BarPageHeader() {
   return (
     <>
       <div className={styles.Navbar}>
-        <div className={styles.logo} data-testid="logo">
-          <Link href="/">
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <div className={styles.logo} data-testid="logo">
             <Image
               src="/Logo.png"
               width={32}
@@ -16,9 +16,9 @@ export default function BarPageHeader() {
               alt="logo"
               className={styles.logo_icon}
             ></Image>
-          </Link>
-          <strong>Cheers</strong>
-        </div>
+            <strong>Cheers</strong>
+          </div>
+        </Link>
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>
