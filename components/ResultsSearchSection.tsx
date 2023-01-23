@@ -139,7 +139,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
               onClick={updateNumberOfResults}
             >
               <span onClick={updateNumberOfResults}>Load More</span>
-            </button>
+            </button>}
           </div>
         ) : null}
 
