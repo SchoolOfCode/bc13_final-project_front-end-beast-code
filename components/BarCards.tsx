@@ -11,11 +11,9 @@ type propsObjectType = {
 
 function BarCards({results, numberOfResults}: propsObjectType) {
 
-  return (
-    <div className={styles.outerCardContainer}>
+  return (<div className={styles.outerCardContainer}>
       <div className={styles.cardContainer}>
-
-        {results.slice(0, numberOfResults).map((item, index) => (
+        {results.length > 0 ? results.slice(0, numberOfResults).map((item, index) => (
           <Link href={`/bar/${item._id}`} key={index}>
             <ResultCard
               key={index}
@@ -29,7 +27,7 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               vibe={item.Vibe}
             />
           </Link>
-        ))}
+        )) : <h2>Sorry, no results found :(</h2>}
       </div>
     </div>
   );
