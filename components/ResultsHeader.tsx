@@ -63,7 +63,7 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
         }
       }
     }
-  }
+  
 
   return (
     <>
