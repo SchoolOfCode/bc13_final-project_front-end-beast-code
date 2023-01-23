@@ -14,7 +14,7 @@ type propsObj = {
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
   getFilteredData: MouseEventHandler<HTMLButtonElement>;
   heroPageQuery: {
-    location: string[];
+    location: string[] | string;
     searchInputPlaceholder: string;
   };
   queryFilters: checkedOpsArrType;

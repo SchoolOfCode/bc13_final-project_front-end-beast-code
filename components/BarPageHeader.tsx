@@ -8,6 +8,7 @@ export default function BarPageHeader() {
     <>
       <div className={styles.Navbar}>
         <div className={styles.logo} data-testid="logo">
+          
           <Link href="/">
             <Image
               src="/Logo.png"
