@@ -1,11 +1,13 @@
 import ResultsHeader from "../../components/ResultsHeader"
 import ResultsSearchSection from "../../components/ResultsSearchSection"
 import styles from "../../styles/resultspage.module.css"
-import { useState, useEffect } from "react"
+import { useState, useEffect, SetStateAction } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
 import { dataObjectType, filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
+import { type } from "os"
+import { matchesMiddleware } from "next/dist/shared/lib/router/router"
 
 //localStorage.setItem('pageLoadCount', 0)
 
@@ -21,14 +23,17 @@ declare global {
 
 export default function Results() {
   const [filters, setFilters] = useState(filterOptions)
+  const [allResults, setAllResults] = useState<resultsArrType>([])
   const [results, setResults] = useState<resultsArrType>([])
+  const [queryInput, setQueryInput] = useState("")
+  const [queryInputMatches, setQueryInputMatches] = useState<any>([])
   const router = useRouter() as TRouter;
   const heroPageQuery = router.query;
-  console.log("heroPageUserInput", heroPageQuery);
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
   const [location, setLocation] = useState<ParsedUrlQuery & {
     location: string[];
-    searchInputPlaceholder: string;}>(heroPageQuery)
+    searchInputPlaceholder: string;
+  }>(heroPageQuery)
 
 
   // FETCH REQUEST 
@@ -38,16 +43,17 @@ export default function Results() {
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`
       const response = await fetch(url)
       const data = await response.json()
-      const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
+      const newResults: resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
         element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
         return element;
       })
       setResults(newResults)
+      setAllResults(newResults)
     }
   }
 
   useEffect(() => {
-     getData()
+    getData()
   }, [location])
 
   async function getFilteredData() {
@@ -63,7 +69,7 @@ export default function Results() {
           })
         })
       const data = await response.json()
-      const newResults : resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
+      const newResults: resultsArrType = data.payload.map((element: { location: { coordinates: [number, number] } }) => {
         element.location.coordinates = [element.location.coordinates[1], element.location.coordinates[0]]
         return element;
       })
@@ -96,7 +102,7 @@ export default function Results() {
     });
     setFilters(newFilters);
   }
-  
+
   useEffect(() => {
     function findDif() {
       const checkedOps: checkedOpsArrType = filters
@@ -109,10 +115,85 @@ export default function Results() {
           };
         })
         .filter(element => element.options.length > 0);
-        setQueryFilters(checkedOps)
+      setQueryFilters(checkedOps)
     }
     findDif();
   }, [filters]);
+
+  function getQueryInput(event: any) {
+      setQueryInput(event.target.value)
+  }
+
+  //Look through the results array for any instances of the user's search term
+  function findQueryInput() {
+    setResults(allResults)
+    const matches : any = []
+    if (queryInput.length > 0){
+      //Loops over each results object
+    for (let i = 0; i < results.length; i++) {
+      //Builds an array of only the values of each object (only the strings), all items to lowercase and stripped of punctuation
+      const stringValues: any = Object.values(results[i]).filter(el => typeof (el) === "string").map(item => typeof (item) === "string" ? removePunctuation(item.toLowerCase()) : null)
+       //See above but only arrays
+      const arrayValues: any = Object.values(results[i]).filter(el => Array.isArray(el)).map(item => Array.isArray(item) ? item.map(arrayItem => removePunctuation(arrayItem.toLowerCase())) : null)
+      //Both arrays are put together again (had to be separated because of TypeScript errors)
+      const values = [...stringValues, ...arrayValues]
+      //Loop over the new values array
+      for (let j = 0; j < values.length; j++) {
+        //Check for matches in strings
+        if (typeof (values[j]) === "string") {
+          if (values[j].includes(queryInput)){
+            if (matches.includes(values[0]) === false){
+              //Push the id of the result into an array
+              matches.push(values[0])
+            }
+          }
+        }
+        //Check for matches in arrays
+        else {
+          if (values[j].includes(queryInput)){
+            if (matches.includes(values[0]) === false){
+              matches.push(values[0])
+            }
+          }
+          if (values[j].some((el: string | string[]) => el.includes(queryInput))){
+            if (matches.includes(values[0]) === false){
+              matches.push(values[0])
+            }
+          }
+        }
+      }
+    }
+    }
+    if (matches.length > 0){
+      setQueryInputMatches(matches)
+    }
+    else {
+      setQueryInputMatches([])
+      setResults(allResults)
+    }
+  }
+
+  useEffect(() => {
+    //Calls the "findQueryInput" function every time the queryInput changes (i.e. the user types something in the input box)
+    findQueryInput()
+  }, [queryInput])
+
+  useEffect(() => {
+    //Compare the ids stored in "queryInputMatches" against the ids in the results array and find matches
+    if (queryInputMatches.length > 0){
+      const newResults = allResults.filter(element => queryInputMatches.includes(element._id))
+      //Update the results accordingly
+      setResults(newResults)
+    }
+    else {
+      //Otherwise set the results back to "allResults"
+      setResults(allResults)
+    }
+  }, [queryInputMatches])
+
+  function removePunctuation(string: string) {
+    return string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, " ");
+  }
 
   return (
     <>
@@ -127,6 +208,7 @@ export default function Results() {
           getData={getData}
           getFilteredData={getFilteredData}
           queryFilters={queryFilters}
+          getQueryInput={getQueryInput}
         />
       </div>
     </>
