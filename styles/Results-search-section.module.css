@@ -161,14 +161,12 @@
 }
 
 .button_container {
-    /* border: 3px solid blue; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .dropdown_inner_container{
     margin-bottom: 10px;
-    /* border: 5px solid red; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,50 +185,8 @@
     font-size: 16px;
     width: 160px;
     height: 50px;
-    border-radius: 10px;
-    margin-top: 110px;
-    margin-bottom: 110px;
-    cursor: pointer;
-}
-
-.load_more_button>span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-
-.load_more_button>span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -5px;
-    transition: 0.5s;
-}
-
-.load_more_button:hover span {
-    padding-right: 18px;
-}
-
-.load_more_button:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
-.button_centering{
-    text-align: center;
-}
-
-.load_more_button{
-    background-color: var(--gold);
-    color: white;
-    font-size: 16px;
-    width: 160px;
-    height: 50px;
     border-radius: 7px;
-    margin-top: 110px;
-    margin-bottom: 110px;
+    margin-bottom: 100px;
     cursor: pointer;
 }
 
