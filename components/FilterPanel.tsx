@@ -4,7 +4,7 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import FilterDropdown from "./FilterDropdown";
 import styles from "../styles/filterpanel.module.css"
 
-export default function FilterPanel({filters, setDropdown, setCheckbox, panelState, setPanelState, resetResults} : any){
+export default function FilterPanel({filters, setDropdown, setCheckbox, panelState, setPanelState, resetResults, getFilteredData} : any){
 
     return (
       <div>
@@ -23,7 +23,7 @@ export default function FilterPanel({filters, setDropdown, setCheckbox, panelSta
           hideHeader
         >
           <div className={styles.buttons_div}>
-            <a onClick={() => setPanelState(false)}>
+            <a onClick={() => {setPanelState(false); getFilteredData()}} >
               <div className={styles.done_button}>Done</div>
             </a>
             <a onClick={resetResults}>

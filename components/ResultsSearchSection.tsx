@@ -134,6 +134,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             panelState={panelState}
             setPanelState={setPanelState}
             resetResults={resetResults}
+            getFilteredData={getFilteredData}
           />
         </div>
       </div>
