@@ -21,10 +21,6 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
     );
   }
 
-  function test() {
-    console.log("this is a blur!!")
-  }
-
     return <>
     {filters.map(
       (

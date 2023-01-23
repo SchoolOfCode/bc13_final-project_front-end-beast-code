@@ -63,6 +63,20 @@ export default function Results() {
     }
   }
 
+  function resetResults(){
+    const newFilters = filters.map(el => {
+      el.isOpen = false; 
+      el.options.map(el2 => { 
+        el2.checked = false
+        return el2
+      })
+      return el
+    })
+    setFilters(newFilters)
+    setResults(allResults)
+    setQueryInput("")
+  }
+
   useEffect(() => {
     getData()
   }, [location])
@@ -130,6 +144,26 @@ export default function Results() {
     }
     findDif();
   }, [filters]);
+
+  //Unchecks options if users click the "X" next to the option displayed above the dropdowns
+    //Small issue: if two numbers are the same both options will be removed, adding a fix for this as a stretch goal ticket
+  function removeOption(event: any): void {
+    let newFilters = [...filters]
+    //Looks for any filter options that match the id of the option that was clicked
+    for (let i = 0; i < filters.length; i++) {
+      for (let j = 0; j < filters[i].options.length; j++) {
+        console.log(filters[i].options[j])
+        if (filters[i].options[j].data === event.target.id) {
+          newFilters[i].options[j].checked = false;
+        }
+        //Checks for numbers (the id had to be a string)
+        if (filters[i].options[j].data === Number(event.target.id)) {
+          newFilters[i].options[j].checked = false;
+        }
+      }
+    }
+    setFilters(newFilters)
+  }
 
   function getQueryInput(event: any) {
       setQueryInput(event.target.value)
@@ -216,10 +250,12 @@ export default function Results() {
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
           heroPageQuery={location}
-          getData={getData}
+          resetResults={resetResults}
           getFilteredData={getFilteredData}
           queryFilters={queryFilters}
           getQueryInput={getQueryInput}
+          queryInput={queryInput}
+          removeOption={removeOption}
         />
       </div>
     </>

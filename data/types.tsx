@@ -78,7 +78,7 @@ export interface Dist {
 
 export type checkedOpsArrType = {
     category: string;
-    options: string | number | (string | number | null)[]
+    options: (string | number | null)[]
   }[]
 
 export type heroQueryObject = {
