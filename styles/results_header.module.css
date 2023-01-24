@@ -7,6 +7,8 @@
     padding-left: 45px; 
     padding-right: 45px;
     justify-content: space-between;
+    position: fixed;
+    z-index: 2;
 }
 
 .about_login>div>h3>a{

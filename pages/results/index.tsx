@@ -50,25 +50,29 @@ export default function Results() {
   //Sets whether the "No results" message should be displayed
   const [noResults, setNoResults] = useState(false)
 
-  //Gets location from local storage if query from landing page is undefined (i.e. on page refresh) 
-  useEffect(() => {
-    const storedLocation = localStorage.getItem('storedLocation')
-    const storedPlaceholder = localStorage.getItem('storedPageHeader')
-    if ((location.location === undefined) && (storedLocation !== null) && (storedPlaceholder !== null)) {
-      const locationFromLocalStor = {
-        location: storedLocation?.split(','),
-        searchInputPlaceholder: storedPlaceholder
+  //Gets location from local storage if query from landing page is undefined (i.e. on page refresh) and makes the fetch request whenever the user's location is changed
+    useEffect(() => {
+      if (typeof(location.location) === 'string') {
+        setLocation({location: location.location.split(','), searchInputPlaceholder: location.searchInputPlaceholder} )
       }
-      setLocation(locationFromLocalStor)
-    }
-  }, [location])
+      const storedLocation = localStorage.getItem('storedLocation')
+      const storedPlaceholder = localStorage.getItem('storedPageHeader')
+      if ((location.location === undefined) && (storedLocation !== null) && (storedPlaceholder !== null)) {
+        const locationFromLocalStor = {
+          location: storedLocation?.split(','),
+          searchInputPlaceholder: storedPlaceholder
+        }
+        setLocation(locationFromLocalStor)
+      }
+      resetResults()
+      getData()
+    }, [location])
 
 
   /** Initial fetch request to get all results within 20000m of the user's location */
   async function getData() {
     setLoading(true)
     if ((location.location !== undefined) && (typeof(location.location)=== 'object')) {
-      const deployed = "https://cheers-bar-finder.onrender.com/"
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`;
       const response = await fetch(url)
       const data = await response.json()
@@ -98,13 +102,7 @@ export default function Results() {
   }
 
 
-  //Makes the fetch request whenever the user's location is changed
-  useEffect(() => {
-    if (typeof(location.location) === 'string') {
-      setLocation({location: location.location.split(','), searchInputPlaceholder: location.searchInputPlaceholder} )
-    }
-    getData()
-  }, [location])
+
 
   /** Subsequent fetch request with the user's filter selections inserted into the body to be added as a query to our database */
   async function getFilteredData() {
