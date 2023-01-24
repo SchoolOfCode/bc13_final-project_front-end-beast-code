@@ -30,7 +30,7 @@ export default function LandingHeader() {
           </div>
           <div className={styles.login}>
             <h3>
-              <a data-testid="login">Login</a>
+              <Link href="/underconstruction" data-testid="login">Login</Link>
             </h3>
           </div>
         </div>

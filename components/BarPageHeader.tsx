@@ -31,9 +31,9 @@ export default function BarPageHeader() {
           </div>
           <div className={styles.login}>
             <h3>
-              <a href="#" data-testid="login">
+            <Link href="/underconstruction" data-testid="login">
                 Login
-              </a>
+            </Link>
             </h3>
           </div>
         </div>
