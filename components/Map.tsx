@@ -17,7 +17,7 @@ const customPinIcon = new Icon({
 type propsObjType = {
   results: resultsArrType;
   heroPageQuery: {
-    location: string[];
+    location: string[] | string;
     searchInputPlaceholder: string;
   };
 }

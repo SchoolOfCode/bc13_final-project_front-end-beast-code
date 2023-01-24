@@ -1,13 +1,14 @@
 import Link from "next/link";
 import styles from "../styles/ResultsHeader.module.css";
 import Image from "next/image";
-
+import { useRouter } from 'next/router'
 import { resultsHeaderPropsType, dataPCType } from "../data/types";
 import { useEffect, useState } from 'react'
 
 export default function ResultsHeader(props: resultsHeaderPropsType ) {
   const [input, setInput] = useState('')
   const [placeHolderText, setPlaceHolderText] = useState(`${props.location?.searchInputPlaceholder?.charAt(0).toUpperCase()}${props.location?.searchInputPlaceholder?.slice(1)}`)
+  const router = useRouter() as TRouter;
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value.toLowerCase().replace(/\s/g, ''))
@@ -25,26 +26,28 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
 
   //e is typed as 'any' fix if poss?
   async function handleNewLocation(e: any) {
-
     if (e.key === 'Enter') {
       if (input === "london" ) {
-        const relocation = {...props.location.location, searchInputPlaceholder: 'London', location: ['-0.118092', '51.509865']}
+        const relocation = {...props.location, searchInputPlaceholder: 'London', location: ['-0.118092', '51.509865']}
         props.setLocation(relocation)
         setPlaceHolderText('London')
         localStorage.setItem('storedLocation', ['-0.118092', '51.509865'].toString())
         localStorage.setItem('storedPageHeader', 'London')
+        router.push(`/results/results?location=${relocation.location[0]},${relocation.location[1]}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
       } else if (input === "birmingham") {
-          const relocation = {...props.location.location, searchInputPlaceholder: 'Birmingham', location: ['-1.898575', '52.489471']}
+          const relocation = {...props.location, searchInputPlaceholder: 'Birmingham', location: ['-1.898575', '52.489471']}
           props.setLocation(relocation)
           setPlaceHolderText('Birmingham')
           localStorage.setItem('storedLocation', ['-1.898575', '52.489471'].toString())
           localStorage.setItem('storedPageHeader', 'Birmingham')
+          router.push(`/results/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
       } else if (input === "manchester") {
-          const relocation = {...props.location.location, searchInputPlaceholder: 'Manchester', location: ['-2.244644', '53.483959']}
+          const relocation = {...props.location, searchInputPlaceholder: 'Manchester', location: ['-2.244644', '53.483959']}
           props.setLocation(relocation)
           setPlaceHolderText('Manchester')
           localStorage.setItem('storedLocation', ['-2.244644', '53.483959'].toString())
           localStorage.setItem('storedPageHeader', 'Manchester')
+          router.push(`/results/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
     } else {
         const url = `https://api.postcodes.io/postcodes/${input}`
         const response = await fetch(url + '/validate')
@@ -52,13 +55,13 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
           if (data.result === true) {
             const responsePC = await fetch (url)
             const dataPC: dataPCType = await responsePC.json()
-            console.log('pc data', dataPC)
             const newCoords = [dataPC.result.longitude, dataPC.result.latitude]
-            const relocation = {...props.location.location, searchInputPlaceholder: dataPC.result.admin_district, location: newCoords}
+            const relocation = {...props.location, searchInputPlaceholder: dataPC.result.admin_district, location: newCoords}
             props.setLocation(relocation)
             setPlaceHolderText(dataPC.result.admin_district)
             localStorage.setItem('storedLocation', newCoords.toString())
-          localStorage.setItem('storedPageHeader', dataPC.result.admin_district)
+            localStorage.setItem('storedPageHeader', dataPC.result.admin_district)
+            router.push(`/results/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
             }
         }
       }

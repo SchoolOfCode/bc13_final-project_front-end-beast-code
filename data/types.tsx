@@ -93,10 +93,9 @@ export type dataObjectType = {
     };
   };
 
-export type resultsHeaderPropsType = {
-    heroPageQuery: heroQueryObject, 
+export type resultsHeaderPropsType = { 
     setLocation: any ,
     location: ParsedUrlQuery & {
-      location: string[];
+      location: string[] | string;
       searchInputPlaceholder: string;},
   }

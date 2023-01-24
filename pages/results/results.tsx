@@ -32,29 +32,29 @@ export default function Results() {
   const heroPageQuery = router.query;
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
   const [location, setLocation] = useState<ParsedUrlQuery & {
-    location: string[];
+    location: string[] | string;
     searchInputPlaceholder: string;
   }>(heroPageQuery)
   const [buttonAnimation, setButtonAnimation] = useState(false);
 
-    //gets location from local storage if query from landing page is undefined (ie on page refresh) 
-    useEffect (() => {
-      const storedLocation = localStorage.getItem('storedLocation')
-      const storedPlaceholder = localStorage.getItem('storedPageHeader')
-      if ((location.location === undefined) && (storedLocation!== null)&& (storedPlaceholder!== null)) {
-        const locationFromLocalStor = { 
-          location: storedLocation?.split(','),
-          searchInputPlaceholder: storedPlaceholder
-        }
-        setLocation(locationFromLocalStor)
+  //gets location from local storage if query from landing page is undefined (ie on page refresh) 
+  useEffect (() => {
+    const storedLocation = localStorage.getItem('storedLocation')
+    const storedPlaceholder = localStorage.getItem('storedPageHeader')
+    if ((location.location === undefined) && (storedLocation!== null)&& (storedPlaceholder!== null)) {
+      const locationFromLocalStor = {   
+        location: storedLocation?.split(','),
+        searchInputPlaceholder: storedPlaceholder
       }
-    }, [location])
+      setLocation(locationFromLocalStor)
+    }
+  }, [location])
 
 
   // FETCH REQUEST 
   async function getData() {
     setLoading(true)
-    if (location.location !== undefined) {
+    if ((location.location !== undefined) && (typeof(location.location)=== 'object')) {
       const deployed = "https://cheers-bar-finder.onrender.com/"
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`;
       const response = await fetch(url)
@@ -81,7 +81,11 @@ export default function Results() {
     setResults(allResults)
     setQueryInput("")
   }
+
   useEffect(() => {
+    if (typeof(location.location) === 'string') {
+      setLocation({location: location.location.split(','), searchInputPlaceholder: location.searchInputPlaceholder} )
+    }
     getData()
   }, [location])
 
@@ -252,7 +256,7 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader heroPageQuery={heroPageQuery} setLocation={setLocation} location={location} />
+      <ResultsHeader setLocation={setLocation} location={location} />
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
