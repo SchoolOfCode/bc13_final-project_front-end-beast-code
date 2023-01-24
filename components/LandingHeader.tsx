@@ -23,7 +23,9 @@ export default function LandingHeader() {
         >
           <div className={styles.about_us}>
             <h3>
-              <a>About us</a>
+              <Link href="/aboutus">
+               <p>About us</p>
+              </Link>
             </h3>
           </div>
           <div className={styles.login}>

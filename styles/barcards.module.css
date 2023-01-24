@@ -6,7 +6,6 @@
     align-items: center;
     width: 100%;
     font-family: 'Inter', sans-serif;
-    /* border: 1px solid red; */
 }
 
 .cardContainer {
@@ -20,7 +19,6 @@
     font-family: 'Inter', sans-serif;
     gap:20px;
     row-gap: 80px;
-    /* border: 1px solid blue; */
     margin-bottom: 90px;
 }
 
@@ -36,6 +34,10 @@
     border-radius: 10px;
     font-family: 'Inter', sans-serif;
     color: var(--white);
+}
+
+.resultCard:hover {
+    animation: pulse 2s infinite ease-in-out alternate;
 }
 
 .imageStandIn {
@@ -138,3 +140,6 @@
     margin-right: 10px;
 }
 
+@keyframes pulse {
+    10% { transform:  translateY(-10px); }
+}

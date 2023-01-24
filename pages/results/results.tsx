@@ -35,6 +35,7 @@ export default function Results() {
     location: string[] | string;
     searchInputPlaceholder: string;
   }>(heroPageQuery)
+  const [buttonAnimation, setButtonAnimation] = useState(false);
 
   //gets location from local storage if query from landing page is undefined (ie on page refresh) 
   useEffect (() => {
@@ -89,6 +90,11 @@ export default function Results() {
   }, [location])
 
   async function getFilteredData() {
+    setButtonAnimation(false)
+    const newFilters = filters.map(el => {
+      el.isOpen = false; return el;})
+    console.log(newFilters)
+    setFilters(newFilters)
     if (location.location !== undefined) {
       const response = await fetch(`https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`,
         {
@@ -133,6 +139,7 @@ export default function Results() {
       return filter;
     });
     setFilters(newFilters);
+    setButtonAnimation(true)
   }
 
   useEffect(() => {
@@ -155,11 +162,11 @@ export default function Results() {
   //Unchecks options if users click the "X" next to the option displayed above the dropdowns
     //Small issue: if two numbers are the same both options will be removed, adding a fix for this as a stretch goal ticket
   function removeOption(event: any): void {
+    setButtonAnimation(true)
     let newFilters = [...filters]
     //Looks for any filter options that match the id of the option that was clicked
     for (let i = 0; i < filters.length; i++) {
       for (let j = 0; j < filters[i].options.length; j++) {
-        console.log(filters[i].options[j])
         if (filters[i].options[j].data === event.target.id) {
           newFilters[i].options[j].checked = false;
         }
@@ -263,6 +270,7 @@ export default function Results() {
           getQueryInput={getQueryInput}
           queryInput={queryInput}
           removeOption={removeOption}
+          buttonAnimation={buttonAnimation}
         />
       <div className={styles.spinner}>
        <div>

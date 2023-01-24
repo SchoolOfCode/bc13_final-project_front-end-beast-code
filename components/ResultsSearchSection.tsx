@@ -21,10 +21,11 @@ type propsObj = {
   resetResults: MouseEventHandler<HTMLButtonElement>;
   getQueryInput: ChangeEventHandler<HTMLInputElement>;
   queryInput: string;
-  removeOption: MouseEventHandler<HTMLButtonElement>
+  removeOption: MouseEventHandler<HTMLButtonElement>;
+  buttonAnimation: boolean;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation }: propsObj) {
   const [view, setView] = useState("list")
   const [numberOfResults, setNumberOfResults] = useState(9)
   const [panelState, setPanelState] = useState(false);
@@ -88,7 +89,21 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
       <>
       <div className={styles.filter_section_container}>
         {/* First attempt at displaying filter options */}
-      {queryFilters ? <div className={styles.query_filters_container}>{queryFilters.map(filter => <div className={styles.query_filter_option} key={filter.category}>{filter.category.split("_")[0]}: {filter.options.map(option => <p key={option}>{option}<button className={styles.query_filter_delete} id={`${option}`} onClick={removeOption}>X</button></p>)}</div>)}</div> : null}
+      {queryFilters ? <div className={styles.query_filters_container}>
+        {queryFilters.map(filter => 
+        <div className={styles.query_filter_option} key={filter.category}>  
+          {filter.category.split("_")[0]} : 
+          {filter.options.map(option => 
+              <p key={option}>
+                {option}
+              <button 
+                className={styles.query_filter_delete} 
+                id={`${option}`} 
+                onClick={removeOption}>
+              </button>
+            </p>)}
+        </div>)}
+        </div> : null}
         <div className={styles.all_filter_buttons}>        
           <div className={styles.dropdown_container}>
             {panelState ? null : (
@@ -99,13 +114,19 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                     setDropdown={setDropdown}
                     setCheckbox={setCheckbox}
                   />
-
-                  <button
+                  {buttonAnimation ? <button
+                    className={styles.filters_button_hithere}
+                    onClick={getFilteredData}
+                  >
+                    Apply filters
+                  </button> : <button
                     className={styles.filters_button}
                     onClick={getFilteredData}
                   >
                     Apply filters
-                  </button>
+                  </button> 
+                  }
+
                 </div>
                 <div className={styles.button_container}>
                   <button
@@ -134,6 +155,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             panelState={panelState}
             setPanelState={setPanelState}
             resetResults={resetResults}
+            getFilteredData={getFilteredData}
           />
         </div>
       </div>

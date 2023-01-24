@@ -129,6 +129,20 @@
     cursor: pointer;
 }
 
+.filters_button_hithere {
+    color: white;
+    background-color: var(--gold);
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 44px;
+    cursor: pointer;
+    animation: hithere 2s ease infinite;
+}
+
 .more_filters_button {
     color: white;
     background-color: var(--green);
@@ -148,6 +162,10 @@
     align-items: center;
     /* border: 1px solid red; */
     margin-bottom: 60px;
+}
+
+.all_filter_buttons button:hover {
+    animation: pulse 0.5s infinite ease-in-out alternate;
 }
 
 .dropdown_container {
@@ -283,12 +301,12 @@
             width: 35px;
             background-size: contain;
             background-repeat: no-repeat;
-           
             background-image: url('../public/search-icon.png')
-             }
-            .dropdown_inner_container {
-                margin-bottom: 0px;
-            }
+        }
+
+        .dropdown_inner_container {
+            margin-bottom: 0px;
+        }
 }
 
 .filter_section_container {
@@ -307,16 +325,39 @@
 
 .query_filter_option {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     background-color: var(--green);
     padding: 5px;
     border-radius: 5px;
 }
 
+.query_filter_option>p{
+    display: flex;
+    align-items: center;
+}
+
 .query_filter_delete {
-    padding-left: 5px;
-    padding-right: 5px;
-    color: white;
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
     background-color: transparent;
-    font-weight: bold;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/resultsSearchSection-cross-icon.png');
+}
+
+
+@keyframes hithere {
+    10% { transform: scale(1);}
+    40%, 60% { transform: translateY(-10px);}
+    50% { transform: rotate(5deg) scale(1);}
+    70% { transform: rotate(-5deg) scale(1);}
+    100% { transform: scale(1);}
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
 }

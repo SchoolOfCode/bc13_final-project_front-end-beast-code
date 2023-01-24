@@ -132,4 +132,7 @@ background-image: url('../public/barpage-features-icon.png');
         padding-bottom: 50px;
     }
 
+    .bar_image {
+        height: 60vh;
+    }
 }
