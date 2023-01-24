@@ -1,28 +1,74 @@
-.About_us {
+.whole_page {
     background-color: var(--black);
     color: var(--white);
-}
-
-.AllProfiles {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0% 19%;
-}
-
-.Profiles {
     display: flex;
     flex-direction: column;
-    list-style: none;
-    flex: 0 0 33.333333%;
-    padding: 2% 2% 2% 0%;
+    align-items: center;
 }
 
-.About_info {
-    padding-top: 4%;
-    padding-bottom: 1%;
-    padding-left: 19%;
+.about_us {
+    padding: 9vh 0vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80vw;
 }
 
-.About_info>h1 {
-    padding-bottom: 1%;
+.all_profiles {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.profiles {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33.333333%;
+    align-items:center;
+    text-align: center;
+    /* flex:auto; */
+    padding: 3vh 1.5vw 0vh 1.5vw;
+}
+
+.about_us>h1 {
+    padding: 7vh 0vw 1vh 0vw;
+}
+
+.about_info>h1 {
+    padding: 1vh 0vw;
+    text-align: center;
+}
+
+.profile_image {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.lines {
+    width: 80vw;
+    height: 5px;
+    border-bottom: 5px solid var(--gold);
+}
+
+.project_description {
+    padding-top: 2vh;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tech_stack {
+    padding-top: 2vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tech_stack>p{
+    border-radius: 5px;
+    border: 5px solid var(--green);
+    padding: 0px 5px;
+    margin: 0px 3px 6px 3px;
+    background-color: var(--green);
+    display: flex;
+    align-items: center;
 }

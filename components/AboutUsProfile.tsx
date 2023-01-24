@@ -6,12 +6,19 @@ type propsAbout = {
     tenSeconds: string,
     linkedIn: string,
     gitHub: string,
+    profileImage: string,
 }
 
-export function AboutUsProfile({name, tenSeconds, linkedIn, gitHub}: propsAbout) {
-    return <div className={aboutStyles.Profiles}>
+export function AboutUsProfile({name, tenSeconds, linkedIn, gitHub, profileImage}: propsAbout) {
+    return <div className={aboutStyles.profiles}>
+    <Image 
+      src={profileImage} 
+      width={100} 
+      height={100} 
+      alt={`photo of ${name}`}
+      className={aboutStyles.profile_image}
+    ></Image>
     <h3>{name}</h3>
-    <Image src="/search-icon.png" width={32} height={32} alt="photo of team member"></Image>
     <p>{tenSeconds}</p>
     <div>
            <a href={linkedIn} target="_blank" rel="noreferrer">
