@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ResultCard from "./ResultCard";
-import styles from "../styles/barcards.module.css";
+import styles from "../styles/bar_cards.module.css";
 import Link from "next/link";
 import { resultsArrType } from "../data/types";
 
 type propsObjectType = {
   results: resultsArrType;
-  numberOfResults: number;
+  displayResultsNumber: number;
+  noResults: boolean;
 };
 
-function BarCards({results, numberOfResults}: propsObjectType) {
+function BarCards({results, displayResultsNumber, noResults}: propsObjectType) {
 
   return (<div className={styles.outerCardContainer}>
       <div className={styles.cardContainer}>
-        {results.length > 0 ? results.slice(0, numberOfResults).map((item, index) => (
+        {noResults ? <h2>Sorry, no results found :(</h2> : results.slice(0, displayResultsNumber).map((item, index) => (
           <Link href={`/bar/${item._id}`} key={index}>
             <ResultCard
               key={index}
@@ -27,12 +28,10 @@ function BarCards({results, numberOfResults}: propsObjectType) {
               vibe={item.Vibe}
             />
           </Link>
-        )) : <h2>Sorry, no results found :(</h2>}
+        ))}
       </div>
     </div>
   );
 }
-
-
 
 export default BarCards;

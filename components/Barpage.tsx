@@ -1,39 +1,9 @@
 import Image from "next/image";
-import styles from "../styles/barpage.module.css";
+import { Root } from "../data/types";
+import styles from "../styles/bar_page.module.css";
 
-export interface Root {
-  barInfo: Bar;
-}
+export default function BarPage({ barInfo }: Root) {
 
-export interface Bar {
-  _id: string;
-  City: string;
-  Name: string;
-  Cost: number;
-  Description: string;
-  Image: string;
-  Rating: number;
-  Address: string;
-  Postcode: string;
-  Hygiene: number;
-  Happy_hr: string;
-  Website: string;
-  Music: string[];
-  Venue_type: string[];
-  Other: string[];
-  Vibe: string[];
-  Features: string[];
-  Who_with: string[];
-  location: Location;
-}
-
-export interface Location {
-  type: string;
-  coordinates: number[];
-}
-
-export default function BarPageInfo({ barInfo }: Root) {
-  console.log("barInfo made it", barInfo.Image);
   return (
     <div>
       <div className={styles.bar_image}>

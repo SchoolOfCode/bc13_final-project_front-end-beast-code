@@ -1,6 +1,5 @@
-import { JSXElement } from "@babel/types";
 import Image from "next/image";
-import styles from "../styles/barcards.module.css";
+import styles from "../styles/bar_cards.module.css";
 
 export type propsObjType = {
   name: string;
@@ -18,7 +17,6 @@ function Pounds({ number }: any) {
   for (let i = 0; i < number; i++) {
     poundStr += "£";
   }
-  
   return <p>{poundStr}</p>;
 }
 
@@ -39,6 +37,7 @@ export default function ResultCard(props: propsObjType) {
         <div className={styles.bar_name}>
           <h3 data-testid="title">{props.name}</h3>
         </div>
+        {/* Displays the distance, first converting m to km and then rounding the number to one decimal place */}
         <h3>{Math.round((props.distance / 1000) * 10) / 10} km</h3>
       </div>
       <p className={styles.description}>{props.description.slice(0, 115)}...</p>

@@ -1,4 +1,4 @@
-import BarPageInfo from "../../components/Barpage";
+import BarPage from "../../components/Barpage";
 import BarPageHeader from "../../components/BarPageHeader";
 import { GetStaticPaths, GetStaticProps } from "next";
 
@@ -6,7 +6,7 @@ export default function Bar({ barInfo }: Root) {
   return (
     <>
       <BarPageHeader />
-      <BarPageInfo barInfo={barInfo} />
+      <BarPage barInfo={barInfo} />
     </>
   );
 }

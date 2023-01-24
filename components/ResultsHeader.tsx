@@ -1,9 +1,9 @@
 import Link from "next/link";
-import styles from "../styles/ResultsHeader.module.css";
+import styles from "../styles/results_header.module.css";
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import { resultsHeaderPropsType, dataPCType } from "../data/types";
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 export default function ResultsHeader(props: resultsHeaderPropsType ) {
   const [input, setInput] = useState('')

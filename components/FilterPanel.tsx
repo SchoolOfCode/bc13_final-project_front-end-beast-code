@@ -2,7 +2,7 @@ import { useState } from "react";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import FilterDropdown from "./FilterDropdown";
-import styles from "../styles/filterpanel.module.css"
+import styles from "../styles/filter_panel.module.css"
 
 export default function FilterPanel({filters, setDropdown, setCheckbox, panelState, setPanelState, resetResults, getFilteredData} : any){
 

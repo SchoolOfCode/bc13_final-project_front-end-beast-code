@@ -1,5 +1,5 @@
 import { MouseEventHandler, useEffect, useState } from "react";
-import styles from "../styles/filterdropdown.module.css";
+import styles from "../styles/filter_dropdown.module.css";
 import {optionsPropsType, filtersObjectType, filtersArrType} from "../data/types"
 
 type propsObjType = {

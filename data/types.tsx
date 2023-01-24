@@ -99,3 +99,34 @@ export type resultsHeaderPropsType = {
       location: string[] | string;
       searchInputPlaceholder: string;},
   }
+
+  export interface Root {
+    barInfo: Bar;
+  }
+  
+  export interface Bar {
+    _id: string;
+    City: string;
+    Name: string;
+    Cost: number;
+    Description: string;
+    Image: string;
+    Rating: number;
+    Address: string;
+    Postcode: string;
+    Hygiene: number;
+    Happy_hr: string;
+    Website: string;
+    Music: string[];
+    Venue_type: string[];
+    Other: string[];
+    Vibe: string[];
+    Features: string[];
+    Who_with: string[];
+    location: Location;
+  }
+  
+  export interface Location {
+    type: string;
+    coordinates: number[];
+  }

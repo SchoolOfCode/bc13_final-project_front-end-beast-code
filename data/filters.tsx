@@ -13,7 +13,7 @@ export const filterOptions: filtersArrType = [
   },
   {
     category: {text: "Venue", data: "Venue_type"},
-    options: [{ text: "Cocktail Bar", data: "Cocktail bar", checked: false }, { text: "Café bar", data: "Cafe Bar", checked: false }, { text: "Restaurant", data: "Restaurant", checked: false }, { text: "Wine bar", data: "Wine Bar", checked: false }, { text: "Pub", data: "Pub", checked: false }, { text: "Club", data: "Club", checked: false }, { text: "Queer venue", data: "Queer Venue", checked: false }, { text: "Student venue", data: "Student Venue", checked: false }],
+    options: [{ text: "Cocktail bar", data: "Cocktail Bar", checked: false }, { text: "Café bar", data: "Cafe Bar", checked: false }, { text: "Restaurant", data: "Restaurant", checked: false }, { text: "Wine bar", data: "Wine Bar", checked: false }, { text: "Pub", data: "Pub", checked: false }, { text: "Club", data: "Club", checked: false }, { text: "Queer venue", data: "Queer Venue", checked: false }, { text: "Student venue", data: "Student Venue", checked: false }],
     isOpen: false
   },
   {
@@ -38,7 +38,7 @@ export const filterOptions: filtersArrType = [
   },
   {
     category: {text: "Who with", data: "Who_with"},
-    options: [{ text: "Date", data: "Date", checked: false }, { text: "Large group", data: "Large group", checked: false }, { text: "Family", data: "Family", checked: false }, { text: "Client", data: "Client", checked: false }, { text: "Colleagues", data: "Colleagues", checked: false }, { text: "Friends", data: "Friends", checked: false }, { text: "Stag/hen party", data: "Stag/Hen Party", checked: false }],
+    options: [{ text: "Date", data: "Date", checked: false }, { text: "Large group", data: "Large Group", checked: false }, { text: "Family", data: "Family", checked: false }, { text: "Client", data: "Client", checked: false }, { text: "Colleagues", data: "Colleagues", checked: false }, { text: "Friends", data: "Friends", checked: false }, { text: "Stag/hen party", data: "Stag/Hen Party", checked: false }],
     isOpen: false
   }
 ]

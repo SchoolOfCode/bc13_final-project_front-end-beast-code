@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../styles/ResultsHeader.module.css";
+import styles from "../styles/results_header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
