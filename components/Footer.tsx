@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import styles from "../styles/footer.module.css"
+import Link from 'next/link';
 
 function Footer() {
   return (
@@ -16,8 +17,16 @@ function Footer() {
         <div className={styles.sitemap_container}>
           <h2>Site map</h2>
           <ul>
-            <li>• &nbsp; Home</li>
-            <li>• &nbsp; About Us</li>
+            <li>
+              <Link href="/">
+              • &nbsp; Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/aboutus">
+             • &nbsp; About Us
+              </Link>
+            </li>
             <li>• &nbsp; Contact Us</li>
           </ul>
         </div>

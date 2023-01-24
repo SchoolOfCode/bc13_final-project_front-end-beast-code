@@ -99,6 +99,13 @@
 
 .sitemap_container>ul>li{
     margin-bottom: 12px;
+    color: var(--white)
+
+}
+
+.sitemap_container>ul>li>a, .sitemap_container>ul>li>a:visited {
+    color: var(--white);
+    text-decoration: none;
 }
 
 @media (max-width: 500px){
