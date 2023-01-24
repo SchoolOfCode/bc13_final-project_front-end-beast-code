@@ -8,6 +8,10 @@
     cursor: pointer;
 }
 
+.dropdown_container:hover {
+    animation: pulse ease 1s infinite;
+}
+
 .p {
     padding: 12px;
     padding-left: 20px;
@@ -61,7 +65,11 @@
     position: relative;
     margin-left: -35px;
     z-index: 0;
-    transition: .5s ease-in-out;
-        
+    transition: .5s ease-in-out;    
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 

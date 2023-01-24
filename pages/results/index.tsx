@@ -101,9 +101,6 @@ export default function Results() {
     setQueryInput("")
   }
 
-
-
-
   /** Subsequent fetch request with the user's filter selections inserted into the body to be added as a query to our database */
   async function getFilteredData() {
     console.log(queryFilters)
