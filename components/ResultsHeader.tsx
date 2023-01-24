@@ -68,8 +68,8 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
   return (
     <>
       <div className={styles.Navbar}>
-        <div className={styles.logo} data-testid="logo">
-          <Link href="/">
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <div className={styles.logo} data-testid="logo">
             <Image
               src="/Logo.png"
               width={32}
@@ -77,9 +77,9 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
               alt="logo"
               className={styles.logo_icon}
             ></Image>
-          </Link>
-          <strong>Cheers</strong>
-        </div>
+            <strong>Cheers</strong>
+          </div>
+        </Link>
         <div className={styles.align_input_left}>
           <div className={styles.search_container}>
             <div data-testid="location-pin" className={styles.logo_area}></div>
