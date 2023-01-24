@@ -1,7 +1,7 @@
 import React, { ChangeEventHandler, MouseEventHandler } from "react";
 import FilterDropdown from "./FilterDropdown";
 import FilterPanel from "./FilterPanel";
-import styles from "../styles/Results-search-section.module.css";
+import styles from "../styles/results_search_section.module.css";
 import BarCards from "./BarCards";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -23,23 +23,32 @@ type propsObj = {
   queryInput: string;
   removeOption: MouseEventHandler<HTMLButtonElement>;
   buttonAnimation: boolean;
+  noResults: boolean;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation }: propsObj) {
-  const [view, setView] = useState("list")
-  const [numberOfResults, setNumberOfResults] = useState(9)
-  const [panelState, setPanelState] = useState(false);
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults }: propsObj) {
 
+  //Toggles the state between map and list view
+  const [view, setView] = useState("list")
+  //Increments the number of results displayed on the screen by 9
+  const [displayResultsNumber, setDisplayResultsNumber] = useState(9)
+  //Toggles the panel's open state between true and false
+  const [panelState, setPanelState] = useState(false);
+  //Toggle the style of the button clicked by the user between gold (selected) and green (unselected)
+  const [style, setStyle] = useState("btn");
+
+  /** Function to add 9 to the number of results to be displayed on the screen on click */
   function updateNumberOfResults() {
-    setNumberOfResults(numberOfResults + 9);
+    setDisplayResultsNumber(displayResultsNumber + 9);
   }
 
-  const [style, setStyle] = useState("btn");
+  /** Updates the view and the selected button's CSS on click */
   function leftClick() {
     setStyle("btn10");
     setView("map");
   }
 
+  /** Updates the view and the selected button's CSS on click */
   function rightClick() {
     setStyle("btn");
     setView("list");
@@ -88,7 +97,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
       {/* Map toggle button */}
       <>
       <div className={styles.filter_section_container}>
-        {/* First attempt at displaying filter options */}
+      {/* If there are any filters selected, they're displayed on the screen */}
       {queryFilters ? <div className={styles.query_filters_container}>
         {queryFilters.map(filter => 
         <div className={styles.query_filter_option} key={filter.category}>  
@@ -106,6 +115,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
         </div> : null}
         <div className={styles.all_filter_buttons}>        
           <div className={styles.dropdown_container}>
+            {/* Conditionally renders the basic dropdowns if the panel is closed */}
             {panelState ? null : (
               <>
                 <div className={styles.dropdown_inner_container}>
@@ -114,16 +124,17 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                     setDropdown={setDropdown}
                     setCheckbox={setCheckbox}
                   />
+                  {/* Conditionally renders the animation styling on the "Apply filters" depending on whether the user needs to click the button or not */}
                   {buttonAnimation ? <button
                     className={styles.filters_button_hithere}
                     onClick={getFilteredData}
                   >
-                    Apply filters
+                    Apply Filters
                   </button> : <button
                     className={styles.filters_button}
                     onClick={getFilteredData}
                   >
-                    Apply filters
+                    Apply Filters
                   </button> 
                   }
 
@@ -160,13 +171,13 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
         </div>
       </div>
         {view === "list" ? (
-          <BarCards results={results} numberOfResults={numberOfResults} />
+          <BarCards results={results} displayResultsNumber={displayResultsNumber} noResults={noResults} />
         ) : (
           <Map results={results} heroPageQuery={heroPageQuery} />
         )}
         {view === "list" ? (
           <div className={styles.button_centering}>
-            {numberOfResults > results.length ? null : <button
+            {displayResultsNumber > results.length ? null : <button
               className={styles.load_more_button}
               onClick={updateNumberOfResults}
             >
@@ -174,13 +185,6 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             </button>}
           </div>
         ) : null}
-
-
-        {/* <div className={styles.button_centering}>
-          <button className={styles.load_more_button}>
-            <span>Load More</span>
-          </button>
-        </div> */}
       </>
     </div>
   );

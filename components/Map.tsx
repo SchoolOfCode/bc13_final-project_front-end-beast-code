@@ -1,11 +1,9 @@
-import { LatLngExpression } from 'leaflet';
 import { MapContainer } from 'react-leaflet';
 import { TileLayer } from 'react-leaflet';
 import { Marker } from 'react-leaflet';
 import { Popup } from 'react-leaflet';
-import { JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from 'react';
 import styles from '../styles/map.module.css'
-import { resultsArrType, singleBarType } from '../data/types';
+import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 
 
