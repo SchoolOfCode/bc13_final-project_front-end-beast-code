@@ -7,7 +7,7 @@ import { JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, u
 import styles from '../styles/map.module.css'
 import { resultsArrType, singleBarType } from '../data/types';
 import { Icon } from "leaflet";
-
+import Link from 'next/link';
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
@@ -24,12 +24,16 @@ type propsObjType = {
 
 export default function Map({results, heroPageQuery}: propsObjType){
 
-  return (<div className={styles.map_centering_div}>
+  return (
+    <div className={styles.map_centering_div}>
       <MapContainer
         className={styles.map_container}
         id="map"
         data-testId="map-container"
-        center={[Number(heroPageQuery.location[1]), Number(heroPageQuery.location[0])]}
+        center={[
+          Number(heroPageQuery.location[1]),
+          Number(heroPageQuery.location[0]),
+        ]}
         zoom={13}
         scrollWheelZoom={false}
         style={{ height: "700px", width: "55%" }}
@@ -38,7 +42,7 @@ export default function Map({results, heroPageQuery}: propsObjType){
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {results.map(element => (
+        {results.map((element) => (
           <Marker
             icon={customPinIcon}
             key={element._id}
@@ -47,24 +51,30 @@ export default function Map({results, heroPageQuery}: propsObjType){
           >
             <div className={styles.popup_container}>
               <Popup className={styles.request_popup}>
-                <div className={styles.popup_inner_container}>
-                  {/* Bar name changed from h3 to h4 for demo purposes */}
-                  <div className={styles.bar_name}>
-                    <h4>{element.Name}</h4>
+                <Link
+                  href={`/bar/${element._id}`}
+                  key={element._id}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  <div className={styles.popup_inner_container}>
+                    {/* Bar name changed from h3 to h4 for demo purposes */}
+
+                    <div className={styles.bar_name}>
+                      <h4>{element.Name}</h4>
+                    </div>
+
+                    <div className={styles.popup_description}>
+                      <p>{element.Address}</p>
+                      <p>Cost: {element.Cost}/3</p>
+                      <p>Rating: {element.Rating}/5</p>
+                    </div>
                   </div>
-                  <div className={styles.popup_description}>
-                    <p>{element.Address}</p>
-                    <p>Cost: {element.Cost}/3</p>
-                    <p>Rating: {element.Rating}/5</p>
-                    <a href={element.Website} rel="noreferrer" target="_blank">
-                      Website Link
-                    </a>
-                  </div>
-                </div>
+                </Link>
               </Popup>
             </div>
           </Marker>
         ))}
       </MapContainer>
-    </div>);
+    </div>
+  );
 }
