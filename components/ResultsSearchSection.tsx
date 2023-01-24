@@ -113,7 +113,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             </p>)}
         </div>)}
         </div> : null}
-        <div className={styles.all_filter_buttons}>        
+        <div className={styles.all_filter_buttons}>      
           <div className={styles.dropdown_container}>
             {/* Conditionally renders the basic dropdowns if the panel is closed */}
             {panelState ? null : (

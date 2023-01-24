@@ -8,6 +8,20 @@
     cursor: pointer;
 }
 
+.dropdown_container_animation {
+    background-color: var(--lightgreen);
+    border-radius: 10px;
+    width: 210px;
+    color: white;
+    display: flex;
+    /* position: relative; */
+    cursor: pointer;
+}
+
+.dropdown_container_animation:hover {
+    animation: pulse 1s ease infinite alternate;
+}
+
 .p {
     padding: 12px;
     padding-left: 20px;
@@ -62,6 +76,10 @@
     margin-left: -35px;
     z-index: 0;
     transition: .5s ease-in-out;
-        
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 

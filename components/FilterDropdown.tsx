@@ -6,6 +6,7 @@ type propsObjType = {
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
+  dropdownAnimation: boolean;
 }
 
 export default function FilterDropdown({ filters, setDropdown, setCheckbox }: propsObjType) {
@@ -45,7 +46,7 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
             </ul>
           </div>
         ) : (
-          <div key={index} className={styles.dropdown_container}>
+          <div key={index} className={styles.dropdown_container_animation}>
             <p onClick={setDropdown} className={styles.p} id={element.category.text}>
               {element.category.text}
             </p>
