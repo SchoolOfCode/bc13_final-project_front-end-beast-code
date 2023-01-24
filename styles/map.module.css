@@ -86,6 +86,11 @@ text-decoration: underline;
     color: white;
 }
 
+.cost_light_icon{
+    color: transparent;
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0.583);
+}
+
 @media (max-width: 500px) {
     .map_container{
         border: 3px solid var(--gold);
