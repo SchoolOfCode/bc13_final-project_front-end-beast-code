@@ -1,0 +1,28 @@
+.About_us {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.AllProfiles {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0% 19%;
+}
+
+.Profiles {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    flex: 0 0 33.333333%;
+    padding: 2% 2% 2% 0%;
+}
+
+.About_info {
+    padding-top: 4%;
+    padding-bottom: 1%;
+    padding-left: 19%;
+}
+
+.About_info>h1 {
+    padding-bottom: 1%;
+}

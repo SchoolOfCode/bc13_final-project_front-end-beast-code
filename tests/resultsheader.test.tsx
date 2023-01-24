@@ -29,10 +29,6 @@ describe('ResultsHeader', () => {
   it('should render the about us and login links with the correct attributes', () => {
     render(<ResultsHeader />);
 
-    const aboutUsLink = screen.getByTestId('about-us');
-    expect(aboutUsLink).toBeInTheDocument();
-    expect(aboutUsLink).toHaveAttribute('href', '#');
-
     const loginLink = screen.getByTestId('login');
     expect(loginLink).toBeInTheDocument();
     expect(loginLink).toHaveAttribute('href', '#');

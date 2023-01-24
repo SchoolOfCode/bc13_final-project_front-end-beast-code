@@ -37,7 +37,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
   const data = await response.json();
   const barData = data.payload[0]
-  console.log('This is the API get static props',data)
   return {
     props: {
       barInfo: barData,

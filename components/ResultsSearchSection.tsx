@@ -14,7 +14,7 @@ type propsObj = {
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
   getFilteredData: MouseEventHandler<HTMLButtonElement>;
   heroPageQuery: {
-    location: string[];
+    location: string[] | string;
     searchInputPlaceholder: string;
   };
   queryFilters: checkedOpsArrType;
@@ -108,7 +108,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
               <button 
                 className={styles.query_filter_delete} 
                 id={`${option}`} 
-                onClick={removeOption}>X
+                onClick={removeOption}>
               </button>
             </p>)}
         </div>)}

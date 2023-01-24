@@ -97,8 +97,8 @@ export default function BarPage({ barInfo }: Root) {
             </div>
             <div className={styles.with_feature}>
               <div className={styles.with_feature_icon}></div>
-              {barInfo.Who_with.map((who, i) => {
-                if (i === barInfo.Who_with.length - 1) {
+              {barInfo.Who_with.slice(0,3).map((who, i) => {
+                if (i === 2) {
                   return (
                     <>
                       <span>{who}&nbsp;</span>

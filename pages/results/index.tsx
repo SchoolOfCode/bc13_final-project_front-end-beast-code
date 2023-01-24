@@ -42,7 +42,7 @@ export default function Results() {
   const [queryFilters, setQueryFilters] = useState<checkedOpsArrType>([])
   //The location entered by the user in the landing page search bar
   const [location, setLocation] = useState<ParsedUrlQuery & {
-    location: string[];
+    location: string[] | string;
     searchInputPlaceholder: string;
   }>(heroPageQuery)
   //Sets whether the "Apply filters" button should be animated or not
@@ -67,7 +67,8 @@ export default function Results() {
   /** Initial fetch request to get all results within 20000m of the user's location */
   async function getData() {
     setLoading(true)
-    if (location.location !== undefined) {
+    if ((location.location !== undefined) && (typeof(location.location)=== 'object')) {
+      const deployed = "https://cheers-bar-finder.onrender.com/"
       const url = `https://cheers-bar-finder.onrender.com/api/router/${location.location[0]},${location.location[1]}`;
       const response = await fetch(url)
       const data = await response.json()
@@ -81,9 +82,27 @@ export default function Results() {
       setAllResults(newResults)
     }
   }
+  /** Resets the results page so that all results from the initial fetch request are displayed, all dropdowns are closed, all checkboxes are unchecked and the keyword search input is cleared */
+  function resetResults(){
+    const newFilters = filters.map(el => {
+      el.isOpen = false; 
+      el.options.map(el2 => { 
+        el2.checked = false
+        return el2
+      })
+      return el
+    })
+    setFilters(newFilters)
+    setResults(allResults)
+    setQueryInput("")
+  }
+
 
   //Makes the fetch request whenever the user's location is changed
   useEffect(() => {
+    if (typeof(location.location) === 'string') {
+      setLocation({location: location.location.split(','), searchInputPlaceholder: location.searchInputPlaceholder} )
+    }
     getData()
   }, [location])
 
@@ -132,21 +151,6 @@ export default function Results() {
       }
     }
   }, [results])
-
-  /** Resets the results page so that all results from the initial fetch request are displayed, all dropdowns are closed, all checkboxes are unchecked and the keyword search input is cleared */
-  function resetResults() {
-    const newFilters = filters.map(el => {
-      el.isOpen = false;
-      el.options.map(el2 => {
-        el2.checked = false
-        return el2
-      })
-      return el
-    })
-    setFilters(newFilters)
-    setResults(allResults)
-    setQueryInput("")
-  }
 
   /** Set the status of each dropdown to open or closed if the user clicks. Only one dropdown is able to be open at a time. */
   function setDropdown(event: any) {
@@ -292,7 +296,7 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader heroPageQuery={heroPageQuery} setLocation={setLocation} location={location} />
+      <ResultsHeader setLocation={setLocation} location={location} />
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
