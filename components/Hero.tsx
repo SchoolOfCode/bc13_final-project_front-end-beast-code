@@ -58,7 +58,7 @@ export default function Hero() {
 
   if (dataValid === true) {
     Router.push({
-      pathname: "/results/results",
+      pathname: "/results",
       query: {
         location: longLat,
         searchInputPlaceholder: locationForResultsPageHeader,

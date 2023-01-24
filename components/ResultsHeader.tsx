@@ -33,21 +33,21 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
         setPlaceHolderText('London')
         localStorage.setItem('storedLocation', ['-0.118092', '51.509865'].toString())
         localStorage.setItem('storedPageHeader', 'London')
-        router.push(`/results/results?location=${relocation.location[0]},${relocation.location[1]}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
+        router.push(`/results?location=${relocation.location[0]},${relocation.location[1]}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
       } else if (input === "birmingham") {
           const relocation = {...props.location, searchInputPlaceholder: 'Birmingham', location: ['-1.898575', '52.489471']}
           props.setLocation(relocation)
           setPlaceHolderText('Birmingham')
           localStorage.setItem('storedLocation', ['-1.898575', '52.489471'].toString())
           localStorage.setItem('storedPageHeader', 'Birmingham')
-          router.push(`/results/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
+          router.push(`/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
       } else if (input === "manchester") {
           const relocation = {...props.location, searchInputPlaceholder: 'Manchester', location: ['-2.244644', '53.483959']}
           props.setLocation(relocation)
           setPlaceHolderText('Manchester')
           localStorage.setItem('storedLocation', ['-2.244644', '53.483959'].toString())
           localStorage.setItem('storedPageHeader', 'Manchester')
-          router.push(`/results/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
+          router.push(`/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
     } else {
         const url = `https://api.postcodes.io/postcodes/${input}`
         const response = await fetch(url + '/validate')
@@ -61,7 +61,7 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
             setPlaceHolderText(dataPC.result.admin_district)
             localStorage.setItem('storedLocation', newCoords.toString())
             localStorage.setItem('storedPageHeader', dataPC.result.admin_district)
-            router.push(`/results/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
+            router.push(`/results?location=${relocation.location}&searchInputPlaceholder=${relocation.searchInputPlaceholder}`, undefined, {shallow: true})
             }
         }
       }
