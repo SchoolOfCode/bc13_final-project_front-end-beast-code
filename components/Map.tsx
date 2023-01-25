@@ -6,6 +6,7 @@ import styles from '../styles/map.module.css'
 import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 import Link from 'next/link';
+import {useEffect, useState} from 'react'
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
@@ -20,7 +21,22 @@ type propsObjType = {
   };
 }
 
+
 export default function Map({results, heroPageQuery}: propsObjType){
+let [coordsAverage, setCoordsAverage] = useState([-1.63294, 53.52287])
+
+  useEffect(()=>{
+    function coordAverage(){
+      let firstCoords = 0
+      let secondCoords = 0
+      for (let i=0; i<results.length; i++) {
+        firstCoords = firstCoords + results[i].location.coordinates[0]
+        secondCoords = secondCoords + results[i].location.coordinates[1]
+        firstCoords = firstCoords / (results.length)
+        secondCoords = secondCoords/ (results.length)
+      }
+      setCoordsAverage([firstCoords, secondCoords])
+    }})
 
   return (
     <div className={styles.map_centering_div}>
@@ -29,8 +45,8 @@ export default function Map({results, heroPageQuery}: propsObjType){
         id="map"
         data-testId="map-container"
         center={[
-          Number(heroPageQuery.location[1]),
-          Number(heroPageQuery.location[0]),
+          Number(coordsAverage[0]),
+          Number(coordsAverage[1]),
         ]}
         zoom={13}
         scrollWheelZoom={false}
