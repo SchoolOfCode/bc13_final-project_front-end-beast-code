@@ -5,13 +5,15 @@ import styles from "../styles/results_search_section.module.css";
 import BarCards from "./BarCards";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import { filtersArrType, resultsArrType, checkedOpsArrType } from "../data/types";
+import { filtersArrType, resultsArrType, checkedOpsArrType, sortingObjectType } from "../data/types";
+import SortingDropdown from "./SortingDropdown";
 
 type propsObj = {
   results: resultsArrType;
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
+  setRadioCheckbox: MouseEventHandler<HTMLParagraphElement>;
   getFilteredData: MouseEventHandler<HTMLButtonElement>;
   heroPageQuery: {
     location: string[] | string;
@@ -26,9 +28,11 @@ type propsObj = {
   noResults: boolean;
   panelState: boolean;
   setPanelState: Function;
+  sortResults: MouseEventHandler<HTMLInputElement>;
+  sortingObj: sortingObjectType;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults, panelState, setPanelState }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, setRadioCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults, panelState, setPanelState, sortResults, sortingObj }: propsObj) {
 
   //Toggles the state between map and list view
   const [view, setView] = useState("list")
@@ -113,7 +117,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             </p>)}
         </div>)}
         </div> : null}
-        <div className={styles.all_filter_buttons}>      
+        <div className={styles.all_filter_buttons}>    
           <div className={styles.dropdown_container}>
             {/* Conditionally renders the basic dropdowns if the panel is closed */}
             {panelState ? null : (
@@ -124,6 +128,9 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                     setDropdown={setDropdown}
                     setCheckbox={setCheckbox}
                   />
+                  <SortingDropdown setDropdown={setDropdown} setRadioCheckbox={setRadioCheckbox} sortingObj={sortingObj}/>
+                </div>
+                <div className={styles.button_container}>
                   {/* Conditionally renders the animation styling on the "Apply filters" depending on whether the user needs to click the button or not */}
                   {buttonAnimation ? <button
                     className={styles.filters_button_hithere}
@@ -137,9 +144,6 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                     Apply Filters
                   </button> 
                   }
-
-                </div>
-                <div className={styles.button_container}>
                   <button
                     data-testid="reset-button"
                     className={styles.reset_button}
