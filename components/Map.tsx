@@ -6,6 +6,7 @@ import styles from '../styles/map.module.css'
 import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
@@ -21,6 +22,9 @@ type propsObjType = {
 }
 
 export default function Map({results, heroPageQuery}: propsObjType){
+
+  console.log(heroPageQuery)
+  console.log(results)
 
   return (
     <div className={styles.map_centering_div}>
