@@ -69,7 +69,7 @@ export default function AboutUs() {
               duration={2}
               className={styles.counter}
             ></CountUp>
-            +<p>Trello ticked complete</p>
+            +<p>Trello tickets complete</p>
           </div>
           </div>
         <h1>What we built & Why</h1>
