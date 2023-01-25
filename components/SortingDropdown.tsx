@@ -26,7 +26,7 @@ export default function SortingDropdown({setDropdown, setRadioCheckbox, sortingO
                             className={styles.dropdown_icon_click}
                         ></div>
                         <ul data-testid="unordered-list" className={styles.ul}>{sortingObj.options.map(option => 
-                            <li data-testid="list-item" className={styles.li} id={option.text}>
+                            <li data-testid="list-item" className={styles.li} id={option.text} key={option.text}>
                                 <p data-testid="option-text" id={option.text}>{option.text}</p>
                                 <input type="radio" id={option.text} checked={option.checked} onClick={setRadioCheckbox}></input>
                             </li>
