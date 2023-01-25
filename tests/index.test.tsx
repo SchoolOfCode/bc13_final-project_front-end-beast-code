@@ -11,7 +11,7 @@ describe("<LandingHeader />", () => {
       render(<LandingHeader />);
       // check if all components are rendered
       expect(screen.getByTestId("logo")).toBeInTheDocument();
-      expect(screen.getByTestId("about-us")).toBeInTheDocument();
+      expect(screen.getByTestId("about-us-p")).toBeInTheDocument();
       expect(screen.getByTestId("login")).toBeInTheDocument();
     });
 });

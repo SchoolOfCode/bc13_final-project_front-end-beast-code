@@ -98,8 +98,8 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
         <div className={styles.about_login}>
           <div className={styles.about_us}>
             <h3>
-            <Link href="/aboutus">
-               <p data-testid="about-us">About us</p>
+            <Link href="/aboutus" data-testid="about-us">
+               <p>About us</p>
               </Link>
             </h3>
           </div>
