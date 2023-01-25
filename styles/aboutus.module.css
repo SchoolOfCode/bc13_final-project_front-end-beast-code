@@ -11,13 +11,16 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 80vw;
+    max-width: 1080px;
+    width: 80%;
 }
 
 .all_profiles {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    margin-top: 45px;
+    row-gap: 25px;
 }
 
 .profiles {
@@ -26,7 +29,6 @@
     flex-basis: 33.333333%;
     align-items:center;
     text-align: center;
-    /* flex:auto; */
     padding: 3vh 1.5vw 0vh 1.5vw;
 }
 
@@ -35,6 +37,7 @@
 }
 
 .about_info>h1 {
+    margin-top: 50px;
     padding: 1vh 0vw;
     text-align: center;
 }
@@ -45,15 +48,20 @@
 }
 
 .lines {
-    width: 80vw;
+    max-width: 1080px;
+    width: 100%;
     height: 5px;
     border-bottom: 5px solid var(--gold);
 }
 
-.project_description {
+.project_description, .project_description1, .project_description2 {
     padding-top: 2vh;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
+}
+
+.project_description{
+    margin-top: 40px;
 }
 
 .tech_stack {
@@ -71,7 +79,9 @@
     background-color: var(--green);
     display: flex;
     align-items: center;
+    margin-top: 40px;
 }
+
 .all_stats {
     display: flex;
     flex-direction: row;
@@ -79,25 +89,27 @@
     width: 100%;
     margin-top: 70px;
     justify-content: space-evenly;
+    min-height: 80px;
 }
 
 .stat1,
 .stat2,
 .stat3 {
+    display: none;
+}
+
+.stat1animate{
     color: white;
     font-size: 36px;
     animation: tranistionIn 3s;
     width: 210px;
 }
 
-.stat1>p,
-.stat2>p,
-.stat3>p {
+.stat1animate>p{
     margin-top: 17px;
     font-size: 17px;
     font-weight: thin;
 }
-
 
 @keyframes tranistionIn {
     from {

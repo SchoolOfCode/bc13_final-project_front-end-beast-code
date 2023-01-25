@@ -23,14 +23,23 @@ export default function LandingHeader() {
         >
           <div className={styles.about_us}>
             <h3>
-              <Link href="/aboutus">
-               <p>About us</p>
+              <Link
+                href="/aboutus"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <p>About us</p>
               </Link>
             </h3>
           </div>
           <div className={styles.login}>
             <h3>
-              <Link href="/underconstruction" data-testid="login">Login</Link>
+              <Link
+                href="/underconstruction"
+                data-testid="login"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                Login
+              </Link>
             </h3>
           </div>
         </div>

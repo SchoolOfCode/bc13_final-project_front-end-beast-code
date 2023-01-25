@@ -55,7 +55,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
   }
 
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
-
+  
   return (
     <div className={styles.parent_container}>
       {/* Search bar for filtering results by keyword */}
@@ -177,7 +177,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
         )}
         {view === "list" ? (
           <div className={styles.button_centering}>
-            {displayResultsNumber > results.length ? null : <button
+            {displayResultsNumber >= results.length ? null : <button
               className={styles.load_more_button}
               onClick={updateNumberOfResults}
             >
