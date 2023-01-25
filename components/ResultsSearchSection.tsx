@@ -24,16 +24,16 @@ type propsObj = {
   removeOption: MouseEventHandler<HTMLButtonElement>;
   buttonAnimation: boolean;
   noResults: boolean;
+  panelState: boolean;
+  setPanelState: Function;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults, panelState, setPanelState }: propsObj) {
 
   //Toggles the state between map and list view
   const [view, setView] = useState("list")
   //Increments the number of results displayed on the screen by 9
   const [displayResultsNumber, setDisplayResultsNumber] = useState(9)
-  //Toggles the panel's open state between true and false
-  const [panelState, setPanelState] = useState(false);
   //Toggle the style of the button clicked by the user between gold (selected) and green (unselected)
   const [style, setStyle] = useState("btn");
 
@@ -113,7 +113,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             </p>)}
         </div>)}
         </div> : null}
-        <div className={styles.all_filter_buttons}>        
+        <div className={styles.all_filter_buttons}>      
           <div className={styles.dropdown_container}>
             {/* Conditionally renders the basic dropdowns if the panel is closed */}
             {panelState ? null : (

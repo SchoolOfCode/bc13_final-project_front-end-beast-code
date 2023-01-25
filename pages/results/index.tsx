@@ -49,6 +49,8 @@ export default function Results() {
   const [buttonAnimation, setButtonAnimation] = useState(false);
   //Sets whether the "No results" message should be displayed
   const [noResults, setNoResults] = useState(false)
+  //Toggles the panel's open state between true and false
+  const [panelState, setPanelState] = useState(false);
 
   //Gets location from local storage if query from landing page is undefined (i.e. on page refresh) and makes the fetch request whenever the user's location is changed
     useEffect(() => {
@@ -291,7 +293,7 @@ export default function Results() {
 
   return (
     <>
-      <ResultsHeader setLocation={setLocation} location={location} />
+      <ResultsHeader setLocation={setLocation} location={location} panelState={panelState}/>
       <div className={styles.results_main}>
         <ResultsSearchSection
           results={results}
@@ -307,6 +309,8 @@ export default function Results() {
           removeOption={removeOption}
           noResults={noResults}
           buttonAnimation={buttonAnimation}
+          panelState={panelState}
+          setPanelState={setPanelState}
         />
         <div className={styles.spinner}>
           <div>

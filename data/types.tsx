@@ -1,5 +1,4 @@
 import { LatLngExpression } from 'leaflet';
-import { ParsedUrlQuery } from "querystring"
 
 export type filtersObjectType = {
     category: {
@@ -92,13 +91,6 @@ export type dataObjectType = {
       searchInputPlaceholder: string;
     };
   };
-
-export type resultsHeaderPropsType = { 
-    setLocation: any ,
-    location: ParsedUrlQuery & {
-      location: string[] | string;
-      searchInputPlaceholder: string;},
-  }
 
   export interface Root {
     barInfo: Bar;
