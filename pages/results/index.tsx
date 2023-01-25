@@ -4,9 +4,10 @@ import styles from "../../styles/results_page.module.css"
 import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 import { filterOptions } from "../../data/filters"
-import { filtersObjectType, resultsArrType, checkedOpsArrType } from "../../data/types"
+import { filtersObjectType, resultsArrType, checkedOpsArrType, sortingObjectType } from "../../data/types"
 import { ParsedUrlQuery } from "querystring"
 import ClipLoader from "react-spinners/ClipLoader";
+import { sorting } from "../../data/sorting"
 
 //DO NOT DELETE
 declare global {
@@ -49,6 +50,7 @@ export default function Results() {
   const [noResults, setNoResults] = useState(false)
   //Toggles the panel's open state between true and false
   const [panelState, setPanelState] = useState(false);
+  const [sortingObj, setSortingObj] = useState<sortingObjectType>(sorting)
 
   //Gets location from local storage if query from landing page is undefined (i.e. on page refresh) and makes the fetch request whenever the user's location is changed
     useEffect(() => {
@@ -98,6 +100,7 @@ export default function Results() {
     })
     setFilters(newFilters)
     setResults(allResults)
+    setFilteredResults([])
     setQueryInput("")
   }
 
@@ -149,15 +152,27 @@ export default function Results() {
 
   /** Set the status of each dropdown to open or closed if the user clicks. Only one dropdown is able to be open at a time. */
   function setDropdown(event: any) {
-    const newFilters = filterOptions.map((element: filtersObjectType) => {
-      if (event.target.id === element.category.text) {
-        element.isOpen = !element.isOpen;
-      }
-      else {
-        element.isOpen = false;
-      }
-      return element;
-    });
+    let newFilters = [...filterOptions]
+    let newSortingObj = {...sortingObj}
+    if (event.target.id === "Sort by") {
+      newSortingObj = {...newSortingObj, isOpen: !newSortingObj.isOpen}
+      console.log(newSortingObj)
+      newFilters = filterOptions.map((element: filtersObjectType) => {element.isOpen = false; return element});
+    }
+    else {
+      newFilters = filterOptions.map((element: filtersObjectType) => {
+        if (event.target.id === element.category.text) {
+          element.isOpen = !element.isOpen;
+          sortingObj.isOpen = !sortingObj.isOpen;
+        }
+        else {
+          element.isOpen = false;
+        }
+        newSortingObj.isOpen = false;
+        return element;
+      });
+    }
+    setSortingObj(newSortingObj)
     setFilters(newFilters);
   }
 
@@ -174,6 +189,21 @@ export default function Results() {
     });
     setFilters(newFilters);
     setButtonAnimation(true)
+  }
+
+  function setRadioCheckbox(event: any) {
+    console.log(event?.target.id)
+    const newSortingObj : sortingObjectType = {...sortingObj, options: sortingObj.options.map((option) => {
+        if (option.text === event.target.id) {
+          option.checked = !option.checked;
+          console.log(option.text, option.checked)
+        }
+        else {
+          option.checked = false;
+        }
+        return option;
+      })}
+    setSortingObj(newSortingObj);
   }
 
   //Creates an array of the options selected by the user whenever the filters array is updated (i.e. an option's checked status is changed)
@@ -213,6 +243,39 @@ export default function Results() {
     }
     setFilters(newFilters)
   }
+
+  function sortResults() {
+    let sortedResults : resultsArrType = []
+    if (filteredResults.length > 0) {
+      sortedResults = [...filteredResults]
+    }
+    else {
+      sortedResults = [...results]
+    }
+    sortingObj.options.map(element => {
+        if (element.checked === true) {
+          if (element.text === "Distance") {
+            sortedResults = [...sortedResults.sort((a, b) => a.dist.calculated - b.dist.calculated)]
+            // console.log("Sorted by distance", results.sort((a, b) => a.dist.calculated - b.dist.calculated))
+          }
+          if (element.text === "Price") {
+            sortedResults = [...sortedResults.sort((a, b) => a.Cost - b.Cost)]
+            console.log("HELLLO", sortedResults)
+            // console.log("Sorted by price", results.sort((a, b) => a.Cost - b.Cost))
+          }
+          if (element.text === "Rating") {
+            sortedResults = [...sortedResults.sort((a, b) => b.Rating - a.Rating)]
+            // console.log("Sorted by rating", results.sort((a, b) => a.Rating - b.Rating))
+          }
+        }
+      })
+    setResults(sortedResults)
+    setFilteredResults(sortedResults)
+  }
+
+    useEffect(() => {
+      sortResults()
+    }, [sortingObj])
 
   /** Sets the queryInput state to whatever is entered by the user in the keyword search bar. Their input is also set to lowercase and stripped of all punctuation */
   function getQueryInput(event: any) {
@@ -298,6 +361,7 @@ export default function Results() {
           filters={filters}
           setDropdown={setDropdown}
           setCheckbox={setCheckbox}
+          setRadioCheckbox={setRadioCheckbox}
           heroPageQuery={location}
           resetResults={resetResults}
           getFilteredData={getFilteredData}
@@ -309,6 +373,8 @@ export default function Results() {
           buttonAnimation={buttonAnimation}
           panelState={panelState}
           setPanelState={setPanelState}
+          sortingObj={sortingObj}
+          sortResults={sortResults}
         />
           <div className={styles.spinner_container}>
             <ClipLoader

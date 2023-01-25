@@ -13,6 +13,15 @@ export type filtersObjectType = {
     isOpen: boolean;
 }
 
+export type sortingObjectType = {
+  category: string;
+  options: {
+    text: string, 
+    checked: boolean
+  }[];
+  isOpen: boolean;
+}
+
 export type filtersArrType = filtersObjectType[]
 
 export type resultsArrType = {
