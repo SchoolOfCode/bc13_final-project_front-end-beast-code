@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useRouter } from 'next/router'
 import { resultsHeaderPropsType, dataPCType } from "../data/types";
 import { useEffect, useState } from 'react';
+import { ParsedUrlQuery } from "querystring"
+
+
 
 export default function ResultsHeader(props: resultsHeaderPropsType ) {
   const [input, setInput] = useState('')
