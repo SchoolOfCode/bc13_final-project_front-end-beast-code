@@ -6,7 +6,6 @@ type propsObjType = {
   filters: filtersArrType;
   setDropdown: MouseEventHandler<HTMLParagraphElement>;
   setCheckbox: MouseEventHandler<HTMLParagraphElement>;
-  dropdownAnimation: boolean;
 }
 
 export default function FilterDropdown({ filters, setDropdown, setCheckbox }: propsObjType) {
