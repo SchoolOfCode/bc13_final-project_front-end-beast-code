@@ -4,12 +4,20 @@
     width: 210px;
     color: white;
     display: flex;
-    /* position: relative; */
     cursor: pointer;
 }
 
-.dropdown_container:hover {
-    animation: pulse ease 1s infinite;
+.dropdown_container_animation {
+    background-color: var(--lightgreen);
+    border-radius: 10px;
+    width: 210px;
+    color: white;
+    display: flex;
+    cursor: pointer;
+}
+
+.dropdown_container_animation:hover {
+    animation: pulse 1s ease infinite alternate;
 }
 
 .p {

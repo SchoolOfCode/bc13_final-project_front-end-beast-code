@@ -67,6 +67,10 @@
     align-items: center;
 }
 
+.button_box:hover {
+    animation: togglepulse 0.7s infinite ease-in-out alternate;
+}
+
 .toggle_btn {
     color: white;
     padding: 10px 10px;
@@ -165,7 +169,7 @@
 }
 
 .all_filter_buttons button:hover {
-    animation: pulse 0.5s infinite ease-in-out alternate;
+    animation: buttonpulse 0.5s infinite ease-in-out alternate;
 }
 
 .dropdown_container {
@@ -204,7 +208,6 @@
     width: 160px;
     height: 50px;
     border-radius: 7px;
-    margin-bottom: 100px;
     cursor: pointer;
 }
 
@@ -348,6 +351,12 @@
     background-image: url('../public/resultsSearchSection-cross-icon.png');
 }
 
+.results_number {
+    padding-top: 20px;
+    /* border: 1px solid red; */
+    /* width: 70vw; */
+}
+
 
 @keyframes hithere {
     10% { transform: scale(1);}
@@ -357,7 +366,12 @@
     100% { transform: scale(1);}
 }
 
-@keyframes pulse {
+@keyframes togglepulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+@keyframes buttonpulse {
     from { transform: scale(1); }
     to { transform: scale(1.1); }
 }

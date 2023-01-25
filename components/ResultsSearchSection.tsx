@@ -24,16 +24,16 @@ type propsObj = {
   removeOption: MouseEventHandler<HTMLButtonElement>;
   buttonAnimation: boolean;
   noResults: boolean;
+  panelState: boolean;
+  setPanelState: Function;
 }
 
-export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults }: propsObj) {
+export default function ResultsSearchSection({ results, filters, setDropdown, setCheckbox, getFilteredData, heroPageQuery, queryFilters, resetResults, getQueryInput, queryInput, removeOption, buttonAnimation, noResults, panelState, setPanelState }: propsObj) {
 
   //Toggles the state between map and list view
   const [view, setView] = useState("list")
   //Increments the number of results displayed on the screen by 9
   const [displayResultsNumber, setDisplayResultsNumber] = useState(9)
-  //Toggles the panel's open state between true and false
-  const [panelState, setPanelState] = useState(false);
   //Toggle the style of the button clicked by the user between gold (selected) and green (unselected)
   const [style, setStyle] = useState("btn");
 
@@ -55,7 +55,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
   }
 
   const Map = dynamic(() => import("../components/Map"), { ssr: false });
-
+  
   return (
     <div className={styles.parent_container}>
       {/* Search bar for filtering results by keyword */}
@@ -113,7 +113,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
             </p>)}
         </div>)}
         </div> : null}
-        <div className={styles.all_filter_buttons}>        
+        <div className={styles.all_filter_buttons}>      
           <div className={styles.dropdown_container}>
             {/* Conditionally renders the basic dropdowns if the panel is closed */}
             {panelState ? null : (
@@ -157,6 +157,10 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                 </div>
               </>
             )}
+            {results.length > 0 ? 
+              results.length === 1 ? 
+                <div className={styles.results_number}>{results.length} result</div> : <div className={styles.results_number}>{results.length} results</div> 
+                : null}
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel
@@ -177,7 +181,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
         )}
         {view === "list" ? (
           <div className={styles.button_centering}>
-            {displayResultsNumber > results.length ? null : <button
+            {displayResultsNumber >= results.length ? null : <button
               className={styles.load_more_button}
               onClick={updateNumberOfResults}
             >

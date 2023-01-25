@@ -2,13 +2,35 @@ import Link from "next/link";
 import styles from "../styles/results_header.module.css";
 import Image from "next/image";
 import { useRouter } from 'next/router'
-import { resultsHeaderPropsType, dataPCType } from "../data/types";
+import { dataPCType } from "../data/types";
 import { useEffect, useState } from 'react';
+import { ParsedUrlQuery } from "querystring"
 
-export default function ResultsHeader(props: resultsHeaderPropsType ) {
+type propsObjType = { 
+  setLocation: any ,
+  location: ParsedUrlQuery & {
+    location: string[] | string;
+    searchInputPlaceholder: string;},
+  panelState: boolean;
+}
+
+export default function ResultsHeader(props: propsObjType ) {
   const [input, setInput] = useState('')
   const [placeHolderText, setPlaceHolderText] = useState(`${props.location?.searchInputPlaceholder?.charAt(0).toUpperCase()}${props.location?.searchInputPlaceholder?.slice(1)}`)
   const router = useRouter() as TRouter;
+  const [positionState, setPositionState] = useState<any>({ "position": "fixed" } )
+  const [zIndexState, setZIndexState] = useState<any>({ "z-index": "2" })
+
+  useEffect(() => {
+   if (props.panelState) {
+      setPositionState({ "position": "relative" })
+      setZIndexState({"z-index": "0"})
+   }
+   else {
+    setPositionState({ "position": "fixed" })
+    setZIndexState({"z-index": "2"})
+   }
+  }, [props.panelState])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value.toLowerCase().replace(/\s/g, ''))
@@ -70,7 +92,7 @@ export default function ResultsHeader(props: resultsHeaderPropsType ) {
 
   return (
     <>
-      <div className={styles.Navbar}>
+      <div className={styles.Navbar} style={{...positionState, ...zIndexState}}>
         <Link href="/" style={{ textDecoration: "none" }}>
           <div className={styles.logo} data-testid="logo">
             <Image

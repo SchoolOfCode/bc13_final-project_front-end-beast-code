@@ -45,7 +45,7 @@ export default function FilterDropdown({ filters, setDropdown, setCheckbox }: pr
             </ul>
           </div>
         ) : (
-          <div key={index} className={styles.dropdown_container}>
+          <div key={index} className={styles.dropdown_container_animation}>
             <p onClick={setDropdown} className={styles.p} id={element.category.text}>
               {element.category.text}
             </p>
