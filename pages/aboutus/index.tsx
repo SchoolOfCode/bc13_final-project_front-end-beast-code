@@ -2,7 +2,6 @@ import styles from "../../styles/aboutus.module.css";
 import {AboutUsProfile} from "../../components/AboutUsProfile";
 import BarPageHeader from "../../components/BarPageHeader";
 import CountUp from "react-countup";
-import { useState } from "react";
 
 let team: teamType = [
   {fullname: "Keira Stanley", tenSeconds: "I frequently visit Brazil and support Spurrs", linkedIn: "https://www.linkedin.com/in/keirastanley/", gitHub: "https://github.com/keirastanley", profileImage: "/keira.png"},
@@ -16,7 +15,6 @@ let team: teamType = [
 type teamType = {fullname: string, tenSeconds: string, linkedIn: string, gitHub: string, profileImage: string}[]
 
 export default function AboutUs() {
-  const [counterOn, setCounterOn] = useState(false)
   return (
     <div className={styles.whole_page}>
       <BarPageHeader />
