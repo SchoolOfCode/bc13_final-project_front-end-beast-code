@@ -63,8 +63,18 @@ export default function Map({results, heroPageQuery}: propsObjType){
 
                     <div className={styles.popup_description}>
                       <p>{element.Address}</p>
-                      <p>Cost: {element.Cost}/3</p>
-                      <p>Rating: {element.Rating}/5</p>
+                      <strong>
+                        <p>
+                          Cost:&nbsp; {"£ ".repeat(element.Cost)}
+                          <span className={styles.cost_light_icon}>
+                            {"£ ".repeat(3 - element.Cost)}
+                          </span>
+                        </p>
+                      </strong>
+                      <p>
+                        Rating:&nbsp; {"★ ".repeat(element.Rating)}
+                        {"☆ ".repeat(5 - element.Rating)}
+                      </p>
                     </div>
                   </div>
                 </Link>

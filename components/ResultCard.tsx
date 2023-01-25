@@ -15,7 +15,7 @@ export type propsObjType = {
 function Pounds({ number }: any) {
   let poundStr = "";
   for (let i = 0; i < number; i++) {
-    poundStr += "£";
+    poundStr += "£ ";
   }
   return <p>{poundStr}</p>;
 }
@@ -46,17 +46,26 @@ export default function ResultCard(props: propsObjType) {
           <div className={styles.drinks_icon}></div>
           <p>{props.venue[0]}</p>
         </div>
-        <div className={styles.cost}>
-          <div className={styles.cost_icon}></div>
-          <Pounds number={props.cost} />
-        </div>
-        <div className={styles.food}>
-          <div className={styles.food_icon}></div>
+        <div className={styles.vibe}>
+          <div className={styles.vibe_icon}></div>
           <p>{props.vibe[0]}</p>
         </div>
+        <div className={styles.cost}>
+          <strong>
+            <Pounds number={props.cost} />
+          </strong>
+          &nbsp;
+          <strong>
+            <span className={styles.cost_icon_light}>
+              {"£ ".repeat(3 - Number(props.cost))}
+            </span>
+          </strong>
+        </div>
         <div className={styles.reviews}>
-          <div className={styles.reviews_icon}></div>
-          <p>{`${props.rating}`}</p>
+          <p>
+            {"★ ".repeat(Number(props.rating))}
+            {"☆ ".repeat(5 - Number(props.rating))}
+          </p>
         </div>
       </div>
     </div>

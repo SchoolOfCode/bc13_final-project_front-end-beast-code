@@ -75,7 +75,7 @@
     position: relative;
     margin-left: -35px;
     z-index: 0;
-    transition: .5s ease-in-out;
+    transition: .5s ease-in-out;    
 }
 
 @keyframes pulse {
