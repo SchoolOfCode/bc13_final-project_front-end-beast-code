@@ -7,6 +7,7 @@ import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 import Link from 'next/link';
 import {useEffect, useState} from 'react'
+import { slice } from 'cypress/types/lodash';
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
@@ -23,20 +24,29 @@ type propsObjType = {
 
 
 export default function Map({results, heroPageQuery}: propsObjType){
-let [coordsAverage, setCoordsAverage] = useState([-1.63294, 53.52287])
-
+let [firstCoordAverage, setFirstCoordAverage] = useState(53.52338)
+let [secondCoordAverage, setSecondCoordAverage] = useState(-1.63294)
   useEffect(()=>{
     function coordAverage(){
-      let firstCoords = 0
-      let secondCoords = 0
+      let firstCoord = 0
+      let secondCoord = 0
       for (let i=0; i<results.length; i++) {
-        firstCoords = firstCoords + results[i].location.coordinates[0]
-        secondCoords = secondCoords + results[i].location.coordinates[1]
-        firstCoords = firstCoords / (results.length)
-        secondCoords = secondCoords/ (results.length)
-      }
-      setCoordsAverage([firstCoords, secondCoords])
-    }})
+        firstCoord = firstCoord + results[i].location.coordinates[0]
+        secondCoord = secondCoord + results[i].location.coordinates[1]
+        }
+        firstCoord = firstCoord / (results.length)
+        secondCoord = secondCoord/ (results.length)
+      console.log("this is correct", firstCoord)
+      console.log("this is correct as well hopefully", secondCoord)
+      setFirstCoordAverage(firstCoord)
+      setSecondCoordAverage(secondCoord)
+    }
+      coordAverage()
+      console.log("this one needs to be the same as the first one", firstCoordAverage)
+    }, [results])
+    useEffect(()=>{
+      console.log("second useEffect log", firstCoordAverage)
+    }, [firstCoordAverage])
 
   return (
     <div className={styles.map_centering_div}>
@@ -45,8 +55,7 @@ let [coordsAverage, setCoordsAverage] = useState([-1.63294, 53.52287])
         id="map"
         data-testId="map-container"
         center={[
-          Number(coordsAverage[0]),
-          Number(coordsAverage[1]),
+          51.51701809235747, -0.09895681724587613
         ]}
         zoom={13}
         scrollWheelZoom={false}
