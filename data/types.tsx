@@ -94,7 +94,6 @@ export type dataObjectType = {
   };
 
 export type resultsHeaderPropsType = {
-    href: any;
     setLocation: any ,
     location: ParsedUrlQuery & {
       location: string[] | string;

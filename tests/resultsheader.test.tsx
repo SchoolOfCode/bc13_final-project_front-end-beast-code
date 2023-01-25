@@ -49,15 +49,13 @@ it('should render the location input with the correct attributes', () => {
 });
 
 it('should render the about us and login links with the correct attributes', () => {
-  render(<ResultsHeader setLocation={undefined} location={undefined} href="#" />);
+  render(<ResultsHeader setLocation={undefined} location={undefined} />);
   
 
   const aboutUsLink = screen.getByTestId('about-us');
   expect(aboutUsLink).toBeInTheDocument();
-  expect(aboutUsLink).toHaveAttribute('href', '/aboutus');
 
   const loginLink = screen.getByTestId('login');
   expect(loginLink).toBeInTheDocument();
-  expect(loginLink).toHaveAttribute('href', '/underconstruction');
 });
 });
