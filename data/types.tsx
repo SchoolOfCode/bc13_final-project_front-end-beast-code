@@ -91,7 +91,7 @@ export type dataObjectType = {
       searchInputPlaceholder: string;
     };
   };
-
+  
   export interface Root {
     barInfo: Bar;
   }
