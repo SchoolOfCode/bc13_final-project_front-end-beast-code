@@ -21,25 +21,16 @@
     flex-wrap: wrap;
     margin-top: 45px;
     row-gap: 25px;
+    margin-bottom: 45px;
 }
 
 .profiles {
     display: flex;
     flex-direction: column;
     flex-basis: 33.333333%;
-    align-items:center;
+    align-items: center;
     text-align: center;
     padding: 3vh 1.5vw 0vh 1.5vw;
-}
-
-.about_us>h1 {
-    padding: 7vh 0vw 1vh 0vw;
-}
-
-.about_info>h1 {
-    margin-top: 50px;
-    padding: 1vh 0vw;
-    text-align: center;
 }
 
 .profile_image {
@@ -49,19 +40,26 @@
 
 .lines {
     max-width: 1080px;
+    margin-top: 7px;
     width: 100%;
     height: 5px;
-    border-bottom: 5px solid var(--gold);
+    border-bottom: 3.5px solid var(--gold);
 }
 
-.project_description, .project_description1, .project_description2 {
+.project_description,
+.project_description1,
+.project_description2 {
     padding-top: 2vh;
     font-size: 18px;
     text-align: center;
 }
 
-.project_description{
-    margin-top: 40px;
+.project_description2 {
+    margin-bottom: 45px;
+}
+
+.project_description {
+    margin-top: 45px;
 }
 
 .tech_stack {
@@ -71,7 +69,7 @@
     flex-wrap: wrap;
 }
 
-.tech_stack>p{
+.tech_stack>p {
     border-radius: 5px;
     border: 5px solid var(--green);
     padding: 0px 5px;
@@ -98,14 +96,15 @@
     display: none;
 }
 
-.stat1animate{
+.stat1animate {
     color: white;
     font-size: 36px;
     animation: tranistionIn 3s;
     width: 210px;
+    margin-bottom: 50px;
 }
 
-.stat1animate>p{
+.stat1animate>p {
     margin-top: 17px;
     font-size: 17px;
     font-weight: thin;
@@ -114,7 +113,7 @@
 @keyframes tranistionIn {
     from {
         opacity: 0;
-        transform: translateY(32px);
+        transform: translateY(22px);
     }
 
     to {
