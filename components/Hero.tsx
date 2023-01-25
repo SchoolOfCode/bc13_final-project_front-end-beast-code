@@ -13,10 +13,16 @@ export default function Hero() {
     useState("");
   
   function handleUserInput(e: any) {
-    if ((e.type="click")||(e.key === "Enter")) {
+    if ((e.key === "Enter")) {
       const userInput = userLocationInput!.current!.value.toLowerCase().replace(/\s/g, "");
       setLocation(userInput);
     }
+  }
+  function handleUserInputClick() {
+      const userInput = userLocationInput!
+        .current!.value.toLowerCase()
+        .replace(/\s/g, "");
+      setLocation(userInput);
   }
 
   useEffect(() => {
@@ -93,7 +99,7 @@ export default function Hero() {
             onKeyDown={handleUserInput}
           ></input>
           <button
-            onClick={handleUserInput}
+            onClick={handleUserInputClick}
             data-testid="button"
             className={styles.search_button}
           >
