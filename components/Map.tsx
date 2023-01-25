@@ -24,8 +24,8 @@ type propsObjType = {
 
 
 export default function Map({results, heroPageQuery}: propsObjType){
-let [firstCoordAverage, setFirstCoordAverage] = useState(53.52338)
-let [secondCoordAverage, setSecondCoordAverage] = useState(-1.63294)
+let [firstCoordAverage, setFirstCoordAverage] = useState<null|number>(null)
+let [secondCoordAverage, setSecondCoordAverage] = useState<null|number>(null)
   useEffect(()=>{
     function coordAverage(){
       let firstCoord = 0
@@ -44,19 +44,14 @@ let [secondCoordAverage, setSecondCoordAverage] = useState(-1.63294)
       coordAverage()
       console.log("this one needs to be the same as the first one", firstCoordAverage)
     }, [results])
-    useEffect(()=>{
-      console.log("second useEffect log", firstCoordAverage)
-    }, [firstCoordAverage])
 
   return (
     <div className={styles.map_centering_div}>
-      <MapContainer
+        {firstCoordAverage ? <MapContainer
         className={styles.map_container}
         id="map"
         data-testId="map-container"
-        center={[
-          51.51701809235747, -0.09895681724587613
-        ]}
+        center={[firstCoordAverage!, secondCoordAverage!]}
         zoom={13}
         scrollWheelZoom={false}
         style={{ height: "700px", width: "55%" }}
@@ -107,7 +102,7 @@ let [secondCoordAverage, setSecondCoordAverage] = useState(-1.63294)
             </div>
           </Marker>
         ))}
-      </MapContainer>
+      </MapContainer>: null}
     </div>
   );
 }
