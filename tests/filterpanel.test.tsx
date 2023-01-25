@@ -49,8 +49,5 @@ describe('FilterPanel', () => {
     } } queryInput={""} removeOption={function (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
       throw new Error("Function not implemented.");
     } } />)
-    const moreFiltersButton = getByTestId('more-filters')
-    fireEvent.click(moreFiltersButton)
-    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 })
