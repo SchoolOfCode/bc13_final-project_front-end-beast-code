@@ -310,18 +310,15 @@ export default function Results() {
           panelState={panelState}
           setPanelState={setPanelState}
         />
-        <div >
           <div className={styles.spinner_container}>
             <ClipLoader
               color="#AF8541"
               loading={loading}
-              // cssOverride={{padding:"50px"}}
               size={150}
               aria-label="Loading-Spinner"
               data-testid="loader"
             />
           </div>
-        </div>
       </div>
     </>
   );
