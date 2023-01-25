@@ -157,6 +157,10 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                 </div>
               </>
             )}
+            {results.length > 0 ? 
+              results.length === 1 ? 
+                <div className={styles.results_number}>{results.length} result</div> : <div className={styles.results_number}>{results.length} results</div> 
+                : null}
           </div>
           {/* Filter panel shows when "filters" button is clicked */}
           <FilterPanel

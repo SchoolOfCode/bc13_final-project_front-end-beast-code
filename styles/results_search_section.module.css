@@ -352,6 +352,12 @@
     background-image: url('../public/resultsSearchSection-cross-icon.png');
 }
 
+.results_number {
+    padding-top: 20px;
+    /* border: 1px solid red; */
+    /* width: 70vw; */
+}
+
 
 @keyframes hithere {
     10% { transform: scale(1);}
