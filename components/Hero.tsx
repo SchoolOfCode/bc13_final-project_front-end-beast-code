@@ -12,9 +12,11 @@ export default function Hero() {
   const [locationForResultsPageHeader, setLocationForResultsPageHeader] =
     useState("");
   
-  function handleUserInput() {
-    const userInput = userLocationInput!.current!.value.toLowerCase().replace(/\s/g, "");
-    setLocation(userInput);
+  function handleUserInput(e: any) {
+    if ((e.type="click")||(e.key === "Enter")) {
+      const userInput = userLocationInput!.current!.value.toLowerCase().replace(/\s/g, "");
+      setLocation(userInput);
+    }
   }
 
   useEffect(() => {
@@ -88,6 +90,7 @@ export default function Hero() {
             placeholder="Location or Postcode"
             data-testid="input"
             ref={userLocationInput}
+            onKeyDown={handleUserInput}
           ></input>
           <button
             onClick={handleUserInput}
