@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     padding-top: 125px;
-    margin-bottom: 90px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -319,6 +319,8 @@
 }
 
 .query_filters_container {
+    /* border: 1px solid red; */
+    height: 40px;
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
@@ -328,6 +330,7 @@
 }
 
 .query_filter_option {
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
