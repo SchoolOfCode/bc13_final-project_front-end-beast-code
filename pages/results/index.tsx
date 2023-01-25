@@ -24,8 +24,6 @@ export default function Results() {
 
   //State that handles rendering the loading spinner while fetch requested is being awaited
   let [loading, setLoading] = useState(true);
-  //??
-  let [color, setColor] = useState("#FFF");
   //Sets the state of the dropdown filters, handling their text, open/closed state and the checked state of each option
   const [filters, setFilters] = useState(filterOptions)
   //Maintains the results of the initial fetch request (location only) to easily reset results after filters have been applied
@@ -312,11 +310,12 @@ export default function Results() {
           panelState={panelState}
           setPanelState={setPanelState}
         />
-        <div className={styles.spinner}>
-          <div>
+        <div >
+          <div className={styles.spinner_container}>
             <ClipLoader
               color="#AF8541"
               loading={loading}
+              // cssOverride={{padding:"50px"}}
               size={150}
               aria-label="Loading-Spinner"
               data-testid="loader"
