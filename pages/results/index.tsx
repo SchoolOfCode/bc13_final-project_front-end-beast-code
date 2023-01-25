@@ -88,6 +88,7 @@ export default function Results() {
       setAllResults(newResults)
     }
   }
+
   /** Resets the results page so that all results from the initial fetch request are displayed, all dropdowns are closed, all checkboxes are unchecked and the keyword search input is cleared */
   function resetResults(){
     const newFilters = filters.map(el => {
@@ -98,8 +99,18 @@ export default function Results() {
       })
       return el
     })
+    const newSortingObj = {...sortingObj, isOpen: false, options: sortingObj.options.map(el => {
+      if (el.text !== "Distance") {
+        el.checked = false;
+      }
+      else {
+        el.checked = true;
+      }
+      return el
+    })}
     setFilters(newFilters)
     setResults(allResults)
+    setSortingObj(newSortingObj)
     setFilteredResults([])
     setQueryInput("")
   }
@@ -135,6 +146,16 @@ export default function Results() {
       if (queryInput.length > 0){
         findQueryInput()
       }
+      const newSortingObj = {...sortingObj, isOpen: false, options: sortingObj.options.map(el => {
+        if (el.text !== "Distance") {
+          el.checked = false;
+        }
+        else {
+          el.checked = true;
+        }
+        return el
+      })}
+      setSortingObj(newSortingObj)
     }
   }
 
