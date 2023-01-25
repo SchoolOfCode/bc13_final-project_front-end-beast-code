@@ -2,11 +2,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ResultsHeader from '../components/ResultsHeader';
 import styles from '../styles/ResultsHeader.module.css';
-
+import { ParsedUrlQuery } from 'querystring';
 
 describe('ResultsHeader', () => {
   it('should render the logo with the correct attributes', () => {
-    render(<ResultsHeader />);
+    const Location = jest.fn()
+    render(<ResultsHeader heroPageQuery={{
+      location: [],
+      searchInputPlaceholder: ''
+    }} setLocation={undefined} location={"Location"} />);
     const logo = screen.getByTestId('logo');
     expect(logo).toBeInTheDocument();
     expect(logo).toHaveClass(styles.logo);
@@ -19,7 +23,11 @@ describe('ResultsHeader', () => {
   });
 
   it('should render the location input with the correct attributes', () => {
-    render(<ResultsHeader />);
+    const Location = jest.fn()
+    render(<ResultsHeader heroPageQuery={{
+      location: [],
+      searchInputPlaceholder: 'Location or Postcode'
+    }} setLocation={undefined} location={Location}/>);
     const locationInput = screen.getByTestId('location-input');
     expect(locationInput).toBeInTheDocument();
     expect(locationInput).toHaveAttribute('placeholder', 'Location or Postcode');
@@ -27,7 +35,10 @@ describe('ResultsHeader', () => {
   });
 
   it('should render the about us and login links with the correct attributes', () => {
-    render(<ResultsHeader />);
+    render(<ResultsHeader heroPageQuery={{
+      location: [],
+      searchInputPlaceholder: ''
+    }} setLocation={undefined} location={undefined} />);
 
     const aboutUsLink = screen.getByTestId('about-us');
     expect(aboutUsLink).toBeInTheDocument();

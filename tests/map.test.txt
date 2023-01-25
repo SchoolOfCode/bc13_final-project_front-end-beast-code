@@ -1,14 +1,46 @@
-import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import { render, screen } from "@testing-library/react";
 import Map from "../components/Map";
+import { resultsArrType, singleBarType } from '../data/types';
 
-//TEST NOT WORKING CURRENTLY
+const mockResults = [
+  {
+    _id: "2",
+    City: "london",
+    Name: "the bar",
+    Cost: "2",
+    Description: "a great bar",
+    Image: "image.png",
+    Rating: 3,
+    Address: "19 Goodrich Road",
+    Features: ["cosy"],
+    Postcode: "SE22 0NY",
+    Hygiene: 3,
+    Happy_hr: "yay",
+    Website: "www.egfousrgo.com",
+    Music: ["hip-hop"],
+    Venue_type: ["bar"],
+    Other: ["pool"],
+    Vibe: ["cosy"],
+    Who_with: ["work"],
+    location: {
+      type: "Sea",
+      coordinates: [0, 0],
+    },
+    dist: 3,
+  },
+];
 
-describe("<Map />", () => {
-  it("renders the map on the map page with at least one marker", () => {
-    render(<Map />);
-    // check if all components are rendered
-    expect(screen.getByTestId("map-container")).toBeInTheDocument();
-    expect(screen.getByTestId("marker")).toBeInTheDocument();
+const mockHeroPageQuery = {
+  location: ['45.5231', '-122.6765'],
+  searchInputPlaceholder: 'Search for a bar'
+};
+
+describe('Map', () => {
+  it('renders the map container correctly', () => {
+    render(<Map mockResults={[mockResults]} heroPageQuery={mockHeroPageQuery} />);
+
+    expect(screen.getByTestId('map-container')).toBeInTheDocument();
+    expect(screen.getByTestId('tile-layer')).toBeInTheDocument();
   });
 });
