@@ -89,7 +89,6 @@ export default function ResultsHeader(props: propsObjType ) {
       }
     }
   
-
   return (
     <>
       <div className={styles.Navbar} style={{...positionState, ...zIndexState}}>
