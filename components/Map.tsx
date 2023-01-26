@@ -7,7 +7,6 @@ import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 import Link from 'next/link';
 import {useEffect, useState} from 'react'
-import { slice } from 'cypress/types/lodash';
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
