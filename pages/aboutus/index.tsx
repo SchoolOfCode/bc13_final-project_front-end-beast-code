@@ -10,7 +10,7 @@ let team: teamType = [
   {fullname: "Faseeh Ahmed", tenSeconds: "I’m a recent engineering graduate looking to join an industry where I can continuously learn and develop problem solving skills while still having fun :).", linkedIn: "https://www.linkedin.com/in/faseehahmed/", gitHub: "https://github.com/faseehahmed1", profileImage: "/faseeh.png"},
   {fullname: "Suzi Clark", tenSeconds: "You're not wrong Greg", linkedIn: "https://www.linkedin.com/in/susanna-clark-932b52142/", gitHub: "https://github.com/Suzi-Clark", profileImage: "/suzi.png"},
   {fullname: "Rhona Mackay", tenSeconds: "After writing the same letter one too many times in my civil service job, I'm looking for a creative career where I can stretch my problem solving muscles.", linkedIn: "https://www.linkedin.com/in/rhonamackay/", gitHub: "https://github.com/rhonamackay", profileImage: "/rhona.png"},
-  {fullname: "Remi Akinfoyeku", tenSeconds: "If a pixel is out of place, I'll spot it: pixel perfection!", linkedIn: "https://www.linkedin.com/in/anthony-akinfoyeku-720846a6/", gitHub: "https://github.com/remiyeku", profileImage: "/remi.png"}
+  {fullname: "Remi Akinfoyeku", tenSeconds: "Hi I'm Remi, I've always been interested in tech and have done a myriad of problem solving jobs so I decided it's time to put 2 and 2 together and persue a career in coding!", linkedIn: "https://www.linkedin.com/in/anthony-akinfoyeku-720846a6/", gitHub: "https://github.com/remiyeku", profileImage: "/remi.png"}
 ]
 
 type teamType = {fullname: string, tenSeconds: string, linkedIn: string, gitHub: string, profileImage: string}[]
