@@ -14,7 +14,7 @@ function BarCards({results, displayResultsNumber, noResults}: propsObjectType) {
 
   return (<div className={styles.outerCardContainer}>
       <div className={styles.cardContainer}>
-        {noResults ? <h2>Sorry, no results found :(</h2> : results.slice(0, displayResultsNumber).map((item, index) => (
+        {noResults ? <h2 className={styles.noResults}>Sorry, no results found :(</h2> : results.slice(0, displayResultsNumber).map((item, index) => (
           <Link href={`/bar/${item._id}`} key={index}>
             <ResultCard
               key={index}
