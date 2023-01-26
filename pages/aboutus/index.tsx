@@ -9,7 +9,7 @@ let team: teamType = [
   {fullname: "Gregory Rutnam", tenSeconds: "Tabby tiggy would 100% beat Orange Tiggy in a fight", linkedIn: "https://www.linkedin.com/in/rutnam/", gitHub: "https://github.com/gregrutnam", profileImage: "/greg.png"},
   {fullname: "Faseeh Ahmed", tenSeconds: "Say it like you meme it", linkedIn: "https://www.linkedin.com/in/faseehahmed/", gitHub: "https://github.com/faseehahmed1", profileImage: "/faseeh.png"},
   {fullname: "Suzi Clark", tenSeconds: "You're not wrong Greg", linkedIn: "https://www.linkedin.com/in/susanna-clark-932b52142/", gitHub: "https://github.com/Suzi-Clark", profileImage: "/suzi.png"},
-  {fullname: "Rhona Mackay", tenSeconds: "Far be Knit for me to forget if I knit or crochet amazing jumpers, but I know I do one or the other...", linkedIn: "https://www.linkedin.com/in/rhonamackay/", gitHub: "https://github.com/rhonamackay", profileImage: "/rhona.png"},
+  {fullname: "Rhona Mackay", tenSeconds: "After writing the same letter one too many times in my civil service job, I'm looking for a creative career where I can stretch my problem solving muscles", linkedIn: "https://www.linkedin.com/in/rhonamackay/", gitHub: "https://github.com/rhonamackay", profileImage: "/rhona.png"},
   {fullname: "Remi Akinfoyeku", tenSeconds: "If a pixel is out of place, I'll spot it: pixel perfection!", linkedIn: "https://www.linkedin.com/in/anthony-akinfoyeku-720846a6/", gitHub: "https://github.com/remiyeku", profileImage: "/remi.png"}
 ]
 
