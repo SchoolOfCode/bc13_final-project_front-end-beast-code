@@ -125,3 +125,63 @@
 .text {
     text-decoration: none;
 }
+.checkbtn {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .checkbtn {
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../public/menu.png');
+        float: right;
+        line-height: 80px;
+        margin-right: 20px;
+        cursor: pointer;
+        margin-top: 0px;
+        cursor: pointer;
+    }
+    .about_login>div>h3>a {
+        display: none;
+    }
+    .about_us>h3
+    .login>h3 {
+        display: block;
+        margin: 30px 0px;
+        line-height: 80px;
+        border: 1px solid red;
+    }
+    .about_login{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: var(--green);
+        top: 80px;
+        transform: translateX(-114%);
+        transition: all .5s;
+        text-align: center;
+    }
+    .about_login_checked{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: var(--green);
+        top: 60px;
+        transform: translateX(-11%);
+        transition: all .5s;
+        text-align: center;
+        box-sizing: none;
+    }
+    .about_login_checked>div>h3{
+        margin-top: 35px;
+        color: white;
+    }
+    .search_container{
+        display: none
+    }
+
+
+}

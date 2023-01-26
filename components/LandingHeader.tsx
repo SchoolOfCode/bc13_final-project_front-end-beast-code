@@ -23,7 +23,7 @@ export default function LandingHeader() {
         >
           <div className={styles.about_us}>
             <h3>
-              <Link
+              <Link data-testid="about-us-p"
                 href="/aboutus"
                 style={{ textDecoration: "none", color: "white" }}
               >

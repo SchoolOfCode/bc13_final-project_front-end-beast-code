@@ -44,6 +44,9 @@ let [secondCoordAverage, setSecondCoordAverage] = useState<null|number>(null)
       console.log("this one needs to be the same as the first one", firstCoordAverage)
     }, [results])
 
+  console.log(heroPageQuery)
+  console.log(results)
+
   return (
     <div className={styles.map_centering_div}>
         {firstCoordAverage ? <MapContainer
