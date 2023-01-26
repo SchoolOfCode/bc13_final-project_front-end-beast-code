@@ -6,8 +6,7 @@ import styles from '../styles/map.module.css'
 import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 import Link from 'next/link';
-import {useEffect, useState} from 'react'
-import { slice } from 'cypress/types/lodash';
+import { useEffect } from 'react';
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
@@ -44,6 +43,9 @@ let [secondCoordAverage, setSecondCoordAverage] = useState<null|number>(null)
       coordAverage()
       console.log("this one needs to be the same as the first one", firstCoordAverage)
     }, [results])
+
+  console.log(heroPageQuery)
+  console.log(results)
 
   return (
     <div className={styles.map_centering_div}>
