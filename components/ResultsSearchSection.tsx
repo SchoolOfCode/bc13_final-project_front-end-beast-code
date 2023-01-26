@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, MouseEventHandler, useEffect } from "react";
+import React, { ChangeEventHandler, MouseEventHandler } from "react";
 import FilterDropdown from "./FilterDropdown";
 import FilterPanel from "./FilterPanel";
 import styles from "../styles/results_search_section.module.css";

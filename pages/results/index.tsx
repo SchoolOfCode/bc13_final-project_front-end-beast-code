@@ -161,12 +161,9 @@ export default function Results() {
 
   //Sets the state for whether or not a "no results" message should be rendered on the screen every time the results array is updated
   useEffect(() => {
-    console.log('im loading', loading)
-    console.log('im the length of results', results.length)
     if (loading === false) {
       if (results.length < 1) {
         setNoResults(true)
-        console.log('heyyyy im line 169')
       }
       else {
         setNoResults(false)

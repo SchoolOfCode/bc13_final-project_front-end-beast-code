@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ResultCard from "./ResultCard";
 import styles from "../styles/bar_cards.module.css";
 import Link from "next/link";
