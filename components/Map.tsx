@@ -6,7 +6,7 @@ import styles from '../styles/map.module.css'
 import { resultsArrType } from '../data/types';
 import { Icon } from "leaflet";
 import Link from 'next/link';
-import { useEffect } from 'react';
+import {useEffect, useState} from 'react'
 
 const customPinIcon = new Icon({
   iconUrl: "/map-location-pin.png",
@@ -21,21 +21,39 @@ type propsObjType = {
   };
 }
 
+
 export default function Map({results, heroPageQuery}: propsObjType){
+let [firstCoordAverage, setFirstCoordAverage] = useState<null|number>(null)
+let [secondCoordAverage, setSecondCoordAverage] = useState<null|number>(null)
+  useEffect(()=>{
+    function coordAverage(){
+      let firstCoord = 0
+      let secondCoord = 0
+      for (let i=0; i<results.length; i++) {
+        firstCoord = firstCoord + results[i].location.coordinates[0]
+        secondCoord = secondCoord + results[i].location.coordinates[1]
+        }
+        firstCoord = firstCoord / (results.length)
+        secondCoord = secondCoord/ (results.length)
+      console.log("this is correct", firstCoord)
+      console.log("this is correct as well hopefully", secondCoord)
+      setFirstCoordAverage(firstCoord)
+      setSecondCoordAverage(secondCoord)
+    }
+      coordAverage()
+      console.log("this one needs to be the same as the first one", firstCoordAverage)
+    }, [results])
 
   console.log(heroPageQuery)
   console.log(results)
 
   return (
     <div className={styles.map_centering_div}>
-      <MapContainer
+        {firstCoordAverage ? <MapContainer
         className={styles.map_container}
         id="map"
         data-testId="map-container"
-        center={[
-          Number(heroPageQuery.location[1]),
-          Number(heroPageQuery.location[0]),
-        ]}
+        center={[firstCoordAverage!, secondCoordAverage!]}
         zoom={13}
         scrollWheelZoom={false}
         style={{ height: "700px", width: "55%" }}
@@ -86,7 +104,7 @@ export default function Map({results, heroPageQuery}: propsObjType){
             </div>
           </Marker>
         ))}
-      </MapContainer>
+      </MapContainer>: null}
     </div>
   );
 }
