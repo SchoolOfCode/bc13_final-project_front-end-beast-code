@@ -1,5 +1,6 @@
 
 # Cheers by Beast Code
+https://cheersy.vercel.app/
 
 Cheersy is an app to help the evening enthusiast better find a watering-hole.  The main aim of the app is to help the user find bars of their specifications in a chosen location or area.  The main functionality is the user puts a location into the search input and receives a list back of bars from this area, they then can refine this search to their more specific requirements on the results page based on interests and tastes.
 
@@ -22,15 +23,6 @@ If you have any feedback, please reach out to us at socmonth@gmail.com
 **Client:** React, Typescript, CSS, Vercel, Next.js, React.js
 
 **Server:** Node, Express, MongoDB, Leaflet
-
-## Color Reference
-
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Example Color | ![#AF8541](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Example Color | ![#173234](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
-| Example Color | ![#000707](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-
 
 ## Run Locally
 
