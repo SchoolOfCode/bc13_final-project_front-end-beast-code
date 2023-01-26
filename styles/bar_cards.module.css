@@ -135,6 +135,10 @@
     text-shadow: 0 0 0 var(--gold);
 }
 
+.noResults {
+    color: var(--white)
+}
+
 /* .reviews_icon{
     width: 24px;
     height: 24px;
