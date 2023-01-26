@@ -128,7 +128,7 @@ export default function ResultsSearchSection({ results, filters, setDropdown, se
                     setDropdown={setDropdown}
                     setCheckbox={setCheckbox}
                   />
-                  <SortingDropdown setDropdown={setDropdown} setRadioCheckbox={setRadioCheckbox} sortingObj={sortingObj}/>
+                  {view === "list" ? <SortingDropdown setDropdown={setDropdown} setRadioCheckbox={setRadioCheckbox} sortingObj={sortingObj}/> : null}
                 </div>
                 <div className={styles.button_container}>
                   {/* Conditionally renders the animation styling on the "Apply filters" depending on whether the user needs to click the button or not */}
