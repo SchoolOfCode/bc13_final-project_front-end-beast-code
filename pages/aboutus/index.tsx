@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 let team: teamType = [
   {fullname: "Keira Stanley", tenSeconds: "I frequently visit Brazil and support Spurrs", linkedIn: "https://www.linkedin.com/in/keirastanley/", gitHub: "https://github.com/keirastanley", profileImage: "/keira.png"},
-  {fullname: "Gregory Rutnam", tenSeconds: "Tabby tiggy would 100% beat Orange Tiggy in a fight", linkedIn: "https://www.linkedin.com/in/rutnam/", gitHub: "https://github.com/gregrutnam", profileImage: "/greg.png"},
+  {fullname: "Gregory Rutnam", tenSeconds: "I'm Greg, I studied Media and Sociology at uni and for the last few years have worked in everything from teaching to hospitality to construction in a variety of countries around the world.", linkedIn: "https://www.linkedin.com/in/rutnam/", gitHub: "https://github.com/gregrutnam", profileImage: "/greg2.png"},
   {fullname: "Faseeh Ahmed", tenSeconds: "Say it like you meme it", linkedIn: "https://www.linkedin.com/in/faseehahmed/", gitHub: "https://github.com/faseehahmed1", profileImage: "/faseeh.png"},
   {fullname: "Suzi Clark", tenSeconds: "You're not wrong Greg", linkedIn: "https://www.linkedin.com/in/susanna-clark-932b52142/", gitHub: "https://github.com/Suzi-Clark", profileImage: "/suzi.png"},
   {fullname: "Rhona Mackay", tenSeconds: "Far be Knit for me to forget if I knit or crochet amazing jumpers, but I know I do one or the other...", linkedIn: "https://www.linkedin.com/in/rhonamackay/", gitHub: "https://github.com/rhonamackay", profileImage: "/rhona.png"},
