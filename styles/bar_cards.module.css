@@ -1,0 +1,153 @@
+.outerCardContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 1030px;
+    font-family: 'Inter', sans-serif;
+    gap:20px;
+    row-gap: 80px;
+    margin-bottom: 90px;
+}
+
+
+.cardContainer > a {
+    text-decoration: none;
+}
+
+.resultCard {
+    width: 327px;
+    height: 468px;
+    background-color: var(--green);
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+}
+
+.resultCard:hover {
+    animation: pulse 2s infinite ease-in-out alternate;
+}
+
+.imageStandIn {
+    width: 100%;
+    height: 200px;
+    background-color: var(--lightgreen);
+    border-radius: 10px 10px 0px 0px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.goldRectangle {
+    background-color: var(--gold);
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bar_name {
+    width: 72%;
+    padding-left: 25px;
+}
+
+.description {
+    font-size: 16px;
+    padding: 20px 27px;
+    height: 120px;
+    line-height: 1.35rem;
+    font-weight: normal;
+}
+
+.icons_container{
+    width: 100%;
+    height: 80px;
+    padding: 0px 27px;
+    padding-top: 4px;
+    display: flex;
+    flex-wrap: wrap
+}
+
+.drinks{
+    width: 55%;
+    display: flex;
+    align-items: center;
+}
+
+.drinks_icon{
+    width:24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-drinks-icon.png');
+    margin-right: 10px;
+}
+
+.vibe{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    color: transparent;
+    text-shadow: 0 0 0 var(--gold);
+    color: white;
+}
+
+.vibe_icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-vibe-icon.png');
+    margin-right: 10px;
+}
+
+.cost {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    color: transparent;
+    text-shadow: 0 0 0 var(--gold);
+    padding-left: 3px;
+}
+
+.cost_icon_light {
+    color: transparent;
+    text-shadow: 0 0 0 #af854161;
+}
+
+.reviews{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    color: transparent;
+    text-shadow: 0 0 0 var(--gold);
+}
+
+.noResults {
+    color: var(--white)
+}
+
+/* .reviews_icon{
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../public/barcard-review-icon.png');
+    margin-right: 10px;
+} */
+
+@keyframes pulse {
+    10% { transform:  translateY(-10px); }
+}

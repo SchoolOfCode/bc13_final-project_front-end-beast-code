@@ -1,0 +1,62 @@
+import React from 'react'
+import Image from 'next/image'
+import styles from "../styles/footer.module.css"
+import Link from 'next/link';
+
+function Footer() {
+  return (
+    <div className={styles.Footer}>
+      <div className={styles.Footer_breakpoints}>
+        <div className={styles.contact_us_container}>
+          <h2 data-testid="Contact-us">Contact us</h2>
+          <input type="text" placeholder="Full name" />
+          <input type="email" placeholder="Email" />
+          <textarea placeholder="Your Message" rows={4} cols={30} />
+          <button data-testid="Submit Button">Submit</button>
+        </div>
+        <div className={styles.sitemap_container}>
+          <h2>Site map</h2>
+          <ul>
+            <li>
+              <Link href="/">
+              • &nbsp; Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/aboutus">
+             • &nbsp; About Us
+              </Link>
+            </li>
+            <li>• &nbsp; Contact Us</li>
+          </ul>
+        </div>
+        <div className={styles.socials_container}>
+          <h2>Socials</h2>
+          <div className={styles.socials_icons}>
+            <Image
+              src="/Facebook-icon.png"
+              alt="Facebook icon"
+              width={40}
+              height={40}
+            ></Image>
+            <Image
+              src="/Twitter-icon.png"
+              alt="Twitter icon"
+              width={40}
+              height={40}
+            ></Image>
+            <Image
+              data-testid="icon-insta"
+              src="/Instagram-icon.png"
+              alt="Instagram icon"
+              width={40}
+              height={40}
+            ></Image>
+          </div>
+        </div>
+      </div>
+     </div>
+  );
+}
+
+export default Footer

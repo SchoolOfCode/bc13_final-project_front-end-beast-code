@@ -1,0 +1,11 @@
+
+.results_main {
+    background-color: var(--black);
+}
+.spinner_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+    background-color: var(--black);
+}

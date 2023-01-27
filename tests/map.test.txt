@@ -1,0 +1,70 @@
+import { MapContainer } from "react-leaflet";
+import { TileLayer } from "react-leaflet";
+import { Marker } from "react-leaflet";
+import { Popup } from "react-leaflet";
+import { render, fireEvent, waitFor } from "@testing-library/react";
+import Map from "../components/Map";
+
+
+// jest.mock("leaflet", () => {
+//   return {
+//     Icon: jest.fn().mockImplementation(() => {
+//       return {};
+//     }),
+//   };
+// });
+
+const mockResults = [
+  {
+    _id: "1",
+    Name: "Bar 1",
+    Address: "123 Main St",
+    Cost: 2,
+    Rating: 4,
+    location: {
+      coordinates: [1, 2],
+    },
+  },
+  {
+    _id: "2",
+    Name: "Bar 2",
+    Address: "456 Elm St",
+    Cost: 3,
+    Rating: 5,
+    location: {
+      coordinates: [3, 4],
+    },
+  },
+];
+const mockHeroPageQuery = {
+  location: [1, 2],
+  searchInputPlaceholder: "test",
+};
+
+describe("Map", () => {s
+  test("renders the map with markers for each bar in the results", () => {
+    const { getByTestId } = render(
+      <Map results={mockResults} heroPageQuery={mockHeroPageQuery} />);
+    expect(getByTestId("map-container")).toBeInTheDocument();
+    expect(getByTestId("marker")).toBeInTheDocument();
+    expect(getByTestId("marker")).toHaveLength(2);
+  });
+
+  // test("popup displays correct information when marker is clicked", async () => {
+  //   const { getByTestId, getByText } = render(
+  //     <Map
+  //       results={mockResults}
+  //       heroPageQuery={mockHeroPageQuery}
+  //     />
+  //   );
+
+  //   const marker = getByTestId("marker");
+  //   fireEvent.click(marker);
+  //   await waitFor(() => {
+  //     expect(getByText("Bar 1")).toBeInTheDocument();
+  //     expect(getByText("123 Main St")).toBeInTheDocument();
+  //     expect(getByText("Cost: £ £")).toBeInTheDocument();
+  //     expect(getByText("Rating: ★ ★ ★ ★")).toBeInTheDocument();
+  //   });
+  // });
+});

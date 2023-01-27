@@ -1,0 +1,109 @@
+.map_container{
+    border: 3px solid var(--gold);
+    z-index: 0;
+    margin-bottom: 100px;
+    min-width: 1000px;
+    max-width: 1020px;
+}
+
+.map_centering_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.request_popup .leaflet_popup_content_wrapper {
+  border-radius: 60px;
+}
+
+.popup{
+    padding: 0px;
+    margin: 0px;
+}
+
+.popup_container{
+    display: flex;
+    width: 349px;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.bar_name{
+    width: 100%;
+    background-color: var(--gold);
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.popup_inner_container{
+    display: flex;
+    flex-direction: column;
+    width: 349px;
+    margin-left: -22px;
+    margin-top: -14px;
+    margin-bottom: -15px;
+
+}
+
+.popup_description{
+    background-color: var(--green);
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-top: 3px;
+    border-radius: 0px 0px 5px 5px;
+    
+}
+
+.popup_description>a{
+text-decoration: none;
+color: white;
+text-decoration: underline;
+}
+
+.request_popup .leaflet-popup-content-wrapper {
+    border-radius: 0px;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.popup_links_div{
+    display: flex;
+    /* border: 1px solid red; */
+    justify-content: space-between;
+    align-items:flex-start;
+    width: 160px;
+    text-decoration: none;
+    color: white;
+}
+
+.cost_light_icon{
+    color: transparent;
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0.583);
+}
+
+@media (max-width: 500px) {
+    .map_container{
+        border: 3px solid var(--gold);
+        height: 70vh !important;
+        z-index: 0;
+        margin-bottom:2.5vw;
+        margin-bottom: 65px;
+        min-width: 95vw !important;
+    }
+    .map_centering_div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+}
