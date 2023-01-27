@@ -1,28 +1,31 @@
 
 # Cheers by Beast Code
-https://cheersy.vercel.app/
+#### This is the front end repo of a full stack bar-finding app.
 
-Cheersy is an app to help the evening enthusiast better find a watering-hole.  The main aim of the app is to help the user find bars of their specifications in a chosen location or area.  The main functionality is the user puts a location into the search input and receives a list back of bars from this area, they then can refine this search to their more specific requirements on the results page based on interests and tastes.
+Deployed at https://cheersy.vercel.app/
 
-## Authors
+Our backend repo: https://github.com/SchoolOfCode/bc13_final-project_back-end-beast-code
 
-- [@faseehahmed1 - Faseeh Ahmed]
-- [@remiyeku - Anthony 'Remi' Akinfoyeku]
-- [@Suzi-Clark - Susanna 'Suzi' Clark]
-- [@rhonamackay - Rhona Mackay]
-- [@gregrutnam - Greg Rutnam]
-- [@keirastanley - Keira Stanley]
+## What is Cheers?
 
-## Feedback
+Cheers is an app to help the evening-enthusiast avoid endless frustrating google searches when trying to plan a great night out.
 
-If you have any feedback, please reach out to us at socmonth@gmail.com
-
+Using different filters and search capabilities including a map feature and 'sort by' options, Cheers users have all the information they could possibly desire at their fingertips - no matter the group, occasion or features required.
 
 ## Tech Stack
 
-**Client:** React, Typescript, CSS, Vercel, Next.js, React.js
+**Client:** Typescript, React, Next.js, CSS, React Testing Library, Cypress
 
-**Server:** Node, Express, MongoDB, Leaflet
+**Server:** JavaScript, NodeJS, Express, MongoDB, Leaflet, SuperTest
+
+## Authors
+
+- [Faseeh Ahmed](https://github.com/faseehahmed1)
+- [Remi Akinfoyeku](https://github.com/remiyeku)
+- [Suzi Clark](https://github.com/Suzi-Clark)
+- [Rhona Mackay](https://github.com/rhonamackay)
+- [Greg Rutnam](https://github.com/gregrutnam)
+- [Keira Stanley](https://github.com/keirastanley)
 
 ## Run Locally
 
@@ -53,10 +56,14 @@ Start the server
 
 ## Running Tests
 
-To run tests, run the following command
+To run the React Testing Library tests, run the following command:
 
 ```bash
   npm run test
 ```
 
+To run the Cypress tests, run the following command:
 
+```bash
+  npx cypress run
+```
